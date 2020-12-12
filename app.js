@@ -14,11 +14,16 @@ app.set('view engine', 'ejs');
 
 app.get('/', (req, res) => {
 
-    return res.render('Home', {
-        title: 'Home'
+    return res.render('home', {
+        title: 'home'
 
     })
 });
+app.use('/home', require('./routes/home'));
+app.use('/categories', require('./routes/categories'));
+app.use('/programs', require('./routes/programs'));
+app.use('/joinOurStaff', require('./routes/joinOurStaff'));
+
 
 app.listen(port,(error)=>{
     if(error) return console.log(error);
