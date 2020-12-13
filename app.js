@@ -1,11 +1,14 @@
 const express = require('express');
 const path = require('path');
 const ejs = require('ejs');
+const bodyParser = require('body-parser');
 
 const app= express();
 
-
 const port= process.env.PORT || 8080;
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:true}));
 
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -20,6 +23,7 @@ app.get('/', (req, res) => {
     })
 });
 app.use('/home', require('./routes/home'));
+app.use('/login', require('./routes/login'));
 app.use('/categories', require('./routes/categories'));
 app.use('/programs', require('./routes/programs'));
 app.use('/joinOurStaff', require('./routes/joinOurStaff'));
