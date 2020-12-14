@@ -10,4 +10,9 @@ router.get('/', (req, res) => {
         })
 
 });
+function display()
+{
+    var element=document.getElementById("vitext").style.opacity=1;
+    
+}
 module.exports = router;
