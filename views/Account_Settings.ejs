@@ -1,0 +1,88 @@
+<%- include("layouts/header") %>
+    <div class="main-cont">
+
+        <!----------------Side Navigation bar------------------->
+        <div class="sidenav">
+            <a href="/Account_Settings">Profile</a>
+            <hr style="border-top: 1px solid #bbb;">
+            <a href="/Achievements">Achievements</a>
+            <hr style="border-top: 1px solid #bbb;">
+            <a href="#">Log Out</a>
+        </div>
+        <!------------------information section------------------->
+        <div class="container">
+            <h2 class="Name">Unknown</h2>
+
+            <div class="grid-info-content">
+                <div>
+                    <div class="userImg">
+                        <img class="userphoto" src="/images/user.jpg" alt="Avatar" style="border-radius: 50%;">
+                        <button class="btnupload">Upload</button>
+                    </div>
+                </div>
+
+                <div class="informations">
+
+                    <div class="prof-info">
+                        <form class="infoForm" id="infoForm">
+                            <h3>Profile Settings</h3>
+
+                            <div class="profile-info">
+                                <label for="First Name">First Name</label>
+                                <input id="First Name" type="text" name="First Name" style="height:40px;  border-radius: 10px; background-color:rgb(235, 226, 226);" size="40">
+                                <br><br>
+
+                                <label for="Minit">Minit</label>
+                                <input id="Minit" type="text" name="Minit" style="height:40px;  border-radius: 10px; background-color: rgb(235, 226, 226);" size="40">
+                                <br><br>
+
+                                <label for="Last Name">Last Name</label>
+                                <input id="Last Name" type="text" name="Last Name" style="height:40px; border-radius: 10px; background-color: rgb(235, 226, 226);" size="40">
+                                <br><br>
+
+                                <label for="ssn">SSN</label>
+                                <input id="ssn" type="text" name="ssn" style="height:40px; border-radius: 10px; background-color:rgb(235, 226, 226);" size="40">
+                                <br><br>
+
+                                <label for="Gender">Gender</label>
+                                <select name="Gender" id="Gender">
+                                                <option value="Male">Male</option>
+                                                <option value="Female">Female</option>
+                                </select>
+                            </div>
+                        </form>
+                        <button class="save-btn">Save</button>
+                    </div>
+                    <br>
+                    <hr style="border-top: 2px solid #bbb;">
+
+                    <div class="acc-info">
+                        <form class="infoForm" id="infoForm">
+                            <h3>Account Settings</h3>
+                            <div class="account-info">
+                                <label for="Username">Username</label>
+                                <input id="Username" type="text" name="Username" size="40" style="height:40px; text-indent: 8px;  border-radius: 10px; background-color: rgb(235, 226, 226);" placeholder="username">
+                                <br><br>
+
+                                <label for="Email">E-mail</label>
+                                <input id="Email" type="email" name="Email" size="40" style="height:40px; text-indent: 8px;  border-radius: 10px; background-color: rgb(235, 226, 226);" placeholder="email@youruniversity.com">
+                                <br><br>
+
+                                <label for="Password">Password</label>
+                                <input id="Password" type="password" name="Password" size="40" style="height:40px; text-indent: 8px;  border-radius: 10px; background-color: rgb(235, 226, 226);" placeholder="password">
+                                <br><br>
+
+                                <label for="Password">Confirm Password</label>
+                                <input id="Password" type="password" name="Password" size="40" style="height:40px; text-indent: 8px;  border-radius: 10px; background-color: rgb(235, 226, 226);" placeholder="password">
+                                <br><br>
+                            </div>
+                        </form>
+                        <br>
+                        <button class="save-btn">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <%- include("layouts/footer") %>

@@ -12,7 +12,7 @@
 
     
 
-    <link rel="stylesheet" href="/css/<%= css %>.css">
+    <link rel="stylesheet" href="css/<%= css %>.css">
     <link rel="stylesheet" href="css/animate.css">
     
     <title><%= title %></title>
@@ -33,15 +33,15 @@
          <a id="bttn"class="btn btn-secondary dropdown-toggle" style="cursor: pointer;
          color: rgb(228, 222, 222);
          font-size: 1.3rem;background-color:hsl(39, 77%, 83%,0); border:none; outline:none;" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-         Categories
+         <a href="/categories" style=" text-decoration:none; color:rgb(228, 222, 222);font-size: 1.3rem">Categories</a> 
          </a>
          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-            <ul>Cat1 </ul>
-            <ul>Cat2 </ul>
-            <ul>Cat3 </ul>
-
+            <ul><a href="/"style="color:rgb(228, 222, 222);font-size: 1.3rem">Cat1</a>  </ul>
+            <ul><a href="/"style="color:rgb(228, 222, 222);font-size: 1.3rem">Cat2</a> </ul>
+            <ul><a href="/"style="color:rgb(228, 222, 222);font-size: 1.3rem">Cat3</a> </ul>
           
          </div>
+         
         </div>
           </li>
            <li class="nav-item <% if (title === 'Programs') { %>active<% } %>">
@@ -60,8 +60,27 @@
             <a class="nav-link" href="/login" style="color: rgb(228, 222, 222);font-size: 1.3rem">Sign In or Sign Up</a>
           </li>
           
+          <li class="nav-item">
+            <a class="nav-link" href="/Donate" style="color: rgb(228, 222, 222);font-size: 1.3rem">Donate</a>
+          </li>
           
-          
+          <li class="nav-item <% if (title === 'account') { %>active<% } %>">
+            <div class="dropdown show" style="padding-left:0px;">
+             <a id="bttn"class="btn btn-secondary dropdown-toggle" style="cursor: pointer;
+             color: rgb(228, 222, 222);
+             font-size: 1.3rem;background-color:hsl(39, 77%, 83%,0); border:none; outline:none;" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+             <a href="/categories" style=" text-decoration:none; color:rgb(228, 222, 222);font-size: 1.3rem">Account</a> 
+             </a>
+             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <ul><a href="/Account_Settings"style="color:rgb(228, 222, 222);font-size: 1.3rem">Profile</a>  </ul>
+                <ul><a href="/"style="color:rgb(228, 222, 222);font-size: 1.3rem">Log Out</a> </ul>
+
+             </div>
+             
+            </div>
+              </li>
+
+
         </ul>
         
         <div class="my-2 my-lg-0">
@@ -96,5 +115,7 @@
   } 
 }
     </script>
+
+
 <body>
 <main>
