@@ -41,17 +41,20 @@ body {
 }
 
 .main-cont {
-    display: -ms-flexbox;
     display: flex;
-    -ms-flex-wrap: wrap;
+    flex-direction: row;
     flex-wrap: wrap;
+    justify-content: space-evenly;
 }
 
-.container {
-    float: right;
+
+/* 
+.main-cont .container {
     padding: 20px;
     margin-top: 150px;
-}
+    background-color: rgb(243, 239, 239);
+    flex: 70%
+} */
 
 
 /*-------------------Profile Picture--------------------*/
@@ -63,8 +66,9 @@ body {
 }
 
 .userImg img {
-    width: 100%;
+    width: 40%;
     height: auto;
+    margin-left: 50px;
 }
 
 .save-btn {
@@ -146,16 +150,28 @@ label {
 
 /* Style the side navigation */
 
-.sidenav {
+.sidnav {
+    flex: 20%;
+    box-shadow: 10px 10px 8px 10px #ebe8e8
+}
+
+
+/* .main-cont .sidenav {
     padding: 15px;
-    box-sizing: border-box;
+    box-sizing: content-box;
     margin-top: 150px;
-    height: 750px;
-    width: 250px;
+    height: 980px;
+    width: 200px;
     overflow-x: hidden;
     color: black;
     float: left;
     font-size: 20px;
+    box-shadow: 10px 10px 8px 10px #ebe8e8;
+    flex: 20%;
+} */
+
+.sidenav .choices {
+    margin-top: 50px;
 }
 
 
@@ -172,8 +188,10 @@ label {
 /* Change color on hover */
 
 .sidenav a:hover {
-    background-color: #ddd;
+    background-color: rgb(240, 234, 234);
     color: black;
+    box-shadow: rgb(226, 223, 223);
+    border-right: violet;
 }
 
 
@@ -228,4 +246,16 @@ footer h4 {
 
 .contact-links i:hover {
     color: rgb(116, 12, 185);
+}
+
+.main-cont {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.container {
+    flex: 70%;
+    margin-left: 50px;
 }
