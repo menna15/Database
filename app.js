@@ -30,7 +30,8 @@ app.use('/login', require('./routes/login'));
 app.use('/categories', require('./routes/categories'));
 app.use('/programs', require('./routes/programs'));
 app.use('/joinOurStaff', require('./routes/joinOurStaff'));
-
+app.use('/course', require('./routes/course'));
+app.use('/singleCourse', require('./routes/singleCourse'));
 
 app.listen(port,(error)=>{
     if(error) return console.log(error);

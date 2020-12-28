@@ -1,0 +1,187 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.navbar {
+    position: fixed;
+    background-image: url(../images/header-bg.png);
+    background-repeat: none;
+    background-size: cover;
+    width: 100%;
+    z-index: 1;
+    height: 16vh;
+
+}
+
+.navbar img {
+    height: 120px;
+    width: 120px;
+}
+.navbar  li {
+    margin-left: 30px;
+}
+
+
+.search
+{
+    min-width: 30vw;
+     min-height: 40px;
+     border-radius: 5px;
+     box-sizing: border-box;
+    background-color: rgb(89, 60, 95,0.3);
+    border: none;
+     outline: none;
+}
+
+.search:hover
+{
+    min-width: 30vw;
+     min-height: 40px;
+     border-radius: 5px;
+     box-sizing: border-box;
+     box-shadow:  rgb(89, 60, 95,0.9) 2px 2px 2px;
+    border: none;
+    padding: 2px 2px 2px 2px;
+}
+
+/*single course details*/
+.twPc-div {
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #e1e8ed;
+    border-radius: 6px;
+    height: 250px;
+     max-width: 340px; /*orginal twitter width: 290px;  */
+}
+.twPc-bg {
+    background-image: url("https://pbs.twimg.com/profile_banners/50988711/1384539792/600x200");
+    background-position: 0 50%;
+    background-size: 100% auto;
+    border-bottom: 1px solid #e1e8ed;
+    border-radius: 4px 4px 0 0;
+    height: 95px;
+    width: 100%;
+}
+.twPc-block {
+    display: block !important;
+}
+.twPc-button {
+    margin: -35px -10px 0;
+    text-align: right;
+    width: 100%;
+}
+.twPc-avatarLink {
+    background-color: #fff;
+    border-radius: 6px;
+    display: inline-block !important;
+    float: left;
+    margin: -30px 5px 0 8px;
+    max-width: 100%;
+    padding: 1px;
+    vertical-align: bottom;
+}
+.twPc-avatarImg {
+    border: 2px solid #fff;
+    border-radius: 7px;
+    box-sizing: border-box;
+    color: #fff;
+    height: 72px;
+    width: 72px;
+}
+.twPc-divUser {
+    margin: 5px 0 0;
+}
+.twPc-divName {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 21px;
+}
+.twPc-divName a {
+    color: inherit !important;
+}
+.twPc-divStats {
+    margin-left: 11px;
+    padding: 10px 0;
+}
+.twPc-Arrange {
+    box-sizing: border-box;
+    display: table;
+    margin: 0;
+    min-width: 100%;
+    padding: 0;
+    table-layout: auto;
+}
+ul.twPc-Arrange {
+    list-style: outside none none;
+    margin: 0;
+    padding: 0;
+}
+.twPc-ArrangeSizeFit {
+    display: table-cell;
+    padding: 0;
+    vertical-align: top;
+}
+.twPc-ArrangeSizeFit a:hover {
+    text-decoration: none;
+}
+.twPc-StatValue {
+    display: block;
+    font-size: 18px;
+    font-weight: 500;
+    transition: color 0.15s ease-in-out 0s;
+}
+.twPc-StatLabel {
+    color: #8899a6;
+    font-size: 10px;
+    letter-spacing: 0.02em;
+    overflow: hidden;
+    text-transform: uppercase;
+    transition: color 0.15s ease-in-out 0s;
+}
+/*single course details*/
+.footer {
+    width: 100%;
+    color:  rgb(255, 255, 255);
+    font-size: 1rem;
+    font-family: Arial, Helvetica, sans-serif;
+    bottom: 0;
+    padding: 20px;
+    text-align: center;
+    height: fit-content;
+    background-image: url("../images/header-bg.png");
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+}
+
+footer h1 {
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+footer h4 {
+    font-size: 1rem;
+}
+
+.contact-links {
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.contact-links i {
+    padding: 25px;
+    padding-top: 0;
+    padding-bottom: 0;
+    color: rgb(255, 255, 255);
+    transition: 0.3s;
+    margin-bottom: 10px;
+}
+
+.contact-links i:hover {
+    color: rgb(10, 14, 13);
+}
