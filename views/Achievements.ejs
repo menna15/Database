@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/images/logo2.png" style="width: 200px; height: 200px;">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+
+
+
+    <link rel="stylesheet" href="css/<%= css %>.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/Achievements.css">
+
+    <title>
+        <%= title %>
+    </title>
+
+</head>
+<script>
+    function myFunction() {
+        // Declare variables
+        var input, filter, ul, li, a, i;
+        input = document.getElementById("mySearch");
+        filter = input.value.toUpperCase();
+        ul = document.getElementById("myMenu");
+        li = ul.getElementsByTagName("li");
+
+        // Loop through all list items, and hide those who don't match the search query
+        for (i = 0; i < li.length; i++) {
+            a = li[i].getElementsByTagName("a")[0];
+            if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                li[i].style.display = "none";
+            } else {
+                li[i].style.display = "visible";
+            }
+        }
+    }
+    window.onscroll = function() {
+        scrollFunction()
+    };
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 1 || document.documentElement.scrollTop > 1) {
+            document.getElementById('header').style.backgroundImage = "none";
+        }
+    }
+</script>
+
+<body>
+    <main>
+        <div class="main-cont">
+            <div class="header-nav">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <a href="/home"> <img class="logo-icon" src="/images/logo2.png" alt="logo"></a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto" style="display:flex; align-items: center; justify-content: space-around;">
+                            <li class="nav-item <% if (title === 'categories') { %>active<% } %>">
+                                <div class="dropdown show" style="padding-left:0px;">
+                                    <a id="bttn" class="btn btn-secondary dropdown-toggle" style="cursor: pointer;
+                 color: rgb(228, 222, 222);
+                 font-size: 1.3rem;background-color:hsl(39, 77%, 83%,0); border:none; outline:none;" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <a href="/categories" style=" text-decoration:none; color:rgb(228, 222, 222);font-size: 1.3rem">Categories</a>
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                        <ul><a href="/" style="color:rgb(228, 222, 222);font-size: 1.3rem">Cat1</a> </ul>
+                                        <ul><a href="/" style="color:rgb(228, 222, 222);font-size: 1.3rem">Cat2</a> </ul>
+                                        <ul><a href="/" style="color:rgb(228, 222, 222);font-size: 1.3rem">Cat3</a> </ul>
+
+                                    </div>
+
+                                </div>
+                            </li>
+                            <li class="nav-item <% if (title === 'Programs') { %>active<% } %>">
+                                <a class="nav-link" href="/programs" style="color:rgb(228, 222, 222);font-size: 1.3rem">Programs</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <input class="search" type="text" onkeyup="myFunction()" placeholder="Search.." title="Type in a category">
+                            </li>
+
+                            <li class="nav-item <% if (title === 'joinOurStaff') { %>active<% } %>">
+                                <a class="nav-link" href="/joinOurStaff" style="color:rgb(228, 222, 222);font-size: 1.3rem">Join Our Staff</a>
+                            </li>
+
+                            <li class="nav-item <% if (title === 'login') { %>active<% } %>">
+                                <a class="nav-link" href="/login" style="color: rgb(228, 222, 222);font-size: 1.3rem">Sign In or Sign Up</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Donate" style="color: rgb(228, 222, 222);font-size: 1.3rem">Donate</a>
+                            </li>
+
+                            <li class="nav-item <% if (title === 'account') { %>active<% } %>">
+                                <div class="dropdown show" style="padding-left:0px;">
+                                    <a id="bttn" class="btn btn-secondary dropdown-toggle" style="cursor: pointer;
+                     color: rgb(228, 222, 222);
+                     font-size: 1.3rem;background-color:hsl(39, 77%, 83%,0); border:none; outline:none;" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <a href="/categories" style=" text-decoration:none; color:rgb(228, 222, 222);font-size: 1.3rem">Account</a>
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                        <ul><a href="/Account_Settings" style="color:rgb(228, 222, 222);font-size: 1.3rem">Profile</a> </ul>
+                                        <ul><a href="/" style="color:rgb(228, 222, 222);font-size: 1.3rem">Log Out</a> </ul>
+
+                                    </div>
+
+                                </div>
+                            </li>
+
+
+                        </ul>
+
+                        <div class="my-2 my-lg-0">
+
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <!----------------Side Navigation bar------------------->
+            <div class="sidenav">
+                <div>
+                    <div class="userImg">
+                        <img class="userphoto" src="/images/user.jpg" alt="Avatar" style="border-radius: 50%;">
+                    </div>
+                </div>
+                <h2 class="Name">UNKOWN</h2>
+
+                <div class="choices">
+                    <a href="/Account_Settings">Profile</a>
+                    <hr style="border-top: 1px solid #bbb;">
+                    <a href="/Achievements">Achievements</a>
+                    <hr style="border-top: 1px solid #bbb;">
+                    <a href="#">Log Out</a>
+                </div>
+            </div>
+            <!------------------ Achievements section------------------->
+
+            <div class="ach-container">
+                <h2 class="achievements-title">Achievements</h2>
+
+                <div class="cards">
+                    <div class="card-cont">
+                        <a href="#" class="card-link">
+                            <div class="course-card">
+                                <img src="/images/dataScience.png" alt="course">
+                                <div class="course-cont">
+                                    <h4><b>Course One</b></h4>
+                                    <p>Discribtion</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class=" card-cont ">
+                        <a href="#" class="card-link">
+                            <div class="course-card ">
+                                <img src="/images/dataScience.png " alt="course ">
+                                <div class="course-cont ">
+                                    <h4><b>Course Two</b></h4>
+                                    <p>Discribtion</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="card-cont ">
+                        <a href="#" class="card-link">
+                            <div class="course-card ">
+                                <img src="/images/dataScience.png " alt="course ">
+                                <div class="course-cont ">
+                                    <h4><b>Course Three</b></h4>
+                                    <p>Discribtion</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="card-cont ">
+                        <a href="#" class="card-link">
+                            <div class="course-card ">
+                                <img src="/images/dataScience.png " alt="course ">
+                                <div class="course-cont ">
+                                    <h4><b>Course Four</b></h4>
+                                    <p>Discribtion</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="card-cont ">
+                        <a href="#" class="card-link">
+                            <div class="course-card ">
+                                <img src="/images/dataScience.png " alt="course ">
+                                <div class="course-cont ">
+                                    <h4><b>Course Five</b></h4>
+                                    <p>Discribtion</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <%- include("layouts/footer") %>
