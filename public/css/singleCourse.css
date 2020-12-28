@@ -47,12 +47,12 @@
 }
 
 /*single course details*/
-.twPc-div {
+/* .twPc-div {
     background: #fff none repeat scroll 0 0;
     border: 1px solid #e1e8ed;
     border-radius: 6px;
     height: 250px;
-     max-width: 340px; /*orginal twitter width: 290px;  */
+     max-width: 340px;
 }
 .twPc-bg {
     background-image: url("https://pbs.twimg.com/profile_banners/50988711/1384539792/600x200");
@@ -138,10 +138,58 @@ ul.twPc-Arrange {
     overflow: hidden;
     text-transform: uppercase;
     transition: color 0.15s ease-in-out 0s;
-}
-/*single course details*/
+} */
+
 
 /*single course details*/
+
+/* Course details */
+.ul-check {
+    margin-bottom: 50px; }
+.ul-check li {
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 15px;
+    line-height: 1.5; }
+    .ul-check li:before {
+    left: 0;
+    font-size: 20px;
+    top: -.3rem; 
+    font-family: "icomoon";
+    content: "\e5ca";
+    position: absolute; }
+.ul-check.white li:before {
+    color: #fff; }
+.ul-check.success li:before {
+    color: #4688e4; }
+.ul-check.primary li:before {
+    color: #4688e4; }
+  
+
+.ftco-subscribe-1 {
+background-size: cover;
+background-position: center center;
+background-repeat: no-repeat;
+position: relative; }
+.ftco-subscribe-1:before {
+    position: absolute;
+    content: "";
+    background: #183661;
+    opacity: .7;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0; }
+.ftco-subscribe-1 > .container {
+    position: relative;
+    z-index: 2; }
+    .ftco-subscribe-1 > .container h2, .ftco-subscribe-1 > .container p {
+    color: #fff; }
+.ftco-subscribe-1 .form-control {
+    height: auto !important; } 
+
+/* Course details */
 .footer {
     width: 100%;
     color:  rgb(255, 255, 255);
