@@ -5,8 +5,9 @@ router.get('/', (req, res) => {
 
         return res.render('singleCourse', {
             title: 'singleCourse',
+            // put course name
             css: 'singleCourse'
-
+ 
         })
 
 });
