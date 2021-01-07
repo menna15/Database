@@ -1,5 +1,5 @@
--- create database mrpt;
-USE mrpt;
+CREATE DATABASE MRPT;
+USE MRPT;
 create table IF NOT exists Owners
 (
 Fname varchar(50) not null,
@@ -46,7 +46,7 @@ foreign key (IT_Username) references IT_Adminstrators(Username)
 create table IF NOT exists Categories
 (
 CName varchar(100) not null,
-IT_Username varchar(50),
+IT_Username varchar(50) not null,
 Category_image varchar(1024),
 primary key (CName),
 foreign key (IT_Username) references IT_Adminstrators(Username)
@@ -199,17 +199,31 @@ foreign key (Pname  ) references Programs(PName)
 );
 
 /*Insert Records*/
+-- Owners --
+INSERT INTO Owners (Fname, Lname, Username) VALUES ("Will", "Smith", "willsmith");
+
+-- IT Adminstrators --
+INSERT INTO IT_Adminstrators  VALUES ("Medhat","kamal","Mkamal" ,"Kamal.jpg","willsmith","999879","medhat55@gmail.com","Male");
+
+
 -- Categories -- 
-INSERT INTO Categories (CName, IT_Username, Category_image) VALUES ("Data Science", null,"images/dataScience.png");
-INSERT INTO Categories (CName, IT_Username, Category_image) VALUES ("IOT", null,"images/IOT.jpeg");
-INSERT INTO Categories (CName, IT_Username, Category_image) VALUES ("Quantum", null,"images/quantum.jpg");
-INSERT INTO Categories (CName, IT_Username, Category_image) VALUES ("Web Development", null,"images/Web_Dev.png");
+INSERT INTO Categories (CName, IT_Username, Category_image) VALUES ("Data Science", "Mkamal","images/dataScience.png");
+INSERT INTO Categories (CName, IT_Username, Category_image) VALUES ("IOT", "Mkamal","images/IOT.jpeg");
+INSERT INTO Categories (CName, IT_Username, Category_image) VALUES ("Quantum", "Mkamal","images/quantum.jpg");
+INSERT INTO Categories (CName, IT_Username, Category_image) VALUES ("Web Development", "Mkamal","images/Web_Dev.png");
 
 -- Programs --
 INSERT INTO Programs (PName, Cost, Level, Duration, Program_info, Program_image) VALUES ("AI", 15000, "Beginner", 3, "Our set he for firmament morning sixth subdue darkness creeping gathered divide our
                                     let god moving. Moving in fourth air night bring upon", "images/ML.jpeg");
 INSERT INTO Programs (PName, Cost, Level, Duration, Program_info, Program_image) VALUES ("Web Development", 15000, "Beginner", 3, "Our set he for firmament morning sixth subdue darkness creeping gathered divide our
                                     let god moving. Moving in fourth air night bring upon", "images/Web_Dev.png");
+                                    
+
+-- instructors --
+insert  into Instructors values ('Omar','Kamal','OmarA',"Mkamal","images/author.jpg",null,null,900);
+insert  into Instructors values ('Emad','Atalah','EmadA',"Mkamal","images/author.jpg",null,null,1000);
+INSERT INTO Instructors VALUES ("Menna", "Ahmed", "mennaahmed","Mkamal", "images/author.jpg", null, null, null);
+INSERT INTO Instructors VALUES ("Reem", "Attalah", "reemattalah", "Mkamal", "images/author.jpg", null, null, null);
 
 
 -- Courses -- 
@@ -225,9 +239,9 @@ INSERT INTO Courses (Course_ID, Course_Name, Instructors_Username, Category_Name
                                     let god moving. Moving in fourth air night bring upon", "images/course_5.jpg");
 INSERT INTO Courses (Course_ID, Course_Name, Instructors_Username, Category_Name, Programe_Name, Cost, Duration, Course_info, Course_image) VALUES (6,"CSS Basics", "mennaahmed","Web Development", "Web Development", 150, 1,"Our set he for firmament morning sixth subdue darkness creeping gathered divide our
                                     let god moving. Moving in fourth air night bring upon", "images/course_5.jpg");
-INSERT INTO Courses (Course_ID, Course_Name, Instructors_Username, Category_Name, Programe_Name, Cost, Duration, Course_info, Course_image) VALUES (7,"JavaScript Basics", "taher","Web Development", "Web Development", 150, 1,"Our set he for firmament morning sixth subdue darkness creeping gathered divide our
+INSERT INTO Courses (Course_ID, Course_Name, Instructors_Username, Category_Name, Programe_Name, Cost, Duration, Course_info, Course_image) VALUES (7,"JavaScript Basics", "mennaahmed","Web Development", "Web Development", 150, 1,"Our set he for firmament morning sixth subdue darkness creeping gathered divide our
                                     let god moving. Moving in fourth air night bring upon", "images/course_5.jpg");
-INSERT INTO Courses (Course_ID, Course_Name, Instructors_Username,Category_Name, Programe_Name, Cost, Duration, Course_info, Course_image) VALUES (8,"PHP Basics", "taher","Web Development", "Web Development", 150, 1,"Our set he for firmament morning sixth subdue darkness creeping gathered divide our
+INSERT INTO Courses (Course_ID, Course_Name, Instructors_Username,Category_Name, Programe_Name, Cost, Duration, Course_info, Course_image) VALUES (8,"PHP Basics", "mennaahmed","Web Development", "Web Development", 150, 1,"Our set he for firmament morning sixth subdue darkness creeping gathered divide our
                                     let god moving. Moving in fourth air night bring upon", "images/course_5.jpg");
 
 -- Copouns -- 
@@ -235,32 +249,8 @@ INSERT INTO Coupons (Coupon_ID, SDate, EDate, discount_percentage, Category_Name
 INSERT INTO Coupons (Coupon_ID, SDate, EDate, discount_percentage, Category_Name) VALUES ("lsey12wre","2021-01-07","2021-01-20",15, "IOT");
 INSERT INTO Coupons (Coupon_ID, SDate, EDate, discount_percentage, Category_Name) VALUES ("ERE87KDMS","2021-01-22","2021-02-05",15, "Quantum");
 
--- Owners --
-INSERT INTO Owners (Fname, Lname, Username) VALUES ("Will", "Smith", "willsmith");
 
+update Courses set Course_small_info= 'Learn with Us now!' where Course_ID=1;
 
--- instructors --
-select * from instructors;
-insert  into Instructors values ('Omar','Kamal','OmarA',null,null,null,null,900);
-insert  into Instructors values ('Emad','Atalah','EmadA',null,null,null,null,1000);
-INSERT INTO Instructors VALUES ("Menna", "Ahmed", "mennaahmed",null, "images/author.jpg", null, null, null);
-INSERT INTO Instructors VALUES ("Reem", "Attalah", "reemattalah", null, "images/author.jpg", null, null, null);
-
-select * from courses;
-update courses set course_small_info= 'Learn with Us now!' where Course_ID=1;
-select Username,Fname,Lname from courses,instructors where Username= Instructors_Username
-
--- IT Adminstrators --
-INSERT INTO it_adminstrators  VALUES ("Medhat","kamal","Mkamal" ,"Kamal.jpg","willsmith","999879","medhat55@gmail.com","Male");
-
-
--- instructors --
-select * from instructors;
-insert  into Instructors values ('Omar','Kamal','OmarA',"Mkamal",null,null,null,900);
-insert  into Instructors values ('Emad','Atalah','EmadA',"Mkamal",null,null,null,1000);
 -- Teaches --
-insert into teaches values("OmarA",3,"5");
-select * from courses;
-update courses set course_small_info= 'Learn with Us now!' where Course_ID=1;
-select Username,Fname,Lname from courses,instructors where Username= Instructors_Username
-
+insert into Teaches values("OmarA",3,"5");
