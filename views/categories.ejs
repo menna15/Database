@@ -43,9 +43,9 @@
                     * Conditions and restrictions apply.
                 </small>
             </div>
-            <div class="coupon midnight-blue">
-                <a data-toggle="collapse" href="#code" class="open-code">Get a code</a>
-                <div id="code" class="collapse code"><%= coupons[i].Coupon_ID%></div>
+            <div class="coupon  midnight-blue">
+                <a data-toggle="collapse" href="#code<%= i%>" class="open-code">Get a code</a>
+                <div id="code<%= i%>" class="collapse code"><%= coupons[i].Coupon_ID%></div>
             </div>
          
           </div>
@@ -85,9 +85,9 @@
                 <div class="course-1-item">
                   
                   <figure class="thumnail">
-                    <a href="/course"><img src="<%= categories_courses[i][j].Course_image %>" alt="Image" class="img-fluid"></a>
+                    <a href="/singleCourse"><img src="<%= categories_courses[i][j].Course_image %>" alt="Image" class="img-fluid"></a>
                     <div class="price">$ <%= categories_courses[i][j].Cost %></div>
-                    <a  style="text-decoration:none;" href="/course"><div class="category"><h3><%= categories_courses[i][j].Course_Name %></h3></div>  </a>
+                    <a  style="text-decoration:none;" href="/singleCourse"><div class="category"><h3><%= categories_courses[i][j].Course_Name %></h3></div>  </a>
                   </figure>
                   <div class="course-1-content pb-4">
                     <h2>How To Create Mobile Apps Using Ionic</h2>
