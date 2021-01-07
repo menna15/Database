@@ -1,13 +1,13 @@
 const router = require('express').Router();
 var db = require('../db');
 
-  
+   
 router.get('/', async(req, res) => {
 
     var Courses_query="select * from Courses ";
     const GetCoursess=await Courses_db(Courses_query);
 
-    Courses_query="select SSN,Fname,Minit,Lname from Courses,instructors where SSN= Instructors_SSN";
+    Courses_query="select Username,Fname,Lname from courses,instructors where Username= Instructors_Username";
     const GetInstructorr=await Courses_db(Courses_query);
 
  
@@ -34,7 +34,7 @@ const Courses_db = (query) => {
                      {reject(new Error(error));}
                })
 
-        }, 1000);
+        }, 100);
     });
 };
 
