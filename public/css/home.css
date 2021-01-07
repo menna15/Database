@@ -247,25 +247,27 @@
         font-size: 1.3rem;
     }
     
-    .sub_container2 {
-        background-color: rgba(122, 218, 218, 0.277);
+    .sub_container2{
+        background-image: linear-gradient(to right,rgba(90, 230, 230, 0.7),rgba(194, 224, 137, 0.4)) ;
         width: 100%;
         height: fit-content;
         padding: 0 20px 20px 20px;
     }
-    
     #TopCourses {
         background: none;
         flex-direction: row;
-        justify-content: space-between;
+        justify-content: space-around;
         display: flex;
         padding: 10px 10px 10px 10px;
+        align-items: center;
     }
     
+
+        
     .sub_container2 p {
         font-size: 2rem;
-        color: rgb(86, 88, 88);
-        text-shadow: rgb(3, 119, 109) 0 0 6px;
+        color: rgb(43, 90, 90);
+        text-shadow: rgb(4, 97, 89) 0 0 6px;
         text-align: center;
         padding: 10px 0 8px;
     }
@@ -300,26 +302,26 @@
         border: none;
     }
     
-    .feature .text {
+    .text {
         visibility: hidden;
         padding: 5px 5px 5px 5px;
         width: 230px;
         font-size: 0.1;
-        opacity: 0;
-        background: #fff;
+        background-image: linear-gradient(to bottom,rgba(15, 100, 100, 0.7),rgba(177, 228, 84, 0.4));
         border-top: none;
-        z-index: -1;
+        border-radius: 3px;
+        
     }
     
-    .feature .courseName {
+    .courseName {
         visibility: hidden;
         font-size: 0.1;
         width: 230px;
         padding: 5px 5px 5px 5px;
-        opacity: 0;
-        background: #fff;
+        background-image: linear-gradient(to bottom,rgba(15, 100, 100, 0.7),rgba(177, 228, 84, 0.4));
         border-top: none;
-        z-index: -1;
+        border-radius: 3px;
+        text-align: center;
     }
     
     .feature:hover .courseName {
@@ -336,10 +338,11 @@
     
     .feature:hover .text label,
     .courseName label {
-        color: rgb(119, 117, 117);
+        color:white;
         font-size: 1.3rem;
-        text-shadow: rgb(191, 195, 196, 0.3) 0 0 7px;
+        text-shadow: rgba(205, 220, 224, 0.7) 0 0 7px;
         text-decoration: none;
+        opacity: 1;
     }
     
     .footer {

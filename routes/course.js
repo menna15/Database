@@ -4,31 +4,32 @@ var db = require('../db');
    
 router.get('/', async(req, res) => {
 
-    var Courses_query="select * from Courses ";
+
+
+    Courses_query="select * from courses";
     const GetCoursess=await Courses_db(Courses_query);
 
-    Courses_query="select Username,Fname,Lname from courses,instructors where Username= Instructors_Username";
-    const GetInstructorr=await Courses_db(Courses_query);
+    Courses_query="SELECT Fname, Lname FROM Courses,Instructors Instructors_Username = Username;";
+    const GetInstructorr=await getfromDB(Courses_query);
 
- 
-        return res.render('course',{
-            title: 'course', 
-            css:'course',
-            courses: GetCoursess, 
-            Instructor: GetInstructorr 
-        })
+
+    return res.render('course',{
+        title: 'course', 
+        css:'course',
+        courses: GetCoursess, 
+	Instructor:GetInstructorr
+    })
+
 
 });  
 
-const Courses_db = (query) => {
+const getfromDB = (query) => {
     return new Promise ((resolve, reject) => {
         setTimeout(() => {
                 db.query(query,(error, rows) => {
                     if(!error)
                       {
-                        //console.log('Courses viewed');
-                        resolve(rows);
-                        
+                        resolve(rows);    
                       }
                     else
                      {reject(new Error(error));}
