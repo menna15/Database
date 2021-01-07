@@ -102,12 +102,12 @@
     
 }
 .labels 
-{   margin: 25px 25px 25px 80px;
+{   margin: 33px 25px 25px 80px;
     display: flex;
     flex-direction: column;
 }
 .labels label
-{   margin: 17px;
+{   margin: 20px;
 
 }
 .corr_inputs 
@@ -115,6 +115,11 @@
     display: flex;
     flex-direction: column;
     
+}
+.corr_inputs input
+{
+    width: 20vw;
+    height: 5vh;
 }
 .corr_inputs  input , textarea
 {   margin: 15px;

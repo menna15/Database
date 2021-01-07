@@ -48,7 +48,7 @@ router.post('/',async(req,res)=>{
     const sql_Instructor_ssn_apply=await AddCourses(sql_Instructor_ssn);
 
     var file = req.files.uploaded_image;
-    var img_name=file.name;
+    var img_name="images/"+file.name;
     if(file.mimetype == "image/jpeg" ||file.mimetype == "image/png"||file.mimetype == "image/gif" ){
                                 
         file.mv('./public/images/course_uploaded/'+file.name, function(err) {
@@ -65,7 +65,7 @@ router.post('/',async(req,res)=>{
     }
     
     //I didn't insert `Programe_Name`,
-    var sql = "INSERT INTO `courses`(`Course_ID`,`Instructors_SSN`,`Category_Name`, `Cost` ,`Duration`,`Course_name`,`Course_info`,`Course_small_info`,`Course_image`) VALUES ('" + RandomCourseID + "','" + sql_Instructor_ssn_apply[0].SSN + "','" + Category + "'," + Cost + "," + Duration + ",'" + courseName + "','" + courseInformation + "','" + Course_small_info + "','" + img_name + "')";
+    var sql = "INSERT INTO `courses`(`Course_ID`,`Instructors_Username`,`Category_Name`, `Cost` ,`Duration`,`Course_name`,`Course_info`,`Course_small_info`,`Course_image`) VALUES ('" + RandomCourseID + "','" + sql_Instructor_ssn_apply[0].SSN + "','" + Category + "'," + Cost + "," + Duration + ",'" + courseName + "','" + courseInformation + "','" + Course_small_info + "','" + img_name + "')";
     await AddCourses(sql);
 
 
