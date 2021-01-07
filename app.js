@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const ejs = require('ejs');
 const bodyParser = require('body-parser');
+
 // SQL
 // var mysql = require('mysql');
 
@@ -22,6 +23,7 @@ const bodyParser = require('body-parser');
 //   });
 // });
 //
+
 const app = express();
 
 const port = process.env.PORT || 8080;
@@ -39,11 +41,11 @@ app.get('/', (req, res) => {
 
     return res.render('home', {
         title: 'home',
-        css: 'home'
-
-
+        css: 'home',
+        js:'home',
     })
 });
+
 app.use('/home', require('./routes/home'));
 app.use('/login', require('./routes/login'));
 app.use('/categories', require('./routes/categories'));
@@ -53,7 +55,7 @@ app.use('/course', require('./routes/course'));
 app.use('/singleCourse', require('./routes/singleCourse'));
 app.use('/Account_Settings', require('./routes/Account_Settings'));
 app.use('/Achievements', require('./routes/Achievements'));
-
+app.use('/add_any', require('./routes/add_any'));
 app.listen(port,(error)=>{
     if(error) return console.log(error);
 console.log(`server started listening at ${port}`);

@@ -4,9 +4,6 @@
     box-sizing: border-box;
 }
 
-
-/* ---------------------header--------------------- */
-
 .navbar {
     position: fixed;
     background-image: url(../images/header-bg.png);
@@ -14,12 +11,12 @@
     background-size: cover;
     width: 100%;
     z-index: 1;
-    height: 70px;
+    height: 16vh;
 }
 
-.logo-icon {
-    height: 70px;
-    width: 70px;
+.navbar img {
+    height: 120px;
+    width: 120px;
 }
 
 .navbar li {
@@ -46,7 +43,6 @@
     padding: 2px 2px 2px 2px;
 }
 
-
 /* ------------------------Layout------------------------ */
 
 body {
@@ -55,18 +51,19 @@ body {
 }
 
 .main-cont {
-    display: grid;
+    background-image:linear-gradient(to  right, rgb(13, 141, 177,0.6),rgba(130, 144, 148, 0.5));
+    display: flex;
+    flex-direction: row;
+    height: fit-content;
+    align-items: center;
     width: 100%;
-    justify-content: center;
-    grid-template-columns: 350px 1fr;
-    grid-template-rows: 70px 1fr;
-    grid-template-areas: "hd hd" "sd main";
-    grid-gap: 15px;
+    padding: 15vh 3vh 3vh 3vh;
+
 }
 
-.header-nav {
+/* .header-nav {
     grid-area: hd;
-}
+} */
 
 .ach-container {
     display: grid;
@@ -74,11 +71,24 @@ body {
 }
 
 .sidenav {
+    border-radius: 5px;
+    margin: 2vh 2vw 0 0;
+    background-color: #2989a3;
+    display: center;
+    padding: 2vh 2vh 2vh 2vh;
+    
+    width: fit-content;
+    height:fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font: 1.2rem;
     grid-area: sd;
     box-shadow: 0 2.8px 4px rgba(0, 0, 0, 0.02), 0 6.7px 9.5px rgba(0, 0, 0, 0.028), 0 12.5px 17.9px rgba(0, 0, 0, 0.035), 0 22.3px 31.9px rgba(0, 0, 0, 0.042), 0 41.8px 59.7px rgba(0, 0, 0, 0.05), 0 100px 143px rgba(0, 0, 0, 0.07);
 }
 
 .card-cont {
+    background-image:linear-gradient(to  right, rgba(203, 215, 219, 0.8),rgba(18, 186, 216, 0.8));
     width: 700px;
     height: 300px;
     padding: 20px;
@@ -224,9 +234,8 @@ footer h4 {
 }
 
 .contact-links i:hover {
-    color: rgb(116, 12, 185);
+    color: rgb(10, 14, 13);
 }
-
 @media only screen and (max-width:620px) {
     /* For mobile phones: */
     .header-nav,

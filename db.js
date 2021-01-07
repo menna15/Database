@@ -7,6 +7,7 @@ const pool = mysql.createPool({
     port: '3306',
     user: 'root',
     password:"1234",
+    //password:"M0ther-Hacker",
     database: 'MRPT'
 });
  
@@ -14,12 +15,18 @@ pool.getConnection((err, connection)=>{
     if (err) throw err ;
     else
     console.log("DB Connected to my sql"); 
-    
+
+
     if (connection)
     connection.release() ;
     return;
 });
 
+
+
+
+  pool.query = util.promisify(pool.query);
+  module.exports=pool ;
 
 
   pool.query = util.promisify(pool.query);

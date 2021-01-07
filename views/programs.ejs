@@ -1,107 +1,129 @@
-<!doctype html>
-<html>
-<head>
-<meta charset="utf-8">
-<title>Programs</title>
-<link href="css/programs.css" rel="stylesheet" type="text/css" />
+<%- include("layouts/header") %>
+    <div class="main-cont">
+        <div class="header-nav">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a href="/home"> <img class="logo-icon" src="/images/logo2.png" alt="logo"></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-</head>
-<body>
-<div>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto"
+                        style="display:flex; align-items: center; justify-content: space-around;">
+                        <li class="nav-item <% if (title === 'categories') { %>active<% } %>">
+                            <a href="/categories"
+                                style=" text-decoration:none; color:rgb(228, 222, 222);font-size: 1.3rem">Categories</a>
+                        </li>
+                        <li class="nav-item <% if (title === 'Programs') { %>active<% } %>">
+                            <a class="nav-link" href="/programs"
+                                style="color:rgb(228, 222, 222);font-size: 1.3rem">Programs</a>
+                        </li>
 
-<div class="Programs float_l">
+                        <li class="nav-item">
+                            <input class="search" type="text" onkeyup="myFunction()" placeholder="Search.."
+                                title="Type in a category">
+                        </li>
 
-    <style>/* Image Zoom Effect */
-    .image-card img {
-        -webkit-transition: all 1s ease; /* Safari and Chrome */
-        -moz-transition: all 1s ease; /* Firefox */
-        -o-transition: all 1s ease; /* IE 9 */
-        -ms-transition: all 1s ease; /* Opera */
-        transition: all 1s ease;
-        max-width: 100%;
-    }
-    .image-card:hover img {
-        -webkit-transform:scale(1.25); /* Safari and Chrome */
-        -moz-transform:scale(1.25); /* Firefox */
-        -ms-transform:scale(1.25); /* IE 9 */
-        -o-transform:scale(1.25); /* Opera */
-        transform:scale(1.25);
-    }
+                        <li class="nav-item <% if (title === 'joinOurStaff') { %>active<% } %>">
+                            <a class="nav-link" href="/joinOurStaff"
+                                style="color:rgb(228, 222, 222);font-size: 1.3rem">Join Our Staff</a>
+                        </li>
 
-    .image-card {
-    overflow:hidden;
-    } 
-    </style> 
-    <h1>  Program one   </h1>
-    <div class="program float_l">  		
-            <div class="course float_l"><div class="image-card"><img src="images/1.png" width="300" height="280" /></div>
-                <div class="lable"><div class="lable-size">Course 1<br>
-                    <div style="font-weight:bold">
-                        <del style="font-weight:normal">100$</del>&nbsp;&nbsp;60$<span class="off">- 40%</span>
+                        <li class="nav-item <% if (title === 'login') { %>active<% } %>">
+                            <a class="nav-link" href="/login"
+                                style="color: rgb(228, 222, 222);font-size: 1.3rem">Sign In or Sign Up</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Donate"
+                                style="color: rgb(228, 222, 222);font-size: 1.3rem">Donate</a>
+                        </li>
+
+                        <li class="nav-item <% if (title === 'account') { %>active<% } %>">
+                            <div class="dropdown show" style="padding-left:0px;">
+                                <a id="bttn" class="btn btn-secondary dropdown-toggle" style="cursor: pointer;
+                        color: rgb(228, 222, 222);
+                        font-size: 1.3rem;background-color:hsl(39, 77%, 83%,0); border:none; outline:none;"
+                                    role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false">
+                                    <p style=" text-decoration:none; color:rgb(228, 222, 222);font-size: 1.3rem">Account</p>
+                                    </a>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                    <ul><a href="/Account_Settings"
+                                            style="color:rgb(228, 222, 222);font-size: 1.3rem">Profile</a> </ul>
+                                    <ul><a href="/" style="color:rgb(228, 222, 222);font-size: 1.3rem">Log Out</a>
+                                    </ul>
+
+                                </div>
+
+                            </div>
+                        </li>
+
+
+                    </ul>
+
+                </div>
+            </nav>
+        </div>
+
+        <div class="Programs float_l">
+
+            <style>
+                /* Image Zoom Effect */
+                .image-card img {
+                    -webkit-transition: all 1s ease;
+                    /* Safari and Chrome */
+                    -moz-transition: all 1s ease;
+                    /* Firefox */
+                    -o-transition: all 1s ease;
+                    /* IE 9 */
+                    -ms-transition: all 1s ease;
+                    /* Opera */
+                    transition: all 1s ease;
+                    max-width: 100%;
+                }
+
+                .image-card:hover img {
+                    -webkit-transform: scale(1.25);
+                    /* Safari and Chrome */
+                    -moz-transform: scale(1.25);
+                    /* Firefox */
+                    -ms-transform: scale(1.25);
+                    /* IE 9 */
+                    -o-transform: scale(1.25);
+                    /* Opera */
+                    transform: scale(1.25);
+                }
+
+                .image-card {
+                    overflow: hidden;
+                }
+            </style>
+
+            <% for(let i = 0; i < programs.length; i++){  %>
+                <% if (ProgramCourses[i].length > 0) { %>
+            <div class = "Program-div">
+                <h1> <%= programs[i].PName %></h1>
+                <div class="program float_l">
+                    <% for(let ii = 0; ii < ProgramCourses[i].length; ii++){ %>
+                    <div class="course float_l">
+                        <div class="image-card"><img src="<%=ProgramCourses[i][ii].Course_image%>" width="300" height="280" /></div>
+                        <div class="lable">
+                            <div class="lable-size"><%= ProgramCourses[i][ii].CourseName %><br>
+                                <div style="font-weight:bold">
+                                    <p style="font-weight:normal"><%= ProgramCourses[i][ii].Cost %></p>
+                                </div>
+                            </div>
+                            <div class="enrollnow"><a href="#">Enroll Now</a></div>
+                        </div>
                     </div>
-                </div><div class="enrollnow"><a href="https://www.google.com/">Enroll Now</a></div>
+                    <% } %>
+                </div>
             </div>
-            </div>
-            
-            <div class="course float_l"><div class="image-card"><img src="images/2.png" width="300" height="280" /></div>
-            <div class="lable"><div class="lable-size">Course 2<br>
-                    <div style="font-weight:bold">
-                        <del style="font-weight:normal">100$</del>&nbsp;&nbsp;60$<span class="off">- 40%</span>
-                    </div>
-                    </div><div class="enrollnow"><a href="https://www.google.com/">Enroll Now</a></div>
-            </div>
-            </div>
-            
-            <div class="course float_l"><div class="image-card"><img src="images/3.png" width="300" height="280" /></div>
-            <div class="lable"><div class="lable-size">Course 3<br>
-                    <div style="font-weight:bold">
-                        <del style="font-weight:normal">100$</del>&nbsp;&nbsp;60$<span class="off">- 40%</span>
-                    </div>
-                </div><div class="enrollnow"><a href="https://www.google.com/">Enroll Now</a></div>
-            </div>
-            </div>
-            <div class="course float_l"><div class="image-card"><img src="images/3.png" width="300" height="280" /></div>
-            <div class="lable"><div class="lable-size">Course 4<br>
-                    <div style="font-weight:bold">
-                        <del style="font-weight:normal">100$</del>&nbsp;&nbsp;60$<span class="off">- 40%</span>
-                    </div>
-                </div><div class="enrollnow"><a href="https://www.google.com/">Enroll Now</a></div>
-            </div>
-            </div>
-            <h1>  Program two   </h1>
-            <div class="course float_l"><div class="image-card"><img src="images/3.png" width="300" height="280" /></div>
-            <div class="lable"><div class="lable-size">Course 1<br>
-                    <div style="font-weight:bold">
-                        <del style="font-weight:normal">100$</del>&nbsp;&nbsp;60$<span class="off">- 40%</span>
-                    </div>
-                </div><div class="enrollnow"><a href="https://www.google.com/">Enroll Now</a></div>
-            </div>
-            </div>
-            <div class="course float_l"><div class="image-card"><img src="images/3.png" width="300" height="280" /></div>
-            <div class="lable"><div class="lable-size">Course 2<br>
-                    <div style="font-weight:bold">
-                        <del style="font-weight:normal">100$</del>&nbsp;&nbsp;60$<span class="off">- 40%</span>
-                    </div>
-                </div><div class="enrollnow"><a href="https://www.google.com/">Enroll Now</a></div>
-            </div>
-            </div>
-            <div class="course float_l"><div class="image-card"><img src="images/3.png" width="300" height="280"  /></div>
-            <div class="lable"><div class="lable-size">Course 3<br>
-                    <div style="font-weight:bold">
-                        <del style="font-weight:normal">100$</del>&nbsp;&nbsp;60$<span class="off">- 40%</span>
-                    </div>
-                </div><div class="enrollnow"><a href="https://www.google.com/">Enroll Now</a></div>
-            </div>
-            </div>
-            <div class="course float_l"><div class="image-card"><img src="images/3.png" width="300" height="280" /></div>
-            <div class="lable"><div class="lable-size">Course 4<br>
-                    <div style="font-weight:bold">
-                        <del style="font-weight:normal">100$</del>&nbsp;&nbsp;60$<span class="off">- 40%</span>
-                    </div>
-                </div><div class="enrollnow"><a href="https://www.google.com/">Enroll Now</a></div>
-            </div>
-            </div>            
+                <% } %>
+            <% } %> 
+        </div>
     </div>
-</div>
-</body>
-</html>
+<%- include("layouts/footer") %>
