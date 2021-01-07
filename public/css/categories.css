@@ -1,11 +1,9 @@
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* ---------------------header--------------------- */
 .navbar {
     position: fixed;
     background-image: url(../images/header-bg.png);
@@ -13,12 +11,12 @@
     background-size: cover;
     width: 100%;
     z-index: 1;
-    height: 100px;
+    height: 16vh;
 }
 
 .navbar img {
-    height: 100px;
-    width: 100px;
+    height: 120px;
+    width: 120px;
 }
 
 .navbar li {
@@ -44,13 +42,14 @@
     border: none;
     padding: 2px 2px 2px 2px;
 }
+body {
+	margin: 0;
+	font-family: Arial, Helvetica, sans-serif;
+}
 
 /* coupon */
 section {
     padding: 5% 0;
-    /* text-align: center;
-    align-items: center; */
-    
 }
 
 .alizarin {
@@ -209,7 +208,10 @@ section {
     /* center div */
 
   padding: 2.5em 0; }
-
+.site-section .container .row
+{
+    margin-bottom: 30px;
+}
   @media (min-width: 768px) {
     .site-section {
       padding: 5em 0; } }
@@ -231,6 +233,7 @@ section {
     font-size: 12px;
     color: #969696; }
 .intro-section, .intro-section .container .row {
+ 
 height: 100vh;
 min-height: 900px; }
 .section-bg.style-1 > .container {
@@ -388,7 +391,7 @@ min-height: 900px; }
             font-size: 20px;
             letter-spacing: 1.5px;
             margin-left: 440px;
-            margin-top: 50px;
+            margin-top: 30px;
             box-shadow: 0 0 8px 0 rgba(17, 22, 26, .16), 0 4px 8px 0 rgba(17, 22, 26, .08), 0 8px 16px 0 rgba(17, 22, 26, .08);
         }
         

@@ -1,0 +1,163 @@
+<%- include("layouts/header") %>
+    <div class="main-cont">
+        <div class="course">
+            <h3>Add New Course</h3>
+            <form class="infoForm" id="infoForm">
+                
+                <div class="Course-info">
+                    <div class="labels">
+                        <label for="Course_Name">Course Name</label>
+
+                        <label for="Course_ID">Course ID</label>
+                        <label for="Instructor_username">Instructor Username</label>
+                        <label for="Cost">Cost</label>
+                        <label for="Duration">Course Duration</label>
+                        <label for="Category">Category Name</label>
+                    </div>
+                    <div class="corr_inputs">
+                        <input id="Course_Name" type="text" name="Course_Name" size="40">
+
+                        <input id="Course_ID" type="text" name="Course_ID" size="40">
+                        
+                        <input id="Instructor_username" type="text" name="Instructor_username" size="40">
+
+
+                        
+                        <input id="Cost" type="text" name="Cost" size="40">
+
+
+                        
+                        <input id="Duration" type="date" name="Duration">
+
+                        <input id="Category" type="text" name="Category" size="40">
+                        
+                    </div>
+                    
+                </div>
+                <button class="save-btn">ADD</button>
+            </form>
+        </div>
+
+        <div class="course">
+            <h3>Add New Category</h3>
+            <form class="infoForm" id="infoForm">
+                
+                <div class="Course-info">
+                    <div class="labels">
+                        <label for="Category_Name">Category Name</label>
+                        <label for="IT_SSN">IT SSN</label>
+                    </div>
+                    <div class="corr_inputs">
+                        <input id="Category_Name" type="text" name="Category_Name" size="40">
+                        <input id="IT_SSN" type="text" name="IT_SSN" size="40">
+
+                    </div>
+                    
+                </div>
+                <button class="save-btn">ADD</button>
+            </form>
+        </div>
+
+        <div class="course">
+            <h3>Add New Program</h3>
+            <form class="infoForm" id="infoForm">
+                
+                <div class="Course-info">
+                    <div class="labels">
+                        <label for="Program_Name">Program Name</label>
+                        <label for="IT_SSN">IT SSN</label>
+                        <label for="Cost">Cost</label>
+                        <label for="Duration">Course Duration</label>
+                        <label for="Level">Program Level</label>
+                    </div>
+                    <div class="corr_inputs">
+                        <input id="Category_Name" type="text" name="Category_Name" size="40">
+                        <input id="IT_SSN" type="text" name="IT_SSN" size="40">
+                        <input id="Cost" type="text" name="Cost" size="40">
+                        <input id="Duration" type="date" name="Duration">
+                        <input id="Level" type="text" name="Level" size="40">
+                    </div>
+                    
+                </div>
+                <button class="save-btn">ADD</button>
+            </form>
+        </div>
+
+        <div class="course">
+            <h3>Add New Instructor</h3>
+            <form class="infoForm" id="infoForm">
+                
+                <div class="Course-info">
+                    <div class="labels">
+                        <label for="Instructor_FName">Instructor First Name</label>
+                        <label for="Instructor_LName">Instructor Last Name</label>
+                        <label for="IT_username">IT username</label>
+                    </div>
+                    <div class="corr_inputs">
+                        <input id="Instructor_FName" type="text" name="Instructor_FName" size="40">
+                        <input id="Instructor_LName" type="text" name="Instructor_LName" size="40">
+                        <input id="IT_username" type="text" name="IT_username" size="40">
+                    </div>
+                    
+                </div>
+                <button class="save-btn">ADD</button>
+            </form>
+        </div>
+
+        <div class="course">
+            <h3>Add IT Adminstrator</h3>
+            <form class="infoForm" id="infoForm">
+                
+                <div class="Course-info">
+                    <div class="labels">
+                        <label for="IT_FName">It First Name</label>
+                        <label for="IT_LName">IT Last Name</label>
+                        <label for="Owner_username">Owner username</label>
+                    </div>
+                    <div class="corr_inputs">
+                        <input id="IT_FName" type="text" name="IT_FName" size="40">
+                        <input id="IT_LName" type="text" name="IT_LName" size="40">
+                        <input id="Owner_username" type="text" name="Owner_username" size="40">
+                    </div>
+                    
+                </div>
+                <button class="save-btn">ADD</button>
+            </form>
+        </div>
+
+        <div class="course">
+            <h3>Add New Coupon</h3>
+            <form class="infoForm" id="infoForm">
+                
+                <div class="Course-info">
+                    <div class="labels">
+                        <label for="Coupon_ID">Coupon ID</label>
+
+                        <label for="Owner_username">Owner username</label>
+                        
+                        <label for="percentage">Discount percentage</label>
+                        <label for="start">start Date</label>
+                        <label for="end">End Date</label>
+                        <label for="Category">Category Name</label>
+                    </div>
+                    <div class="corr_inputs">
+                        <input id="Coupon_ID" type="text" name="Coupon_ID" size="40">
+
+                        <input id="Owner_username" type="text" name="Owner_username" size="40">
+                
+                        <input id="percentage" type="text" name="percentage" size="40">
+
+                        <input id="start" type="date" name="start">
+                        <input id="end" type="date" name="end">
+
+                        <input id="Category" type="text" name="Category" size="40">
+                        
+                    </div>
+                    
+                </div>
+                <button class="save-btn">ADD</button>
+            </form>
+        </div>
+    </div>
+
+<%- include("layouts/footer") %>

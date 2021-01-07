@@ -9,8 +9,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
 
-
-
     <link rel="stylesheet" href="css/<%= css %>.css">
     <link rel="stylesheet" href="css/animate.css">
 
@@ -32,7 +30,7 @@
                     <a href="/categories" style=" text-decoration:none; color:rgb(228, 222, 222);font-size: 1.3rem">Categories</a>
                 </li>
                 <li class="nav-item <% if (title === 'Programs') { %>active<% } %>">
-                    <a class="nav-link" href="/programs" style="color:rgb(228, 222, 222);font-size: 1.3rem">Programs</a>
+                    <a class="nav-link" href="/programs" style="color:rgb(228, 222, 222);font-size: 1.1rem">Programs</a>
                 </li>
 
                 <li class="nav-item">
@@ -40,15 +38,15 @@
                 </li>
 
                 <li class="nav-item <% if (title === 'joinOurStaff') { %>active<% } %>">
-                    <a class="nav-link" href="/joinOurStaff" style="color:rgb(228, 222, 222);font-size: 1.3rem">Join Our Staff</a>
+                    <a class="nav-link" href="/joinOurStaff" style="color:rgb(228, 222, 222);font-size: 1.1rem">Join Our Staff</a>
                 </li>
 
                 <li class="nav-item <% if (title === 'login') { %>active<% } %>">
-                    <a class="nav-link" href="/login" style="color: rgb(228, 222, 222);font-size: 1.3rem">Sign In or Sign Up</a>
+                    <a class="nav-link" href="/login" style="color: rgb(228, 222, 222);font-size: 1.1rem">Sign In or Sign Up</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="/Donate" style="color: rgb(228, 222, 222);font-size: 1.3rem">Donate</a>
+                    <a class="nav-link" href="/Donate" style="color: rgb(228, 222, 222);font-size: 1.1rem">Donate</a>
                 </li>
 
                 <li class="nav-item <% if (title === 'account') { %>active<% } %>">
@@ -56,11 +54,11 @@
                         <a id="bttn" class="btn btn-secondary dropdown-toggle" style="cursor: pointer;
              color: rgb(228, 222, 222);
              font-size: 1.3rem;background-color:hsl(39, 77%, 83%,0); border:none; outline:none;" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <a href="/categories" style=" text-decoration:none; color:rgb(228, 222, 222);font-size: 1.3rem">Account</a>
+                            <a href="/categories" style=" text-decoration:none; color:rgb(228, 222, 222);font-size: 1.1rem">Account</a>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <ul><a href="/Account_Settings" style="color:rgb(228, 222, 222);font-size: 1.3rem">Profile</a> </ul>
-                            <ul><a href="/" style="color:rgb(228, 222, 222);font-size: 1.3rem">Log Out</a> </ul>
+                            <ul><a href="/Account_Settings" style="color:rgb(228, 222, 222);font-size: 1.1rem">Profile</a> </ul>
+                            <ul><a href="/" style="color:rgb(228, 222, 222);font-size: 1.1rem">Log Out</a> </ul>
 
                         </div>
 
@@ -77,33 +75,33 @@
     </nav>
 </header>
 <script>
-    function myFunction() {
-        // Declare variables
-        var input, filter, ul, li, a, i;
-        input = document.getElementById("mySearch");
-        filter = input.value.toUpperCase();
-        ul = document.getElementById("myMenu");
-        li = ul.getElementsByTagName("li");
+    // function myFunction() {
+    //     // Declare variables
+    //     var input, filter, ul, li, a, i;
+    //     input = document.getElementById("mySearch");
+    //     filter = input.value.toUpperCase();
+    //     ul = document.getElementById("myMenu");
+    //     li = ul.getElementsByTagName("li");
 
-        // Loop through all list items, and hide those who don't match the search query
-        for (i = 0; i < li.length; i++) {
-            a = li[i].getElementsByTagName("a")[0];
-            if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
-                li[i].style.display = "none";
-            } else {
-                li[i].style.display = "visible";
-            }
-        }
-    }
-    window.onscroll = function() {
-        scrollFunction()
-    };
+    //     // Loop through all list items, and hide those who don't match the search query
+    //     for (i = 0; i < li.length; i++) {
+    //         a = li[i].getElementsByTagName("a")[0];
+    //         if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+    //             li[i].style.display = "none";
+    //         } else {
+    //             li[i].style.display = "visible";
+    //         }
+    //     }
+    // }
+    // window.onscroll = function() {
+    //     scrollFunction()
+    // };
 
-    function scrollFunction() {
-        if (document.body.scrollTop > 1 || document.documentElement.scrollTop > 1) {
-            document.getElementById('header').style.backgroundImage = "none";
-        }
-    }
+    // function scrollFunction() {
+    //     if (document.body.scrollTop > 1 || document.documentElement.scrollTop > 1) {
+    //         document.getElementById('header').style.backgroundImage = "none";
+    //     }
+    // }
 </script>
 
 
