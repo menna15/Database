@@ -187,7 +187,7 @@ Dname varchar(100) not null,
 Email  varchar(100),
 Date date,
 Amount float,
-primary key (Email)
+primary key (Email,Date,Amount)
 );
 -- --
 create table if not exists Included  -- courses in each program

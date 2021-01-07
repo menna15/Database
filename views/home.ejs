@@ -54,32 +54,74 @@
         </div>
         <div class="sub_container2">
           <% if(top_5_Courses.length>0) { %>
-           <p>Top rated courses</p>
-            <div id="TopCourses">
-              <% for(let i = 0; i < top_5_Courses.length; i++) { %>
-              <div class="1 wow animate__animated animate__backInLeft">
-                    <div class="content">
-                      <div href="#" class="feature">
-                        <div class="courseName">
-                          <label><%= top_5_Courses[i].Course_Name %><br></label>
-                        </div>
-                        <img src="/images/homeBack.jpg" class="img-fluid" alt="" >
-                        <div class="text">
-                          <div class="instructorNmae">
-                            <img src="/images/logo2(2).png" class="user-img" alt="" >
-                            <label><%= top_5_Courses[i].Fname %>  <%= top_5_Courses[i].Lname %><br></label>
+           <p>Top Rated</p>
+           <% if(top_5_Courses.length<4 ) { %>
+              <div id="TopCourses">
+                <% for(let i = 0; i < top_5_Courses.length; i++) { %>
+                  <div id="all" class=" wow animate__animated animate__backInLeft">
+                      <div class="content">
+                        <div class="feature">
+                          <div class="courseName">
+                            <label><%= top_5_Courses[i].Course_Name %><br></label>
+                          </div>
+                          <img src="/images/homeBack.jpg" class="img-fluid" alt="" >
+                          <div class="text">
+                            <div class="instructorNmae">
+                              <img src="/images/logo2(2).png" class="user-img" alt="" >
+                              <label><%= top_5_Courses[i].Fname %> <%= top_5_Courses[i].Lname %><br></label>
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
+                  </div>
+                <% } %>
+              </div>
+            <%} else { %>
+              <div id="TopCourses">
+                <% for(let i = 0; i < 4 ; i++) { %>
+                  <div id="all" class=" wow animate__animated animate__backInLeft">
+                      <div class="content">
+                        <div class="feature">
+                          <div class="courseName">
+                            <label><%= top_5_Courses[i].Course_Name %><br></label>
+                          </div>
+                          <img src="/images/homeBack.jpg" class="img-fluid" alt="" >
+                          <div class="text">
+                            <div class="instructorNmae">
+                              <img src="/images/logo2(2).png" class="user-img" alt="" >
+                              <label><%= top_5_Courses[i].Fname %> <%= top_5_Courses[i].Lname %><br></label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+                <% } %>
+              </div>
+              <div id="TopCourses">
+                <% for(let i = 4; i < top_5_Courses.length ; i++) { %>
+                  <div id="all" class=" wow animate__animated animate__backInLeft">
+                      <div class="content">
+                        <div class="feature">
+                          <div class="courseName">
+                            <label><%= top_5_Courses[i].Course_Name %><br></label>
+                          </div>
+                          <img src="/images/homeBack.jpg" class="img-fluid" alt="" >
+                          <div class="text">
+                            <div class="instructorNmae">
+                              <img src="/images/logo2(2).png" class="user-img" alt="" >
+                              <label><%= top_5_Courses[i].Fname %> <%= top_5_Courses[i].Lname %><br></label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+                <% } %>
               </div>
               <% } %>
-            </div>
-
           <% } %>
-        </div>          
-       
-  </div>
+      </div>          
+
+    </div>
   
  </div>
     

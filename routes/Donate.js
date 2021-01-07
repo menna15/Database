@@ -1,5 +1,6 @@
 const router = require('express').Router();
 
+var db = require('../db');
 
 router.get('/', (req, res) => {
 
@@ -11,26 +12,37 @@ router.get('/', (req, res) => {
 
 });
 
-router.post('/', function(req, res, next) {
+router.post('/', async function(req, res, next) {
 
     console.log(req.body.Orgnization_name);
-    if(req.body.Email=="" )
+    if(req.body.Orgnization_name=="" ||  !isNaN(req.body.Orgnization_name))
     { 
-        req.flash('message',"Enter the email");
+        
     return res.render('Donate', {
         title: 'Donate',
         css:'Donate',
         js:'Donate',
-        message: "You must fill all required data"
+        message: "Orgnization name must be a string"
     });}
-    if(req.body.amount=="" )
+    var mailformat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    if(req.body.Email=="" || !req.body.Email.match(mailformat))
+    { 
+        
+        
+      return res.render('Donate', {
+        title: 'Donate',
+        css:'Donate',
+        js:'Donate',
+        message: "You have entered an invalid email address!"
+    });}
+    if(req.body.amount=="" || isNaN(req.body.amount) )
     { 
        
     return res.render('Donate', {
         title: 'Donate',
         css:'Donate',
         js:'Donate',
-        message: "You must fill all required data"
+        message: "Donation amount must be numeric value "
     });}
     if(req.body.date=="" )
     { 
@@ -39,8 +51,32 @@ router.post('/', function(req, res, next) {
         title: 'Donate',
         css:'Donate',
         js:'Donate',
-        message: "You must fill all required data"
+        message: "Please, Enter Valid Date"
+
     });}
+    else{
+    var sql_query=`INSERT INTO donors  VALUES ("${req.body.Orgnization_name}","${req.body.Email}" ,"${req.body.date}","${req.body.amount}");`
+    var executed = await Donate(sql_query);
+    if (executed)
+    {
+        return res.render('Donate', {
+            title: 'Donate',
+            css:'Donate',
+            js:'Donate',
+            message: "Succsessfully Donated!"
+        });
+    }
+    else
+    {
+        return res.render('Donate', {
+            title: 'Donate',
+            css:'Donate',
+            js:'Donate',
+            message: "failed!"
+        });
+    }
+    
+    }
 
 
 
