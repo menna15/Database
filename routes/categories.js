@@ -8,7 +8,6 @@ router.get('/', async (req, res) => {
 
         var categories= await GetCategories('SELECT * FROM Categories');
         var coupons = await GetCoupons('SELECT * FROM Coupons');
-        console.log(coupons);
 
         var category_courses = [];
         for(let i =0; i<categories.length; i++){
