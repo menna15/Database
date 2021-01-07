@@ -15,6 +15,7 @@ router.get('/', async(req, res) => {
         courses: GetCoursess, 
     })
 
+
 });  
 
 const getfromDB = (query) => {

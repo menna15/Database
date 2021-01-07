@@ -1,15 +1,15 @@
-
+-- create database mrpt;
 USE mrpt;
 create table IF NOT exists Owners
 (
 Fname varchar(50) not null,
 Lname varchar(50) not null,
 primary key (Username),
-prifile_Pic varchar(1024),
+profile_Pic varchar(1024),
 Password varchar(50),
 Email varchar(50),
 Username varchar(50) not null,
-Head_username varchar(50),
+Head_username varchar(50) ,
 Gender varchar(6),
 FOREIGN KEY (Head_username) REFERENCES Owners(Username)
 );
@@ -26,7 +26,6 @@ Password varchar(50),
 Email varchar(50),
 Gender varchar(6),
 primary key (Username),
-
 Foreign key (Owner_Username) references Owners (Username)
 );
 
@@ -59,7 +58,7 @@ create table if Not exists Instructors
 Fname varchar(50) not null,
 Lname varchar(50) not null,
 Username varchar(50) not null,
-IT_Username varchar(50),
+IT_Username varchar(50) not null,
 Profile_Pic varchar(1024),
 Password varchar(50),
 Email varchar(50),
@@ -187,7 +186,7 @@ Dname varchar(100) not null,
 Email  varchar(100),
 Date date,
 Amount float,
-primary key (Email)
+primary key (Email,Date,Amount)
 );
 -- --
 create table if not exists Included  -- courses in each program
@@ -205,6 +204,7 @@ INSERT INTO Categories (CName, IT_Username, Category_image) VALUES ("Data Scienc
 INSERT INTO Categories (CName, IT_Username, Category_image) VALUES ("IOT", null,"images/IOT.jpeg");
 INSERT INTO Categories (CName, IT_Username, Category_image) VALUES ("Quantum", null,"images/quantum.jpg");
 INSERT INTO Categories (CName, IT_Username, Category_image) VALUES ("Web Development", null,"images/quantum.jpg");
+
 -- Programs --
 INSERT INTO Programs (PName, Cost, Level, Duration, Program_info, Program_image) VALUES ("AI", 15000, "Beginner", 3, "", "images/ML.jpeg");
 INSERT INTO Programs (PName, Cost, Level, Duration, Program_info, Program_image) VALUES ("Web Development", 15000, "Beginner", 3, "", "images/Web_Dev.png");
@@ -235,4 +235,16 @@ INSERT INTO Coupons (Coupon_ID, SDate, EDate, discount_percentage, Category_Name
 
 -- Owners --
 INSERT INTO Owners (Fname, Lname, Username) VALUES ("Will", "Smith", "willsmith");
+-- IT Adminstrators --
+INSERT INTO it_adminstrators  VALUES ("Medhat","kamal","Mkamal" ,"Kamal.jpg","willsmith","999879","medhat55@gmail.com","Male");
 
+
+-- instructors --
+select * from instructors;
+insert  into Instructors values ('Omar','Kamal','OmarA',"Mkamal",null,null,null,900);
+insert  into Instructors values ('Emad','Atalah','EmadA',"Mkamal",null,null,null,1000);
+-- Teaches --
+insert into teaches values("OmarA",3,"5");
+select * from courses;
+update courses set course_small_info= 'Learn with Us now!' where Course_ID=1;
+select Username,Fname,Lname from courses,instructors where Username= Instructors_Username
