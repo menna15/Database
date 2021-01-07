@@ -63,6 +63,7 @@ Profile_Pic varchar(1024),
 Password varchar(50),
 Email varchar(50),
 Total_Income float,
+Gender varchar(6),
 primary key (Username),
 
 Foreign key (IT_Username) references IT_Adminstrators(Username)
@@ -106,6 +107,7 @@ Username varchar(50) not null,
 Password varchar(50),
 Email varchar(50),
 Profile_Pic varchar(1024),
+Gender varchar(6),
 primary key (Username)
 
 );
@@ -220,37 +222,35 @@ INSERT INTO Programs (PName, Cost, Level, Duration, Program_info, Program_image)
                                     
 
 -- instructors --
-insert  into Instructors values ('Omar','Kamal','OmarA',"Mkamal","images/author.jpg",null,null,900);
-insert  into Instructors values ('Emad','Atalah','EmadA',"Mkamal","images/author.jpg",null,null,1000);
-INSERT INTO Instructors VALUES ("Menna", "Ahmed", "mennaahmed","Mkamal", "images/author.jpg", null, null, null);
-INSERT INTO Instructors VALUES ("Reem", "Attalah", "reemattalah", "Mkamal", "images/author.jpg", null, null, null);
+insert  into Instructors values ('Omar','Kamal','OmarA',"Mkamal","images/author.jpg",null,null,900, "Male");
+insert  into Instructors values ('Emad','Atalah','EmadA',"Mkamal","images/author.jpg",null,null,1000, "Male");
+INSERT INTO Instructors VALUES ("Menna", "Ahmed", "mennaahmed","Mkamal", "images/author.jpg", null, null,null, "Female");
+INSERT INTO Instructors VALUES ("Reem", "Attalah", "reemattalah", "Mkamal", "images/author.jpg", null, null, null,"Female");
 
 
 -- Courses -- 
-INSERT INTO Courses (Course_ID, Course_Name, Instructors_Username, Category_Name, Programe_Name, Cost, Duration, Course_info, Course_image) VALUES (1,"Probability", "reemattalah", "Data Science", "AI", 150, 1,"Our set he for firmament morning sixth subdue darkness creeping gathered divide our
-                                    let god moving. Moving in fourth air night bring upon", "images/course_5.jpg");
+INSERT INTO Courses (Course_ID, Course_Name, Instructors_Username, Category_Name, Programe_Name, Cost, Duration, Course_info, Course_small_info, Course_image) VALUES (1,"Probability", "reemattalah", "Data Science", "AI", 150, 1,"Our set he for firmament morning sixth subdue darkness creeping gathered divide our
+                                    let god moving. Moving in fourth air night bring upon","Learn with Us now!", "images/course_5.jpg");
 INSERT INTO Courses (Course_ID, Course_Name, Instructors_Username, Category_Name, Programe_Name, Cost, Duration, Course_info, Course_image) VALUES (2,"Statistics", "reemattalah", "Data Science", "AI", 150, 1,"Our set he for firmament morning sixth subdue darkness creeping gathered divide our
                                     let god moving. Moving in fourth air night bring upon", "images/course_5.jpg");
-INSERT INTO Courses (Course_ID, Course_Name, Instructors_Username, Category_Name, Programe_Name, Cost, Duration, Course_info, Course_image) VALUES (3,"Data Analysis", "reemattalah", "Data Science", "AI", 150, 1,"Our set he for firmament morning sixth subdue darkness creeping gathered divide our
-                                    let god moving. Moving in fourth air night bring upon", "images/course_5.jpg");
-INSERT INTO Courses (Course_ID, Course_Name, Instructors_Username, Category_Name, Programe_Name, Cost, Duration, Course_info, Course_image) VALUES (4,"Machine Learning", "mennaahmed", "Data Science", "AI", 150, 1,"Our set he for firmament morning sixth subdue darkness creeping gathered divide our
-                                    let god moving. Moving in fourth air night bring upon", "images/course_5.jpg");
-INSERT INTO Courses (Course_ID, Course_Name, Instructors_Username, Category_Name, Programe_Name, Cost, Duration, Course_info, Course_image) VALUES (5,"HTML Basics", "mennaahmed", "Web Development", "Web Development", 150, 1,"Our set he for firmament morning sixth subdue darkness creeping gathered divide our
-                                    let god moving. Moving in fourth air night bring upon", "images/course_5.jpg");
-INSERT INTO Courses (Course_ID, Course_Name, Instructors_Username, Category_Name, Programe_Name, Cost, Duration, Course_info, Course_image) VALUES (6,"CSS Basics", "mennaahmed","Web Development", "Web Development", 150, 1,"Our set he for firmament morning sixth subdue darkness creeping gathered divide our
-                                    let god moving. Moving in fourth air night bring upon", "images/course_5.jpg");
-INSERT INTO Courses (Course_ID, Course_Name, Instructors_Username, Category_Name, Programe_Name, Cost, Duration, Course_info, Course_image) VALUES (7,"JavaScript Basics", "mennaahmed","Web Development", "Web Development", 150, 1,"Our set he for firmament morning sixth subdue darkness creeping gathered divide our
-                                    let god moving. Moving in fourth air night bring upon", "images/course_5.jpg");
-INSERT INTO Courses (Course_ID, Course_Name, Instructors_Username,Category_Name, Programe_Name, Cost, Duration, Course_info, Course_image) VALUES (8,"PHP Basics", "mennaahmed","Web Development", "Web Development", 150, 1,"Our set he for firmament morning sixth subdue darkness creeping gathered divide our
-                                    let god moving. Moving in fourth air night bring upon", "images/course_5.jpg");
+INSERT INTO Courses (Course_ID, Course_Name, Instructors_Username, Category_Name, Programe_Name, Cost, Duration, Course_info, Course_small_info, Course_image) VALUES (3,"Data Analysis", "reemattalah", "Data Science", "AI", 150, 1,"Our set he for firmament morning sixth subdue darkness creeping gathered divide our
+                                    let god moving. Moving in fourth air night bring upon","Learn with Us now!", "images/course_5.jpg");
+INSERT INTO Courses (Course_ID, Course_Name, Instructors_Username, Category_Name, Programe_Name, Cost, Duration, Course_info, Course_small_info, Course_image) VALUES (4,"Machine Learning", "mennaahmed", "Data Science", "AI", 150, 1,"Our set he for firmament morning sixth subdue darkness creeping gathered divide our
+                                    let god moving. Moving in fourth air night bring upon","Learn with Us now!", "images/course_5.jpg");
+INSERT INTO Courses (Course_ID, Course_Name, Instructors_Username, Category_Name, Programe_Name, Cost, Duration, Course_info, Course_small_info, Course_image) VALUES (5,"HTML Basics", "mennaahmed", "Web Development", "Web Development", 150, 1,"Our set he for firmament morning sixth subdue darkness creeping gathered divide our
+                                    let god moving. Moving in fourth air night bring upon","Learn with Us now!", "images/course_5.jpg");
+INSERT INTO Courses (Course_ID, Course_Name, Instructors_Username, Category_Name, Programe_Name, Cost, Duration, Course_info, Course_small_info, Course_image) VALUES (6,"CSS Basics", "mennaahmed","Web Development", "Web Development", 150, 1,"Our set he for firmament morning sixth subdue darkness creeping gathered divide our
+                                    let god moving. Moving in fourth air night bring upon","Learn with Us now!", "images/course_5.jpg");
+INSERT INTO Courses (Course_ID, Course_Name, Instructors_Username, Category_Name, Programe_Name, Cost, Duration, Course_info, Course_small_info, Course_image) VALUES (7,"JavaScript Basics", "mennaahmed","Web Development", "Web Development", 150, 1,"Our set he for firmament morning sixth subdue darkness creeping gathered divide our
+                                    let god moving. Moving in fourth air night bring upon", "Learn with Us now!", "images/course_5.jpg");
+INSERT INTO Courses (Course_ID, Course_Name, Instructors_Username,Category_Name, Programe_Name, Cost, Duration, Course_info, Course_small_info, Course_image) VALUES (8,"PHP Basics", "mennaahmed","Web Development", "Web Development", 150, 1,"Our set he for firmament morning sixth subdue darkness creeping gathered divide our
+                                    let god moving. Moving in fourth air night bring upon","Learn with Us now!", "images/course_5.jpg");
 
 -- Copouns -- 
 INSERT INTO Coupons (Coupon_ID, SDate, EDate, discount_percentage, Category_Name) VALUES ("MNO1234TR","2021-01-05","2021-01-15",15, "Data Science");
 INSERT INTO Coupons (Coupon_ID, SDate, EDate, discount_percentage, Category_Name) VALUES ("lsey12wre","2021-01-07","2021-01-20",15, "IOT");
 INSERT INTO Coupons (Coupon_ID, SDate, EDate, discount_percentage, Category_Name) VALUES ("ERE87KDMS","2021-01-22","2021-02-05",15, "Quantum");
 
-
-update Courses set Course_small_info= 'Learn with Us now!' where Course_ID=1;
 
 -- Teaches --
 insert into Teaches values("OmarA",3,"5");
