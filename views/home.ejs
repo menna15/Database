@@ -34,19 +34,19 @@
                     <div class="card text-white bg-secondary mb-3"  style="max-width: 18rem; max-height: 8rem;">
                         <div class="card-header">Courses</div>
                         <div class="card-body">
-                          <p class="card-text"><% if(statistics["Courses"] != null){ %> <%= statistics["Courses"]["COUNT(*)"] %> <%} else{ %>0<%} %></p>
+                          <p class="card-text"><% if(statistics["Courses"]){ %> <%= statistics["Courses"] %> <%} else{ %>0<%} %></p>
                         </div>
                       </div>
                     <div class="card text-white bg-secondary mb-3" style="max-width: 18rem; max-height: 8rem;">
                         <div class="card-header">Instructors</div>
                         <div class="card-body">
-                          <p class="card-text"><% if(statistics["Instructors"] != null){ %> <%= statistics["Instructors"]["COUNT(*)"] %> <%} else{ %>0<%} %></p>
+                          <p class="card-text"><% if(statistics["Instructors"]){ %> <%= statistics["Instructors"]%> <%} else{ %>0<%} %></p>
                         </div>
                       </div>
                     <div class="card text-white bg-secondary mb-3"  style="max-width: 18rem; max-height: 8rem;">
                         <div class="card-header">Students</div>
                         <div class="card-body">
-                          <p class="card-text"><% if(statistics["Students"] != null){ %> <%= statistics["Students"]["COUNT(*)"] %> <%} else{ %>0<%} %></p>
+                          <p class="card-text"><% if(statistics["Students"] ){ %> <%= statistics["Students"] %> <%} else{ %>0<%} %></p>
                         </div>
                       </div>
                 </section>
