@@ -85,12 +85,12 @@
                 <div class="course-1-item">
                   
                   <figure class="thumnail">
-                    <a href="/singleCourse"><img src="<%= categories_courses[i][j].Course_image %>" alt="Image" class="img-fluid"></a>
+                    <a href="/singleCourse/<%= categories_courses[i][j].Course_ID %>"><img src="<%= categories_courses[i][j].Course_image %>" alt="Image" class="img-fluid"></a>
                     <div class="price">$ <%= categories_courses[i][j].Cost %></div>
-                    <a  style="text-decoration:none;" href="/singleCourse"><div class="category"><h3><%= categories_courses[i][j].Course_Name %></h3></div>  </a>
+                    <a  style="text-decoration:none;" href="/singleCourse/<%= categories_courses[i][j].Course_ID %>"><div class="category"><h3><%= categories_courses[i][j].Course_Name %></h3></div>  </a>
                   </figure>
                   <div class="course-1-content pb-4">
-                    <h2>How To Create Mobile Apps Using Ionic</h2>
+                    <h2><%= categories_courses[i][j].Course_Name %></h2>
                     <div class="rating text-center mb-3">
                       <span class="icon-star2 text-warning"></span>
                       <span class="icon-star2 text-warning"></span>
@@ -98,8 +98,8 @@
                       <span class="icon-star2 text-warning"></span>
                       <span class="icon-star2 text-warning"></span>
                     </div>
-                    <p class="desc mb-4"><%= categories_courses[i][j].Course_info %></p>
-                    <p><a href="/singleCourse" class="btn btn-primary rounded-0 px-4">Discover The Course Now!</a></p>
+                    <p class="desc mb-4"><%= categories_courses[i][j].Course_small_info %></p>
+                    <p><a href="/singleCourse/<%= categories_courses[i][j].Course_ID %>" class="btn btn-primary rounded-0 px-4">Discover The Course Now!</a></p>
                   </div>
                 </div>
     

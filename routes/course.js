@@ -13,7 +13,7 @@ router.get('/', async(req, res) => {
     const GetInstructorr=await getfromDB(Courses_query);
 
 
-    return res.render('course',{
+    return res.render('course',{ 
         title: 'course', 
         css:'course',
         courses: GetCoursess, 
