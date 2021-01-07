@@ -1,5 +1,5 @@
 const router = require('express').Router();
-var db = require('./dbManager');
+var db = require('../db');
 
 
 router.get('/', async (req, res) => {

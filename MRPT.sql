@@ -1,7 +1,5 @@
-/*Create DATABASE MRPT;*/
-ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'M0ther-Hacker';
-flush privileges;
-USE MRPT;
+
+USE mrpt;
 create table IF NOT exists Owners
 (
 Fname varchar(50) not null,
@@ -186,10 +184,10 @@ foreign key (Student_Username) references Students(Username)
 create table if not exists Donors
 (
 Dname varchar(100) not null,
-SSN   int,
+Email  varchar(100),
 Date date,
 Amount float,
-primary key (SSN)
+primary key (Email)
 );
 -- --
 create table if not exists Included  -- courses in each program
@@ -206,7 +204,7 @@ foreign key (Pname  ) references Programs(PName)
 INSERT INTO Categories (CName, IT_Username, Category_image) VALUES ("Data Science", null,"images/dataScience.png");
 INSERT INTO Categories (CName, IT_Username, Category_image) VALUES ("IOT", null,"images/IOT.jpeg");
 INSERT INTO Categories (CName, IT_Username, Category_image) VALUES ("Quantum", null,"images/quantum.jpg");
-
+INSERT INTO Categories (CName, IT_Username, Category_image) VALUES ("Web Development", null,"images/quantum.jpg");
 -- Programs --
 INSERT INTO Programs (PName, Cost, Level, Duration, Program_info, Program_image) VALUES ("AI", 15000, "Beginner", 3, "", "images/ML.jpeg");
 INSERT INTO Programs (PName, Cost, Level, Duration, Program_info, Program_image) VALUES ("Web Development", 15000, "Beginner", 3, "", "images/Web_Dev.png");
