@@ -244,7 +244,7 @@ select * from instructors;
 insert  into Instructors values ('Omar','Kamal','OmarA',"Mkamal",null,null,null,900);
 insert  into Instructors values ('Emad','Atalah','EmadA',"Mkamal",null,null,null,1000);
 -- Teaches --
-insert into teaches values("OmarA",3,"7");
+insert into teaches values("OmarA",3,"5");
 select * from courses;
 update courses set course_small_info= 'Learn with Us now!' where Course_ID=1;
 select Username,Fname,Lname from courses,instructors where Username= Instructors_Username
