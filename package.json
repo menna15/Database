@@ -15,12 +15,9 @@
     "ejs": "^3.1.5",
     "express": "^4.17.1",
     "express-fileupload": "^1.2.0",
-<<<<<<< HEAD
     "express-messages": "^1.0.1",
     "express-session": "^1.17.1",
-=======
     "flash": "^1.1.0",
->>>>>>> 83b5ac62d8e77c490f5a6a4f1ab156ab706a6b44
     "mysql": "^2.18.1",
     "nodemon": "^2.0.6",
     "particle.js": "^1.0.7",
