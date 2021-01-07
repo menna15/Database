@@ -55,7 +55,7 @@
                 <div class="program float_l">
                     <% for(let ii = 0; ii < ProgramCourses[i].length; ii++){ %>
                         <div class="course float_l">
-                            <a href = "/singleCourse" class = "go-to-course-page"><div class="image-card" ><img src="<%=ProgramCourses[i][ii].Course_image%>" width="100%" height="95%" style ="border-radius: 20px;"/></div></a>
+                            <a href = "/singleCourse/<%=ProgramCourses[i][ii].Course_ID%>" class = "go-to-course-page"><div class="image-card" ><img src="<%=ProgramCourses[i][ii].Course_image%>" width="100%" height="95%" style ="border-radius: 20px;"/></div></a>
                            <div class="lable">
                                 <div class="lable-size">
                                     <h2 style="padding: 8px 4px; margin-top: 8px; text-transform: uppercase;"><b><%= ProgramCourses[i][ii].Course_Name %></b></h2>
