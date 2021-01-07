@@ -114,9 +114,13 @@
 {   margin: 25px 25px 36px 35px;
     display: flex;
     flex-direction: column;
+    
 }
-.corr_inputs  input 
+.corr_inputs  input , textarea
 {   margin: 15px;
+    padding-left: 5px;
+    outline-width: 0;
+    outline: none;
 
 }
 

@@ -1,5 +1,7 @@
 const router = require('express').Router();
 
+const { query } = require('../db');
+
 var db = require('../db');
 
 // GET //

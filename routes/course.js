@@ -10,7 +10,7 @@ router.get('/', async(req, res) => {
     Courses_query="select SSN,Fname,Minit,Lname from Courses,instructors where SSN= Instructors_SSN";
     const GetInstructorr=await Courses_db(Courses_query);
 
-
+ 
         return res.render('course',{
             title: 'course', 
             css:'course',
