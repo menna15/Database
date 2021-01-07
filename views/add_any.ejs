@@ -1,46 +1,43 @@
 <%- include("layouts/header") %>
+<!-- <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />-->
+    
     <div class="main-cont">
         <div class="course">
             <h3>Add New Course</h3>
-            <form class="infoForm" id="infoForm">
-                
+            <form class="infoForm" id="infoForm" method="post" action="/add_any" enctype="multipart/form-data">
                 <div class="Course-info">
                     <div class="labels">
                         <label for="Course_Name">Course Name</label>
-
-                        <label for="Course_ID">Course ID</label>
                         <label for="Instructor_username">Instructor Username</label>
                         <label for="Cost">Cost</label>
                         <label for="Duration">Course Duration</label>
                         <label for="Category">Category Name</label>
+                        <label for="mob_no">Course Image</label>
+                        <label for="Course_small_info">Course small info</label>
+                        <label for="Course_info">Course Brief info</label>
                     </div>
                     <div class="corr_inputs">
-                        <input id="Course_Name" type="text" name="Course_Name" size="40">
-
-                        <input id="Course_ID" type="text" name="Course_ID" size="40">
-                        
-                        <input id="Instructor_username" type="text" name="Instructor_username" size="40">
-
-
-                        
-                        <input id="Cost" type="text" name="Cost" size="40">
-
-
-                        
-                        <input id="Duration" type="date" name="Duration">
-
-                        <input id="Category" type="text" name="Category" size="40">
-                        
+                        <input id="Course_Name" type="text" name="Course_Name" size="40"placeholder="Course Name">
+                        <input id="Instructor_username" type="text" name="Instructor_username" size="40"placeholder="Instructor Username">
+                        <input id="Cost" type="number" name="Cost" size="40"placeholder="Cost">
+                        <input id="Duration" type="number" name="Duration"placeholder="Course Duration">
+                        <input id="Category" type="text" name="Category" placeholder="Category Name">
+                        <input class="form-control" type="file" name="uploaded_image" accept="Course Image"/>
+                        <textarea name="Course_small_info" id="" cols="5" rows="2"></textarea>
+                        <textarea name="courseInformation" id="" cols="10" rows="5"></textarea>
                     </div>
                     
                 </div>
-                <button class="save-btn">ADD</button>
+                <button type="submit" class="save-btn">ADD</button>
             </form>
         </div>
 
         <div class="course">
             <h3>Add New Category</h3>
-            <form class="infoForm" id="infoForm">
+            <form class="infoForm" id="infoForm" method="post" action="/" enctype="multipart/form-data">
                 
                 <div class="Course-info">
                     <div class="labels">
@@ -60,7 +57,7 @@
 
         <div class="course">
             <h3>Add New Program</h3>
-            <form class="infoForm" id="infoForm">
+            <form class="infoForm" id="infoForm"method="post" action="/" enctype="multipart/form-data">
                 
                 <div class="Course-info">
                     <div class="labels">
@@ -85,7 +82,7 @@
 
         <div class="course">
             <h3>Add New Instructor</h3>
-            <form class="infoForm" id="infoForm">
+            <form class="infoForm" id="infoForm"method="post" action="/" enctype="multipart/form-data">
                 
                 <div class="Course-info">
                     <div class="labels">
@@ -106,7 +103,7 @@
 
         <div class="course">
             <h3>Add IT Adminstrator</h3>
-            <form class="infoForm" id="infoForm">
+            <form class="infoForm" id="infoForm"method="post" action="/" enctype="multipart/form-data">
                 
                 <div class="Course-info">
                     <div class="labels">
@@ -127,7 +124,7 @@
 
         <div class="course">
             <h3>Add New Coupon</h3>
-            <form class="infoForm" id="infoForm">
+            <form class="infoForm" id="infoForm"method="post" action="/" enctype="multipart/form-data">
                 
                 <div class="Course-info">
                     <div class="labels">
