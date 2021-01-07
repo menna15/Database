@@ -26,11 +26,7 @@ app.set('view engine', 'ejs');
 
 app.get('/', (req, res) => {
 
-    return res.render('home', {
-        title: 'home',
-        css: 'home',
-        js:'home'
-    })
+    return res.redirect('home');
 });
 
 //flash messages middleware
