@@ -1,6 +1,6 @@
 
 const { query } = require('express');
-var db = require('./dbManager');
+var db = require('../db');
 const router = require('express').Router();
 
 

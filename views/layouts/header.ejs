@@ -27,7 +27,20 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto" style="display:flex; align-items: center; justify-content: space-around;">
                 <li class="nav-item <% if (title === 'categories') { %>active<% } %>">
-                    <a href="/categories" style=" text-decoration:none; color:rgb(228, 222, 222);font-size: 1.3rem">Categories</a>
+                    <div class="dropdown show" style="padding-left:0px;">
+                        <a id="bttn" class="btn btn-secondary dropdown-toggle" style="cursor: pointer;
+         color: rgb(228, 222, 222);
+         font-size: 1.3rem;background-color:hsl(39, 77%, 83%,0); border:none; outline:none;" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a href="/categories" style=" text-decoration:none; color:rgb(228, 222, 222);font-size: 1.1rem">Categories</a>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <ul><a href="/" style="color:rgb(228, 222, 222);font-size: 1rem">Cat1</a> </ul>
+                            <ul><a href="/" style="color:rgb(228, 222, 222);font-size: 1rem">Cat2</a> </ul>
+                            <ul><a href="/" style="color:rgb(228, 222, 222);font-size: 1rem">Cat3</a> </ul>
+
+                        </div>
+
+                    </div>
                 </li>
                 <li class="nav-item <% if (title === 'Programs') { %>active<% } %>">
                     <a class="nav-link" href="/programs" style="color:rgb(228, 222, 222);font-size: 1.1rem">Programs</a>

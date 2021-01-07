@@ -50,7 +50,13 @@
 } 
      */
     
-
+     #particles-js {
+        position: absolute;
+        left: 15vh;
+        width:20vw ;
+        height:40vh;
+        
+      }
     
  .main_con  
     {         
