@@ -62,7 +62,9 @@ router.post('/',async(req,res)=>{
     }
     
     //I didn't insert `Programe_Name`,
+
     var sql = "INSERT INTO `courses`(`Course_ID`,`Instructors_Username`,`Category_Name`, `Cost` ,`Duration`,`Course_Name`,`Course_info`,`Course_small_info`,`Course_image`) VALUES ('" + RandomCourseID + "','" + Instructor_username + "','" + Category + "'," + Cost + "," + Duration + ",'" + courseName + "','" + courseInformation + "','" + Course_small_info + "','" + img_name + "')";
+
     await AddCourses(sql);
 
 
