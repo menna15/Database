@@ -4,37 +4,32 @@ var db = require('../db');
   
 router.get('/', async(req, res) => {
 
-    var Courses_query="select * from Courses ";
-    const GetCoursess=await Courses_db(Courses_query);
 
-    Courses_query="select SSN,Fname,Minit,Lname from Courses,instructors where SSN= Instructors_SSN";
-    const GetInstructorr=await Courses_db(Courses_query);
+    Courses_query="SELECT C.*,I.Fname, I.Lname FROM Courses as C JOIN Instructors as I ON C.Instructors_Username = I.Username;";
+    const GetCoursess=await getfromDB(Courses_query);
 
 
-        return res.render('course',{
-            title: 'course', 
-            css:'course',
-            courses: GetCoursess, 
-            Instructor: GetInstructorr 
-        })
+    return res.render('course',{
+        title: 'course', 
+        css:'course',
+        courses: GetCoursess, 
+    })
 
 });  
 
-const Courses_db = (query) => {
+const getfromDB = (query) => {
     return new Promise ((resolve, reject) => {
         setTimeout(() => {
                 db.query(query,(error, rows) => {
                     if(!error)
                       {
-                        //console.log('Courses viewed');
-                        resolve(rows);
-                        
+                        resolve(rows);    
                       }
                     else
                      {reject(new Error(error));}
                })
 
-        }, 1000);
+        }, 100);
     });
 };
 

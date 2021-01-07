@@ -1,71 +1,6 @@
 <%- include("layouts/header") %>
     <div class="main-cont">
         <div class="header-nav">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a href="/home"> <img class="logo-icon" src="/images/logo2.png" alt="logo"></a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse"
-                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mr-auto"
-                        style="display:flex; align-items: center; justify-content: space-around;">
-                        <li class="nav-item <% if (title === 'categories') { %>active<% } %>">
-                            <a href="/categories"
-                                style=" text-decoration:none; color:rgb(228, 222, 222);font-size: 1.3rem">Categories</a>
-                        </li>
-                        <li class="nav-item <% if (title === 'Programs') { %>active<% } %>">
-                            <a class="nav-link" href="/programs"
-                                style="color:rgb(228, 222, 222);font-size: 1.3rem">Programs</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <input class="search" type="text" onkeyup="myFunction()" placeholder="Search.."
-                                title="Type in a category">
-                        </li>
-
-                        <li class="nav-item <% if (title === 'joinOurStaff') { %>active<% } %>">
-                            <a class="nav-link" href="/joinOurStaff"
-                                style="color:rgb(228, 222, 222);font-size: 1.3rem">Join Our Staff</a>
-                        </li>
-
-                        <li class="nav-item <% if (title === 'login') { %>active<% } %>">
-                            <a class="nav-link" href="/login"
-                                style="color: rgb(228, 222, 222);font-size: 1.3rem">Sign In or Sign Up</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="/Donate"
-                                style="color: rgb(228, 222, 222);font-size: 1.3rem">Donate</a>
-                        </li>
-
-                        <li class="nav-item <% if (title === 'account') { %>active<% } %>">
-                            <div class="dropdown show" style="padding-left:0px;">
-                                <a id="bttn" class="btn btn-secondary dropdown-toggle" style="cursor: pointer;
-                        color: rgb(228, 222, 222);
-                        font-size: 1.3rem;background-color:hsl(39, 77%, 83%,0); border:none; outline:none;"
-                                    role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
-                                    aria-expanded="false">
-                                    <p style=" text-decoration:none; color:rgb(228, 222, 222);font-size: 1.3rem">Account</p>
-                                    </a>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                    <ul><a href="/Account_Settings"
-                                            style="color:rgb(228, 222, 222);font-size: 1.3rem">Profile</a> </ul>
-                                    <ul><a href="/" style="color:rgb(228, 222, 222);font-size: 1.3rem">Log Out</a>
-                                    </ul>
-
-                                </div>
-
-                            </div>
-                        </li>
-
-
-                    </ul>
-
-                </div>
-            </nav>
         </div>
 
         <div class="Programs float_l">
@@ -101,28 +36,50 @@
                     overflow: hidden;
                 }
             </style>
+            <div class = "program-header"><h1>Programs Catalog</h1></div>
 
             <% for(let i = 0; i < programs.length; i++){  %>
                 <% if (ProgramCourses[i].length > 0) { %>
             <div class = "Program-div">
-                <h1> <%= programs[i].PName %></h1>
+                <div class = "program-title">
+                    <div class = "program-describ">
+                        <h1> <%= programs[i].PName %></h1>
+                        <br>
+                        <p style="font-size: 17px;">
+                            <%= programs[i].Program_info %>
+                        </p>
+                    </div>
+                    <div style="width: 70px;"></div>
+                    <div class="program-img-div"><img src = "<%=programs[i].Program_image %>" alt = "" class="program-img" /></div>
+                </div>
                 <div class="program float_l">
                     <% for(let ii = 0; ii < ProgramCourses[i].length; ii++){ %>
-                    <div class="course float_l">
-                        <div class="image-card"><img src="<%=ProgramCourses[i][ii].Course_image%>" width="300" height="280" /></div>
-                        <div class="lable">
-                            <div class="lable-size"><%= ProgramCourses[i][ii].CourseName %><br>
-                                <div style="font-weight:bold">
-                                    <p style="font-weight:normal"><%= ProgramCourses[i][ii].Cost %></p>
+                        <div class="course float_l">
+                            <a href = "/singleCourse" class = "go-to-course-page"><div class="image-card" ><img src="<%=ProgramCourses[i][ii].Course_image%>" width="100%" height="95%" style ="border-radius: 20px;"/></div></a>
+                           <div class="lable">
+                                <div class="lable-size">
+                                    <h2 style="padding: 8px 4px; margin-top: 8px; text-transform: uppercase;"><b><%= ProgramCourses[i][ii].Course_Name %></b></h2>
+                                    <br>
+
+                                    <div class="instructorNmae">
+                                        <img src="<%= ProgramCourses[i][ii].Profile_Pic%>" class="user-img" alt="?" >
+                                        <label style="letter-spacing: 1.2px;"><%= ProgramCourses[i][ii].Fname %>  <%= ProgramCourses[i][ii].Lname %><br></label>
+                                    </div>
+                                    <div class="Price">
+                                        <br>
+                                        <label style="font-size: 20px; letter-spacing: 1.2px; color: ;">Price : $ <%= ProgramCourses[i][ii].Cost %></label>
+                                    </div>
                                 </div>
+                                <div class="enrollnow"><a href="#">Enroll Now</a></div>
+                                <br>
                             </div>
-                            <div class="enrollnow"><a href="#">Enroll Now</a></div>
                         </div>
-                    </div>
                     <% } %>
                 </div>
             </div>
-                <% } %>
+            
+            <hr style="border-top: 50px solid #bbb;">
+            <% } %>
             <% } %> 
         </div>
     </div>

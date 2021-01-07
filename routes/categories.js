@@ -6,13 +6,13 @@ router.get('/', async (req, res) => {
         
 
 
-        var categories= await GetCategories('SELECT * FROM Categories');
-        var coupons = await GetCoupons('SELECT * FROM Coupons');
+        var categories= await GetfromDB('SELECT * FROM Categories');
+        var coupons = await GetfromDB('SELECT * FROM Coupons');
 
         var category_courses = [];
         for(let i =0; i<categories.length; i++){
             var sqlquery = "SELECT * FROM Courses WHERE Category_Name = '" + categories[i].CName + "';";
-            var tmp_CourseContainer = await GetCategoryCourses(sqlquery);
+            var tmp_CourseContainer = await GetfromDB(sqlquery);
             if(tmp_CourseContainer!=[]){
                 category_courses.push(tmp_CourseContainer);
             }
@@ -29,12 +29,11 @@ router.get('/', async (req, res) => {
         })
 
 });
-const GetCategories = (query)=>{
+const GetfromDB = (query)=>{
     return new Promise ((resolve, reject)=>{
         setTimeout(()=>{
             db.query(query, (err,rows) =>{
                 if(!err){
-                    console.log("Post viewed");
                     resolve(rows);
                 }
                 else{
@@ -44,35 +43,6 @@ const GetCategories = (query)=>{
         },100);
     });
 };
-const GetCategoryCourses = (query)=>{
-    return new Promise ((resolve, reject)=>{
-        setTimeout(()=>{
-            db.query(query, (err,rows) =>{
-                if(!err){
-                    console.log("Post viewed");
-                    resolve(rows);
-                }
-                else{
-                    reject(new Error(err));
-                }
-            });
-        },100);
-    });
-};
-const GetCoupons = (query)=>{
-    return new Promise ((resolve, reject)=>{
-        setTimeout(()=>{
-            db.query(query, (err,rows) =>{
-                if(!err){
-                    console.log("Post viewed");
-                    resolve(rows);
-                }
-                else{
-                    reject(new Error(err));
-                }
-            });
-        },100);
-    });
-};
+
 
 module.exports = router;
