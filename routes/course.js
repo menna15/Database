@@ -11,7 +11,7 @@ router.get('/', async(req, res) => {
 
 
     return res.render('course',{ 
-        title: 'course', 
+        title: 'Courses', 
         css:'course',
         courses: GetCoursess
     })
