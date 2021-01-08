@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const ejs = require('ejs');
 const bodyParser = require('body-parser');
-
+ 
 const fileUpload = require('express-fileupload');
 
 // SQL
@@ -65,6 +65,7 @@ app.use((req, res, next) => {
 
 app.use('/home', require('./routes/home'));
 app.use('/login', require('./routes/login'));
+app.use('/signup', require('./routes/signup'));
 app.use('/categories', require('./routes/categories'));
 app.use('/programs', require('./routes/programs'));
 app.use('/joinOurStaff', require('./routes/joinOurStaff'));
@@ -77,5 +78,5 @@ app.use('/Donate', require('./routes/Donate'));
 app.listen(port,(error)=>{ 
     if(error) return console.log(error);
 console.log(`server started listening at ${port}`);
-
+ 
 });
