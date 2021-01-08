@@ -82,6 +82,7 @@ Duration int,
 Course_image varchar(1024),
 Course_info MEDIUMTEXT,
 Course_small_info TINYTEXT,
+Course_content MEDIUMTEXT,
 Primary key (Course_ID),
 foreign key (Category_Name) references Categories(CName),
 foreign key (Programe_Name) references Programs(PName),
@@ -229,22 +230,22 @@ INSERT INTO Instructors VALUES ("Reem", "Attalah", "reemattalah", "Mkamal", "ima
 
 
 -- Courses -- 
-INSERT INTO Courses (Course_ID, Course_Name, Instructors_Username, Category_Name, Programe_Name, Cost, Duration, Course_info, Course_small_info, Course_image) VALUES (1,"Probability", "reemattalah", "Data Science", "AI", 150, 1,"Our set he for firmament morning sixth subdue darkness creeping gathered divide our
-                                    let god moving. Moving in fourth air night bring upon","Learn with Us now!", "images/course_5.jpg");
-INSERT INTO Courses (Course_ID, Course_Name, Instructors_Username, Category_Name, Programe_Name, Cost, Duration, Course_info, Course_image) VALUES (2,"Statistics", "reemattalah", "Data Science", "AI", 150, 1,"Our set he for firmament morning sixth subdue darkness creeping gathered divide our
-                                    let god moving. Moving in fourth air night bring upon", "images/course_5.jpg");
-INSERT INTO Courses (Course_ID, Course_Name, Instructors_Username, Category_Name, Programe_Name, Cost, Duration, Course_info, Course_small_info, Course_image) VALUES (3,"Data Analysis", "reemattalah", "Data Science", "AI", 150, 1,"Our set he for firmament morning sixth subdue darkness creeping gathered divide our
-                                    let god moving. Moving in fourth air night bring upon","Learn with Us now!", "images/course_5.jpg");
-INSERT INTO Courses (Course_ID, Course_Name, Instructors_Username, Category_Name, Programe_Name, Cost, Duration, Course_info, Course_small_info, Course_image) VALUES (4,"Machine Learning", "mennaahmed", "Data Science", "AI", 150, 1,"Our set he for firmament morning sixth subdue darkness creeping gathered divide our
-                                    let god moving. Moving in fourth air night bring upon","Learn with Us now!", "images/course_5.jpg");
-INSERT INTO Courses (Course_ID, Course_Name, Instructors_Username, Category_Name, Programe_Name, Cost, Duration, Course_info, Course_small_info, Course_image) VALUES (5,"HTML Basics", "mennaahmed", "Web Development", "Web Development", 150, 1,"Our set he for firmament morning sixth subdue darkness creeping gathered divide our
-                                    let god moving. Moving in fourth air night bring upon","Learn with Us now!", "images/course_5.jpg");
-INSERT INTO Courses (Course_ID, Course_Name, Instructors_Username, Category_Name, Programe_Name, Cost, Duration, Course_info, Course_small_info, Course_image) VALUES (6,"CSS Basics", "mennaahmed","Web Development", "Web Development", 150, 1,"Our set he for firmament morning sixth subdue darkness creeping gathered divide our
-                                    let god moving. Moving in fourth air night bring upon","Learn with Us now!", "images/course_5.jpg");
-INSERT INTO Courses (Course_ID, Course_Name, Instructors_Username, Category_Name, Programe_Name, Cost, Duration, Course_info, Course_small_info, Course_image) VALUES (7,"JavaScript Basics", "mennaahmed","Web Development", "Web Development", 150, 1,"Our set he for firmament morning sixth subdue darkness creeping gathered divide our
-                                    let god moving. Moving in fourth air night bring upon", "Learn with Us now!", "images/course_5.jpg");
-INSERT INTO Courses (Course_ID, Course_Name, Instructors_Username,Category_Name, Programe_Name, Cost, Duration, Course_info, Course_small_info, Course_image) VALUES (8,"PHP Basics", "mennaahmed","Web Development", "Web Development", 150, 1,"Our set he for firmament morning sixth subdue darkness creeping gathered divide our
-                                    let god moving. Moving in fourth air night bring upon","Learn with Us now!", "images/course_5.jpg");
+INSERT INTO Courses (Course_ID, Course_Name, Instructors_Username, Category_Name, Programe_Name, Cost, Duration, Course_info, Course_small_info, Course_image,Course_content) VALUES (1,"Probability", "reemattalah", "Data Science", "AI", 150, 1,"Our set he for firmament morning sixth subdue darkness creeping gathered divide our
+                                    let god moving. Moving in fourth air night bring upon","Learn with Us now!", "images/course_5.jpg","https://drive.google.com/drive/folders/1hqmuFtbxwzDCaCEgrzEk3apL2C5150PE");
+INSERT INTO Courses (Course_ID, Course_Name, Instructors_Username, Category_Name, Programe_Name, Cost, Duration, Course_info, Course_small_info, Course_image,Course_content) VALUES (2,"Statistics", "reemattalah", "Data Science", "AI", 150, 1,"Our set he for firmament morning sixth subdue darkness creeping gathered divide our
+                                    let god moving. Moving in fourth air night bring upon", "Learn with Us now!","images/course_5.jpg","https://drive.google.com/drive/folders/1hqmuFtbxwzDCaCEgrzEk3apL2C5150PE");
+INSERT INTO Courses (Course_ID, Course_Name, Instructors_Username, Category_Name, Programe_Name, Cost, Duration, Course_info, Course_small_info, Course_image,Course_content) VALUES (3,"Data Analysis", "reemattalah", "Data Science", "AI", 150, 1,"Our set he for firmament morning sixth subdue darkness creeping gathered divide our
+                                    let god moving. Moving in fourth air night bring upon","Learn with Us now!", "images/course_5.jpg","https://drive.google.com/drive/folders/1hqmuFtbxwzDCaCEgrzEk3apL2C5150PE");
+INSERT INTO Courses (Course_ID, Course_Name, Instructors_Username, Category_Name, Programe_Name, Cost, Duration, Course_info, Course_small_info, Course_image,Course_content) VALUES (4,"Machine Learning", "mennaahmed", "Data Science", "AI", 150, 1,"Our set he for firmament morning sixth subdue darkness creeping gathered divide our
+                                    let god moving. Moving in fourth air night bring upon","Learn with Us now!", "images/course_5.jpg","https://drive.google.com/drive/folders/1hqmuFtbxwzDCaCEgrzEk3apL2C5150PE");
+INSERT INTO Courses (Course_ID, Course_Name, Instructors_Username, Category_Name, Programe_Name, Cost, Duration, Course_info, Course_small_info, Course_image,Course_content) VALUES (5,"HTML Basics", "mennaahmed", "Web Development", "Web Development", 150, 1,"Our set he for firmament morning sixth subdue darkness creeping gathered divide our
+                                    let god moving. Moving in fourth air night bring upon","Learn with Us now!", "images/course_5.jpg","https://drive.google.com/drive/folders/1hqmuFtbxwzDCaCEgrzEk3apL2C5150PE");
+INSERT INTO Courses (Course_ID, Course_Name, Instructors_Username, Category_Name, Programe_Name, Cost, Duration, Course_info, Course_small_info, Course_image,Course_content) VALUES (6,"CSS Basics", "mennaahmed","Web Development", "Web Development", 150, 1,"Our set he for firmament morning sixth subdue darkness creeping gathered divide our
+                                    let god moving. Moving in fourth air night bring upon","Learn with Us now!", "images/course_5.jpg","https://drive.google.com/drive/folders/1hqmuFtbxwzDCaCEgrzEk3apL2C5150PE");
+INSERT INTO Courses (Course_ID, Course_Name, Instructors_Username, Category_Name, Programe_Name, Cost, Duration, Course_info, Course_small_info, Course_image,Course_content) VALUES (7,"JavaScript Basics", "mennaahmed","Web Development", "Web Development", 150, 1,"Our set he for firmament morning sixth subdue darkness creeping gathered divide our
+                                    let god moving. Moving in fourth air night bring upon", "Learn with Us now!", "images/course_5.jpg","https://drive.google.com/drive/folders/1hqmuFtbxwzDCaCEgrzEk3apL2C5150PE");
+INSERT INTO Courses (Course_ID, Course_Name, Instructors_Username,Category_Name, Programe_Name, Cost, Duration, Course_info, Course_small_info, Course_image,Course_content) VALUES (8,"PHP Basics", "mennaahmed","Web Development", "Web Development", 150, 1,"Our set he for firmament morning sixth subdue darkness creeping gathered divide our
+                                    let god moving. Moving in fourth air night bring upon","Learn with Us now!", "images/course_5.jpg","https://drive.google.com/drive/folders/1hqmuFtbxwzDCaCEgrzEk3apL2C5150PE");
 
 -- Copouns -- 
 INSERT INTO Coupons (Coupon_ID, SDate, EDate, discount_percentage, Category_Name) VALUES ("MNO1234TR","2021-01-05","2021-01-15",15, "Data Science");

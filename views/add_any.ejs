@@ -12,6 +12,13 @@
         <div class="course">
             <h3>Add New Course</h3>
             <form class="infoForm" id="infoForm" method="post" action="/add_any" enctype="multipart/form-data">
+                <% if(message.length >0){ %>
+                    <div id="alerty" class="alert alert-warning" role="alert">
+                    <div id="msg"><%= message%> </div>
+                    <button style="width: 30px; background-color: burlywood; " id='close' onclick=' this.parentNode.parentNode.removeChild(this.parentNode); return false;'><strong> X</strong></button>
+                
+                </div><br>
+                <% } %>
                 <div class="Course-info">
                     <div class="labels">
                         <label for="Course_Name">Course Name</label>
@@ -20,6 +27,7 @@
                         <label for="Duration">Course Duration</label>
                         <label for="Category">Category Name</label>
                         <label for="mob_no">Course Image</label>
+                        <label for="Course_link">Course content link</label>
                         <label for="Course_small_info">Course small info</label>
                         <label for="Course_info">Course Brief info</label>
                     </div>
@@ -30,6 +38,7 @@
                         <input id="Duration" type="number" name="Duration"placeholder="Course Duration">
                         <input id="Category" type="text" name="Category" placeholder="Category Name">
                         <input class="form-control" type="file" name="uploaded_image" accept="Course Image"/>
+                        <textarea name="Course_link" id="" cols="5" rows="2"></textarea>
                         <textarea name="Course_small_info" id="" cols="5" rows="2"></textarea>
                         <textarea name="courseInformation" id="" cols="10" rows="5"></textarea>
                     </div>
@@ -42,7 +51,12 @@
         <div class="course">
             <h3>Add New Category</h3>
             <form class="infoForm" id="infoForm" method="post" action="/" enctype="multipart/form-data">
-                
+                <% if(message.length >0){ %>
+                    <div id="alerty" class="alert alert-warning" role="alert">
+                    <div id="msg"><%= message%></div> 
+                    <button id='close' onclick='this.parentNode.parentNode.removeChild(this.parentNode); return false;'>x</button>
+                </div><br>
+                <% } %>
                 <div class="Course-info">
                     <div class="labels">
                         <label for="Category_Name">Category Name</label>
@@ -62,7 +76,12 @@
         <div class="course">
             <h3>Add New Program</h3>
             <form class="infoForm" id="infoForm"method="post" action="/" enctype="multipart/form-data">
-                
+                <% if(message.length >0){ %>
+                    <div id="alerty" class="alert alert-warning" role="alert">
+                    <div id="msg"><%= message%></div> 
+                    <button id='close' onclick='this.parentNode.parentNode.removeChild(this.parentNode); return false;'>x</button>
+                </div><br>
+                <% } %>
                 <div class="Course-info">
                     <div class="labels">
                         <label for="Program_Name">Program Name</label>
@@ -87,7 +106,12 @@
         <div class="course">
             <h3>Add New Instructor</h3>
             <form class="infoForm" id="infoForm"method="post" action="/" enctype="multipart/form-data">
-                
+                <% if(message.length >0){ %>
+                    <div id="alerty" class="alert alert-warning" role="alert">
+                    <div id="msg"><%= message%></div> 
+                    <button id='close' onclick='this.parentNode.parentNode.removeChild(this.parentNode); return false;'>x</button>
+                </div><br>
+                <% } %>
                 <div class="Course-info">
                     <div class="labels">
                         <label for="Instructor_FName">Instructor First Name</label>
@@ -108,7 +132,12 @@
         <div class="course">
             <h3>Add IT Adminstrator</h3>
             <form class="infoForm" id="infoForm"method="post" action="/" enctype="multipart/form-data">
-                
+                <% if(message.length >0){ %>
+                    <div id="alerty" class="alert alert-warning" role="alert">
+                    <div id="msg"><%= message%></div> 
+                    <button id='close' onclick='this.parentNode.parentNode.removeChild(this.parentNode); return false;'>x</button>
+                </div><br>
+                <% } %>
                 <div class="Course-info">
                     <div class="labels">
                         <label for="IT_FName">It First Name</label>
@@ -129,7 +158,12 @@
         <div class="course">
             <h3>Add New Coupon</h3>
             <form class="infoForm" id="infoForm"method="post" action="/" enctype="multipart/form-data">
-                
+                <% if(message.length >0){ %>
+                    <div id="alerty" class="alert alert-warning" role="alert">
+                    <div id="msg"><%= message%></div> 
+                    <button id='close' onclick='this.parentNode.parentNode.removeChild(this.parentNode); return false;'>x</button>
+                </div><br>
+                <% } %>
                 <div class="Course-info">
                     <div class="labels">
                         <label for="Coupon_ID">Coupon ID</label>
