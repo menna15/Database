@@ -4,7 +4,7 @@ var db = require('../db');
 
 router.get('/:course_ID', async(req, res) => { 
    
-        var Courses_query="select distinct Course_Name,Instructors_Username,cost,Duration,course_image,course_info from Courses where Course_ID="+req.params.course_ID;
+        var Courses_query="select * from Courses where Course_ID="+req.params.course_ID;
         const GetCourse=await Courses_db(Courses_query);
     
         return res.render('singleCourse', {
