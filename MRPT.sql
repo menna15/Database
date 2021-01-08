@@ -58,12 +58,14 @@ create table if Not exists Instructors
 Fname varchar(50) not null,
 Lname varchar(50) not null,
 Username varchar(50) not null,
-IT_Username varchar(50) not null,
+IT_Username varchar(50) ,
 Profile_Pic varchar(1024),
 Password varchar(50),
 Email varchar(50),
 Total_Income float,
 Gender varchar(6),
+CV_Link varchar(500),
+Statuss int ,  
 primary key (Username),
 
 Foreign key (IT_Username) references IT_Adminstrators(Username)
@@ -233,17 +235,17 @@ INSERT INTO Categories (CName, IT_Username, Category_image) VALUES ("Quantum", "
 INSERT INTO Categories (CName, IT_Username, Category_image) VALUES ("Web Development", "Mkamal","images/Web_Dev.png");
 
 -- Programs --
-INSERT INTO Programs (PName, Cost, Level, Duration, Program_info, Program_image, IT_Username) VALUES ("AI", 15000, "Beginner", 3, "Our set he for firmament morning sixth subdue darkness creeping gathered divide our
-                                    let god moving. Moving in fourth air night bring upon", "images/ML.jpeg", "Mkamal");
-INSERT INTO Programs (PName, Cost, Level, Duration, Program_info, Program_image, IT_Username) VALUES ("Web Development", 15000, "Beginner", 3, "Our set he for firmament morning sixth subdue darkness creeping gathered divide our
-                                    let god moving. Moving in fourth air night bring upon", "images/Web_Dev.png", "Mkamal");
+INSERT INTO Programs (PName,IT_Username,Cost, Level, Duration, Program_info, Program_image) VALUES ("AI", "Mkamal", 15000, "Beginner", 3, "Our set he for firmament morning sixth subdue darkness creeping gathered divide our
+                                    let god moving. Moving in fourth air night bring upon", "images/ML.jpeg");
+INSERT INTO Programs (PName,IT_Username, Cost, Level, Duration, Program_info, Program_image) VALUES ("Web Development", "Mkamal", 15000, "Beginner", 3, "Our set he for firmament morning sixth subdue darkness creeping gathered divide our
+                                    let god moving. Moving in fourth air night bring upon", "images/Web_Dev.png");
                                     
 
 -- instructors --
-insert  into Instructors values ('Omar','Kamal','OmarA',"Mkamal","images/author.jpg",null,null,900, "Male");
-insert  into Instructors values ('Emad','Atalah','EmadA',"Mkamal","images/author.jpg",null,null,1000, "Male");
-INSERT INTO Instructors VALUES ("Menna", "Ahmed", "mennaahmed","Mkamal", "images/author.jpg", null, null,null, "Female");
-INSERT INTO Instructors VALUES ("Reem", "Attalah", "reemattalah", "Mkamal", "images/author.jpg", null, null, null,"Female");
+insert  into Instructors values ('Omar','Kamal','OmarA',"Mkamal","images/author.jpg",null,null,900, "Male" , "", 1);
+insert  into Instructors values ('Emad','Atalah','EmadA',"Mkamal","images/author.jpg",null,null,1000, "Male", "", 1);
+INSERT INTO Instructors VALUES ("Menna", "Ahmed", "mennaahmed","Mkamal", "images/author.jpg", null, null,null, "Female", "", 1);
+INSERT INTO Instructors VALUES ("Reem", "Attalah", "reemattalah", "Mkamal", "images/author.jpg", null, null, null,"Female", "", 1);
 
 
 -- Courses -- 
@@ -272,6 +274,7 @@ INSERT INTO Coupons (Coupon_ID, SDate, EDate, discount_percentage, Category_Name
 
 -- Teaches --
 insert into Teaches values("OmarA",3,"5");
+
 
 -- videos --
 
