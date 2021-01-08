@@ -179,6 +179,12 @@ section {
     color: #f1c40f;
     background: #f0f0f0;
 }
+#labels .container .row{
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+}
 /* #GoTo
 {
     transition: 0.3s;
@@ -325,7 +331,7 @@ min-height: 900px; }
 }
 .price {
     padding: 20px 20px;
-    color: #fff;
+    color: rgb(36, 32, 32);
 }
 .class-img Img{
     width: 500px;

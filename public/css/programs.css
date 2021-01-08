@@ -115,18 +115,16 @@ li, ol{list-style:none;text-decoration:none;}
 
 
 .Programs{
-		height: 100%;
-		width: 80%;
-		display: flex;
-		margin: auto;
-		align-items: center;
-        justify-content: space-between;
-		flex-direction: column;
-/*		box-shadow: 5px 5px 25px 0 rgba(46,61,73,.2);*/
-/*		background-color: white;*/
-		grid-area: "main";
-background: none;
-    }
+	height: 100%;
+	width: 80%;
+	display: flex;
+	margin: auto;
+	align-items: center;
+	justify-content: space-between;
+	flex-direction: column;
+	grid-area: "main";
+	background: none;
+}
 
 .program-header{
 	padding: 20px 20px;
@@ -144,6 +142,24 @@ background: none;
 	font-size: 50px;
 	color: #428bca;
 	letter-spacing: 1.5px;
+}
+.enroll-into-program-btn{
+	height: 3rem;
+	padding: 0 2rem;
+	border: transparent;
+	border-radius: 8px;
+	cursor: pointer;
+	font-family: Open Sans, sans-serif;
+	letter-spacing: 1.5px;
+	line-height: 1.5rem;
+	text-align: center;
+	vertical-align: middle;
+	text-decoration: none;
+	transition: all .3s ease;
+	background-color: #e7e7e7;
+	color: rgb(34, 32, 32);
+	font-size: 20px;
+	box-shadow: 0 0 8px 0 rgba(17, 22, 26, .16), 0 4px 8px 0 rgba(17, 22, 26, .08), 0 8px 16px 0 rgba(17, 22, 26, .08);
 }
 .course{
 	display: flex;
@@ -240,7 +256,7 @@ background: none;
 	flex-direction: row;
     justify-content: center;
     align-content: space-around;
-	width: 80%;
+	width: 90%;
 	margin: auto;
 	height: 300px;
 	align-items: center;
@@ -249,6 +265,7 @@ background: none;
 .program-describ{
 	float: left;
 	width: 40%;
+	padding: 8px 15px 8px 15px;
 }
 .program-img-div{
 	width: 40%;

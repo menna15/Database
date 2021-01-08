@@ -49,7 +49,8 @@
                             <%= programs[i].Program_info %>
                         </p>
                     </div>
-                    <div style="width: 70px;"></div>
+                    <div style="width: 20%;">    
+                    </div>
                     <div class="program-img-div"><img src = "<%=programs[i].Program_image %>" alt = "" class="program-img" /></div>
                 </div>
                 <div class="program float_l">
@@ -76,9 +77,15 @@
                         </div>
                     <% } %>
                 </div>
+                <div style="margin: auto; width: 40%; display:flex; align-items: center; margin-bottom: 40px;">
+                    <label style="font-size: 30px; color:#017a9b; line-height: 5px;"> EGP <%= programs[i].Cost %></label>
+                    <button class="enroll-into-program-btn" style="margin: auto;"><a href="#" style="text-decoration: none; color:#428bca" >Enroll into Program</a></button>
+                </div>
+                
             </div>
-            
-            <hr style="border-top: 50px solid #bbb;">
+            <div style="height: 60px;"></div>
+            <hr style="width: 30%; margin: auto; border-top: 3.5px solid rgb(201, 203, 204);">
+            <div style="height: 60px;"></div>
             <% } %>
             <% } %> 
         </div>

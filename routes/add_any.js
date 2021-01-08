@@ -44,16 +44,13 @@ router.post('/',async(req,res)=>{
     }
   
 
-    var sql_Instructor_ssn="select distinct SSN from instructors where Username= '"+Instructor_username+"'";
-    const sql_Instructor_ssn_apply=await AddCourses(sql_Instructor_ssn);
-
     var file = req.files.uploaded_image;
-    var img_name=file.name;
+    var img_name="images/"+file.name;
     if(file.mimetype == "image/jpeg" ||file.mimetype == "image/png"||file.mimetype == "image/gif" ){
                                 
-        file.mv('./public/images/course_uploaded/'+file.name, function(err) {
+        file.mv('./public/images/'+file.name, function(err) {
             if (err)
-            {
+            { 
                 //console.log("can't upload picture");
                 return res.status(500).send(err);
             }
@@ -65,13 +62,15 @@ router.post('/',async(req,res)=>{
     }
     
     //I didn't insert `Programe_Name`,
-    var sql = "INSERT INTO `courses`(`Course_ID`,`Instructors_SSN`,`Category_Name`, `Cost` ,`Duration`,`Course_name`,`Course_info`,`Course_small_info`,`Course_image`) VALUES ('" + RandomCourseID + "','" + sql_Instructor_ssn_apply[0].SSN + "','" + Category + "'," + Cost + "," + Duration + ",'" + courseName + "','" + courseInformation + "','" + Course_small_info + "','" + img_name + "')";
+
+    var sql = "INSERT INTO `courses`(`Course_ID`,`Instructors_Username`,`Category_Name`, `Cost` ,`Duration`,`Course_Name`,`Course_info`,`Course_small_info`,`Course_image`) VALUES ('" + RandomCourseID + "','" + Instructor_username + "','" + Category + "'," + Cost + "," + Duration + ",'" + courseName + "','" + courseInformation + "','" + Course_small_info + "','" + img_name + "')";
+
     await AddCourses(sql);
 
 
     res.redirect('/Account_Settings');
 });
- 
+  
 const AddCourses = (query) => {
     //console.log("inside AddCourses function");
     return new Promise ((resolve, reject) => {
@@ -81,6 +80,7 @@ const AddCourses = (query) => {
                         {
                         //console.log('Course added');
                         resolve(rows);
+                    
                         
                         }
                     else

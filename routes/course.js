@@ -1,18 +1,19 @@
 const router = require('express').Router();
 var db = require('../db');
 
-  
+   
 router.get('/', async(req, res) => {
+
 
 
     Courses_query="SELECT C.*,I.Fname, I.Lname FROM Courses as C JOIN Instructors as I ON C.Instructors_Username = I.Username;";
     const GetCoursess=await getfromDB(Courses_query);
 
 
-    return res.render('course',{
+    return res.render('course',{ 
         title: 'course', 
         css:'course',
-        courses: GetCoursess, 
+        courses: GetCoursess
     })
 
 

@@ -89,13 +89,12 @@ const Donate = (query) => {
                       {
                         console.log('Post viewed');
                         resolve(rows);
-                        
                       }
                     else
                      {reject(new Error(error));}
                })
 
-        }, 1000);
+        }, 100);
     });
 };
 module.exports = router;

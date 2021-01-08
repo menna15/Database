@@ -72,9 +72,9 @@ app.use('/course', require('./routes/course'));
 app.use('/singleCourse', require('./routes/singleCourse'));
 app.use('/Account_Settings', require('./routes/Account_Settings'));
 app.use('/Achievements', require('./routes/Achievements'));
-app.use('/add_any', require('./routes/add_any'));
+app.use('/add_any', require('./routes/add_any')); 
 app.use('/Donate', require('./routes/Donate'));
-app.listen(port,(error)=>{
+app.listen(port,(error)=>{ 
     if(error) return console.log(error);
 console.log(`server started listening at ${port}`);
 

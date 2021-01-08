@@ -9,7 +9,7 @@ router.get('/', async(req, res) => {
         var Programs = await GetfromDB("SELECT * FROM Programs");
         var programCourses = [];
         for(let i = 0; i < Programs.length; i++){
-            let sqlquery = "SELECT C.Course_Name, C.Course_image, C.Cost, I.Fname,I.Lname, I.Profile_Pic FROM Courses as C JOIN Instructors as I ON C.Instructors_Username = I.Username WHERE Programe_Name = '"+ Programs[i].PName + "';";
+            let sqlquery = "SELECT C.Course_Name, C.Course_image,C.Course_ID, C.Cost, I.Fname,I.Lname, I.Profile_Pic FROM Courses as C JOIN Instructors as I ON C.Instructors_Username = I.Username WHERE Programe_Name = '"+ Programs[i].PName + "';";
             let tmp_ProgramCourse = await GetfromDB(sqlquery);
             if(tmp_ProgramCourse!= []){
                 programCourses.push(tmp_ProgramCourse);

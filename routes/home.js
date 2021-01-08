@@ -22,7 +22,6 @@ statistics["Students"] = await GetStudents(sql_query);
 
 sql_query = "SELECT * FROM Courses;"
 statistics["Courses"] = await GetCourses(sql_query);
-console.log(statistics);
 
 
 res.render('home', {
