@@ -36,12 +36,12 @@
             <h2 class="title">Sign up</h2>
             <div class="input-field">
               <i class="fas fa-user"></i>
-              <input type="text" placeholder="Full Name" name = "FullName" required/>
+              <input type="text" placeholder="First Name" name = "FirstName" required/>
             </div>
             <div class="input-field">
               <i class="fas fa-user"></i>
-              <input type="number" placeholder="SSN" name = "SSN"  min="10000000000000" max="99999999999999" required/>
-            </div>
+              <input type="text" placeholder="Last Name" name = "LastName" required/>
+            </div>            
             <div class="input-field">
               <i class="fas fa-user"></i>
               <input type="text" placeholder="Username" name = "Username" required />
@@ -57,6 +57,18 @@
             <div class="input-field">
               <i class="fas fa-lock"></i>
               <input type="password" placeholder="Confirm_Password" name = "Confirm_Password" required onchange='check_pass();' />
+            </div>
+
+
+            <div class="input-field">
+
+              <i class="fas fa-lock"></i>
+
+              <select class="input-field" name="Gender" placeholder="Gender" >
+                <option  class="input-field" value="Male"  > Male </option>
+                <option  class="input-field" value="Female"> Female </option>                
+              </select>
+              
             </div>
             <input type="submit" class="btn" value="Sign up" />
             

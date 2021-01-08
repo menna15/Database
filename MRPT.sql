@@ -58,12 +58,14 @@ create table if Not exists Instructors
 Fname varchar(50) not null,
 Lname varchar(50) not null,
 Username varchar(50) not null,
-IT_Username varchar(50) not null,
+IT_Username varchar(50) ,
 Profile_Pic varchar(1024),
 Password varchar(50),
 Email varchar(50),
 Total_Income float,
 Gender varchar(6),
+CV_Link varchar(500),
+Statuss int ,  
 primary key (Username),
 
 Foreign key (IT_Username) references IT_Adminstrators(Username)
@@ -223,10 +225,10 @@ INSERT INTO Programs (PName, Cost, Level, Duration, Program_info, Program_image)
                                     
 
 -- instructors --
-insert  into Instructors values ('Omar','Kamal','OmarA',"Mkamal","images/author.jpg",null,null,900, "Male");
-insert  into Instructors values ('Emad','Atalah','EmadA',"Mkamal","images/author.jpg",null,null,1000, "Male");
-INSERT INTO Instructors VALUES ("Menna", "Ahmed", "mennaahmed","Mkamal", "images/author.jpg", null, null,null, "Female");
-INSERT INTO Instructors VALUES ("Reem", "Attalah", "reemattalah", "Mkamal", "images/author.jpg", null, null, null,"Female");
+insert  into Instructors values ('Omar','Kamal','OmarA',"Mkamal","images/author.jpg",null,null,900, "Male" , "", 1);
+insert  into Instructors values ('Emad','Atalah','EmadA',"Mkamal","images/author.jpg",null,null,1000, "Male", "", 1);
+INSERT INTO Instructors VALUES ("Menna", "Ahmed", "mennaahmed","Mkamal", "images/author.jpg", null, null,null, "Female", "", 1);
+INSERT INTO Instructors VALUES ("Reem", "Attalah", "reemattalah", "Mkamal", "images/author.jpg", null, null, null,"Female", "", 1);
 
 
 -- Courses -- 
