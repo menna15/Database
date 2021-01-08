@@ -42,7 +42,7 @@ router.post('/', async function(req, res, next) {
         title: 'Donate',
         css:'Donate',
         js:'Donate',
-        message: "Donation amount must be numeric value "
+        message: "Donation amount must be a numeric value "
     });}
     if(req.body.date=="" )
     { 
@@ -56,7 +56,8 @@ router.post('/', async function(req, res, next) {
     });}
     else{
     var sql_query=`INSERT INTO donors  VALUES ("${req.body.Orgnization_name}","${req.body.Email}" ,"${req.body.date}","${req.body.amount}");`
-    var executed = await Donate(sql_query);
+    try
+    {var executed = await Donate(sql_query);
     if (executed)
     {
         return res.render('Donate', {
@@ -66,8 +67,10 @@ router.post('/', async function(req, res, next) {
             message: "Succsessfully Donated!"
         });
     }
-    else
+    }
+    catch(e)
     {
+         console.error(e);
         return res.render('Donate', {
             title: 'Donate',
             css:'Donate',
