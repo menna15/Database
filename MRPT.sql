@@ -38,7 +38,7 @@ Level varchar(50),
 Duration int,
 Program_info TEXT,
 Program_image varchar(1024),
-IT_Username varchar(50),
+IT_Username varchar(50) not null,
 primary key (PName),
 foreign key (IT_Username) references IT_Adminstrators(Username)
 );
@@ -216,9 +216,9 @@ INSERT INTO Categories (CName, IT_Username, Category_image) VALUES ("Quantum", "
 INSERT INTO Categories (CName, IT_Username, Category_image) VALUES ("Web Development", "Mkamal","images/Web_Dev.png");
 
 -- Programs --
-INSERT INTO Programs (PName, Cost, Level, Duration, Program_info, Program_image) VALUES ("AI", 15000, "Beginner", 3, "Our set he for firmament morning sixth subdue darkness creeping gathered divide our
+INSERT INTO Programs (PName,IT_Username,Cost, Level, Duration, Program_info, Program_image) VALUES ("AI", "Mkamal", 15000, "Beginner", 3, "Our set he for firmament morning sixth subdue darkness creeping gathered divide our
                                     let god moving. Moving in fourth air night bring upon", "images/ML.jpeg");
-INSERT INTO Programs (PName, Cost, Level, Duration, Program_info, Program_image) VALUES ("Web Development", 15000, "Beginner", 3, "Our set he for firmament morning sixth subdue darkness creeping gathered divide our
+INSERT INTO Programs (PName,IT_Username, Cost, Level, Duration, Program_info, Program_image) VALUES ("Web Development", "Mkamal", 15000, "Beginner", 3, "Our set he for firmament morning sixth subdue darkness creeping gathered divide our
                                     let god moving. Moving in fourth air night bring upon", "images/Web_Dev.png");
                                     
 
@@ -255,4 +255,3 @@ INSERT INTO Coupons (Coupon_ID, SDate, EDate, discount_percentage, Category_Name
 
 -- Teaches --
 insert into Teaches values("OmarA",3,"5");
-
