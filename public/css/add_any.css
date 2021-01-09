@@ -47,7 +47,7 @@
    position: absolute;
    left: 0;
     width:40vw;
-    height:100%;
+    height:100vh;
     
   }
 
@@ -102,7 +102,7 @@
     
 }
 .labels 
-{   margin: 33px 25px 25px 80px;
+{   margin: 33px 30px 25px 80px;
     display: flex;
     flex-direction: column;
 }
@@ -110,26 +110,77 @@
 {   margin: 20px;
 
 }
+.Review
+{
+    width: fit-content;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    
+}
+.review_labels label
+{  
+    margin: 30px 30px 30px 30px;
+    width: 15vw;
+    height: 5vh;  
+    left: 0;
+    background-image: linear-gradient(to top,rgb(145, 211, 223),rgb(68, 131, 131));  
+    align-items: center;
+    padding: 5px 5px 5px 5px;
+
+}
+.review_links a
+{
+    border-radius:5px ;
+    margin: 30px 30px 30px 30px;
+    padding: 5px 5px 5px 5px;
+    width: 15vw;
+    height: 5vh;
+    background-image: linear-gradient(to top,aquamarine,teal);  
+    color: rgb(255, 255, 255);
+    text-align: center;
+    text-decoration: none;
+}
+.corr_inputs_review select
+{
+    
+    margin: 30px 30px 30px 30px;
+    width: 15vw;
+    height: 5vh;  
+    right: 0;
+   border-radius: 5px;
+   background-image:linear-gradient(to top,rgba(159, 215, 241, 0.8),rgba(147, 238, 238, 0.8));
+   
+}
 .corr_inputs 
-{   margin: 25px 25px 36px 35px;
+{   margin: 25px 25px 36px 50px;
     display: flex;
     flex-direction: column;
     
 }
-.corr_inputs input
+.corr_inputs input 
 {
     width: 20vw;
     height: 5vh;
 }
-.corr_inputs  input , textarea
+.corr_inputs select 
+{
+    width: 20vw;
+    height: 5vh;
+}
+
+.corr_inputs  input , textarea,select
 {   margin: 15px;
-    padding-left: 5px;
+    padding-left: 10px;
     outline-width: 0;
     outline: none;
+    background-image: linear-gradient(to top,rgba(159, 215, 241, 0.6),rgba(147, 238, 238, 0.6));
+    border-radius: 3px;
 
 }
 
 .save-btn {
+    border:none;
     height: 3rem;
     padding: 0 2rem;
     border: transparent;
