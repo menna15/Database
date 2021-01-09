@@ -33,7 +33,8 @@ router.post('/',async (req, res) => {
         {
 
             return res.render('Account_Settings', {
-                title: 'Profile/' + sign_in_Username,
+                Type : "student" ,
+                Title: 'Profile/' + sign_in_Username,
                 css: 'Account_Settings',
                 message: req.flash('message')
             });
@@ -42,6 +43,7 @@ router.post('/',async (req, res) => {
         {
 
             return res.render('Account_Settings', {
+                Type : "it_adminstrator" ,
                 title: 'Profile/' + sign_in_Username,
                 css: 'Account_Settings',
                 message: req.flash('message')
@@ -51,6 +53,7 @@ router.post('/',async (req, res) => {
         {
 
             return res.render('Account_Settings', {
+                Type : "owner" ,
                 title: 'Profile/' + sign_in_Username,
                 css: 'Account_Settings',
                 message: req.flash('message')
@@ -60,6 +63,7 @@ router.post('/',async (req, res) => {
         {
 
             return res.render('Account_Settings', {
+                Type:"instructor" ,
                 title: 'Profile/' + sign_in_Username,
                 css: 'Account_Settings',
                 message: req.flash('message')
