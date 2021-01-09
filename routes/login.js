@@ -38,7 +38,7 @@ router.post('/',async (req, res) => {
                 css: 'Account_Settings',
                 message: req.flash('message')
             });
-        }
+        } 
         else if(executed2.length == 1 && executed2[0].Password == sign_in_Password )
         {
 
@@ -61,7 +61,7 @@ router.post('/',async (req, res) => {
         }
         else if(executed4.length == 1 && executed4[0].Password == sign_in_Password )
         {
-
+ 
             return res.render('Account_Settings', {
                 Type:"instructor" ,
                 title: 'Profile/' + sign_in_Username,
