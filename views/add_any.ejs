@@ -134,7 +134,7 @@
                                     <label for="INSTRUCT_USER"><h6><%=instructors[i].Username%></h6></label>
                                 </div>
                                 <div class="review_links">
-                                    <a href="<%=instructors[i].Username%>">CV Link</a>
+                                    <a href="<%=instructors[i].CV_Link%>">CV Link</a>
                                 </div>
                                 <div class="corr_inputs_review">
                                     <select class="<%= i %>" name="<%= i %>" id="<%= i %>" >
@@ -180,7 +180,7 @@
                 <button class="save-btn"type="submit">ADD</button>
             </form>
         </div>
-
+       <!--ADD NEW COUPON-->
         <div class="course">
             <h3>Add New Coupon</h3>
             <form class="infoForm" id="infoForm"method="post" action="/add_any" enctype="multipart/form-data">
@@ -210,6 +210,77 @@
                 </div>
                 <button class="save-btn" type="submit">ADD</button>
             </form>
+        </div>
+         <!--Update COUPON-->
+        <div class="course">
+         <h3>Update Coupon</h3>
+           <% if(coupons_list.length >0){ %>
+                <form class="infoForm" id="infoForm"method="post" action="/add_any" enctype="multipart/form-data">
+                    <% if(message.length >0){ %>
+                        <div id="alerty" class="alert alert-warning" role="alert">
+                        <div id="msg"><%= message%> </div>
+                        <button style="width: 30px; background-color: burlywood; " id='close' onclick=' this.parentNode.parentNode.removeChild(this.parentNode); return false;'><strong> X</strong></button>
+                    
+                    </div><br>
+                    <% } %>
+                    <div class="Course-info">
+                        <div class="labels">
+                            <label for="Owner_username_couponU">Owner username</label>
+                            <label for="Coupon_id_update">Coupon ID</label>
+                            <label for="percentage_U">Discount percentage</label>
+                            <label for="start_U">start Date</label>
+                            <label for="end_U">End Date</label>
+                            <label for="Category_U">Category Name</label>
+                        </div>
+                        <div class="corr_inputs">
+                            <input id="Owner_username_couponU" type="text" name="Owner_username_couponU" size="40" required="" > 
+
+                            <select class="Coupon_id_update" name="Coupon_id_update" id="Coupon_id_update" >
+                                <option value=""> </option>
+                                <% for(var i = 0; i < coupons_list.length; i++) { %>
+                                <option value="<%=coupons_list[i].Coupon_ID%>"><%=coupons_list[i].Coupon_ID%></option>
+                                <% } %>
+                            </select>      
+                            <input id="percentage_U" type="number" name="percentage_U" size="40" required="" >     
+                            <input id="start_U" type="date" name="start_U" required="">     
+                            <input id="end_U" type="date" name="end_U"  required="">     
+                            <input id="Category_U" type="text" name="Category_U" size="40" required="">                       
+                        </div>
+                        
+                    </div>
+                    <button class="save-btn" type="submit">Update Coupon</button>
+                </form>
+            <% } %>
+        </div>
+        <!--Delete COUPON-->
+        <div class="course">
+            <h3>Delete Coupon</h3>
+            <% if(coupons_list.length >0){ %>
+                <form class="infoForm" id="infoForm"method="post" action="/add_any" enctype="multipart/form-data">
+                    <% if(message.length >0){ %>
+                        <div id="alerty" class="alert alert-warning" role="alert">
+                        <div id="msg"><%= message%> </div>
+                        <button style="width: 30px; background-color: burlywood; " id='close' onclick=' this.parentNode.parentNode.removeChild(this.parentNode); return false;'><strong> X</strong></button>
+                    
+                    </div><br>
+                    <% } %>
+                    <div class="Course-info">
+                        <div class="labels">
+                            <label for="Coupon_id_delete">Coupon ID</label>
+                        </div>
+                        <div class="corr_inputs">
+                            <select class="Coupon_id_delete" name="Coupon_id_delete" id="Coupon_id_delete" >
+                                <option value=""> </option>
+                                <% for(var i = 0; i < coupons_list.length; i++) { %>
+                                <option value="<%=coupons_list[i].Coupon_ID%>"><%=coupons_list[i].Coupon_ID%></option>
+                                <% } %>
+                            </select>                             
+                        </div>
+                        
+                    </div>
+                    <button class="save-btn" type="submit">Delete Coupon</button>
+                </form>
+            <% } %>
         </div>
     </div>
 

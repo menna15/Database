@@ -1,19 +1,15 @@
 const router = require('express').Router();
 var db = require('../db');
 var instructors;
+var coupons_list;
 router.get('/', async(req, res) => {
-
-   var sql_query="SELECT Username from instructors where statuss=1";
    
    try{
-       instructors=await ApplyQuery(sql_query);
+       instructors=await ApplyQuery('SELECT Username from instructors where statuss=1');
        console.log(instructors);
-       return res.render('add_any', {
-        title: 'Add...',
-        css: 'add_any',
-        message:  req.flash('message'),
-        instructors:instructors
-    })
+           // for coupons id 
+       coupons_list=await ApplyQuery('SELECT Coupon_ID from Coupons ');
+       console.log(coupons_list);
 
     }
     catch(e)
@@ -21,14 +17,23 @@ router.get('/', async(req, res) => {
         console.error(e);
         message="Failed to retriev all instructors";
         return res.render('add_any', {
-            title: 'Add...',
+            title: 'Add ...',
             css: 'add_any',
             message:  req.flash('message'),
-            instructors:instructors
+            instructors:instructors,
+            coupons_list:coupons_list
         })
     
     }
-    
+
+
+     return res.render('add_any', {
+        title: 'Add...',
+        css: 'add_any',
+        message:  req.flash('message'),
+        instructors:instructors,
+        coupons_list:coupons_list
+     });
 });
 
 router.post('/',async(req,res)=>{
@@ -52,7 +57,8 @@ if (!courseName) {
         title: 'Add...',
         css: 'add_any',
         message:  "Course must have a name",
-        instructors:instructors
+        instructors:instructors,
+        coupons_list:coupons_list
     })
 }
 var validInstructorQuery="select * from instructors where Username='"+Instructor_username+"'";
@@ -65,7 +71,8 @@ else{
         title: 'Add...', 
         css: 'add_any',
         message:  "Enter valid instructor name",
-        instructors:instructors
+        instructors:instructors,
+        coupons_list:coupons_list
     })
 }
 
@@ -74,7 +81,8 @@ if (!Cost) {
         title: 'Add...',
         css: 'add_any',
         message:  "Course must have a price",
-        instructors:instructors
+        instructors:instructors,
+        coupons_list:coupons_list
     })
 }
 if (!Duration) {
@@ -82,7 +90,8 @@ if (!Duration) {
         title: 'Add...',
         css: 'add_any',
         message:  "Course must have a duration time",
-        instructors:instructors
+        instructors:instructors,
+        coupons_list:coupons_list
     })
 }
 var validCategoryQuery="select * from categories where CName='"+Category+"'";
@@ -96,7 +105,8 @@ else{
         title: 'Add...', 
         css: 'add_any',
         message:  "Enter existing category name",
-        instructors:instructors
+        instructors:instructors,
+        coupons_list:coupons_list
     })
 }
 
@@ -105,7 +115,8 @@ if (!Course_link) {
         title: 'Add...',
         css: 'add_any',
         message:  "Course content must have a link",
-        instructors:instructors
+        instructors:instructors,
+        coupons_list:coupons_list
     })
 }
 
@@ -114,7 +125,8 @@ if (!Course_small_info) {
         title: 'Add...',
         css: 'add_any',
         message:  "Course must have a small attractive information",
-        instructors:instructors
+        instructors:instructors,
+        coupons_list:coupons_list
     })
 }
 if (!courseInformation) {
@@ -122,7 +134,8 @@ if (!courseInformation) {
         title: 'Add...',
         css: 'add_any',
         message:  "Course must have a brief information about course details",
-        instructors:instructors
+        instructors:instructors,
+        coupons_list:coupons_list
     })
 }
 
@@ -175,7 +188,8 @@ return res.render('Account_Settings', {
     title: 'Account_Settings',
     css: 'Account_Settings',
     message: "Course is added",
-    instructors:instructors
+    instructors:instructors,
+    coupons_list:coupons_list
 })
 }
 //----------------------------------------------Add category ----------------------------------------------------------------------------
@@ -201,7 +215,8 @@ if(req.body.cat_image)
             title: 'Add...',
             css: 'add_any',
             message:  "This format is not allowed , please upload file with '.png','.gif','.jpg'",
-            instructors:instructors
+            instructors:instructors,
+            coupons_list:coupons_list
         })
     }
 }
@@ -215,7 +230,8 @@ if(!isNaN(req.body.Category_Name))
     title: 'Add...', 
     css: 'add_any',
     message: "Invalid Category name!",
-    instructors:instructors}
+    instructors:instructors,
+    coupons_list:coupons_list}
 )
 ;}
 try
@@ -225,7 +241,8 @@ try
         title: 'Add...', 
         css: 'add_any',
         message: "Category added successfully !",
-            instructors:instructors}
+            instructors:instructors,
+            coupons_list:coupons_list}
     );
 }
 catch(e)
@@ -235,7 +252,8 @@ catch(e)
         title: 'Add...', 
         css: 'add_any',
         message: "Faild to add this category!, Category Name may be taken or Username is incorrect!",
-                instructors:instructors
+                instructors:instructors,
+                coupons_list:coupons_list
     });
 }
 }
@@ -261,7 +279,8 @@ if(req.body.Program_img)
             title: 'Add...',
             css: 'add_any',
             message:  "This format is not allowed , please upload file with '.png','.gif','.jpg'",
-                    instructors:instructors
+                    instructors:instructors,
+                    coupons_list:coupons_list
         })
     }
 }
@@ -275,7 +294,8 @@ if(!isNaN(req.body.Program_Name))
     title: 'Add...', 
     css: 'add_any',
     message: "Invalid Program name!",
-        instructors:instructors}
+        instructors:instructors,
+        coupons_list:coupons_list}
 )
 ;}
 if(isNaN(req.body.Cost_prog))
@@ -283,7 +303,8 @@ if(isNaN(req.body.Cost_prog))
     title: 'Add...', 
     css: 'add_any',
     message: "Cost must be a numeric value!",
-        instructors:instructors}
+        instructors:instructors,
+        coupons_list:coupons_list}
 )
 ;}
 if(isNaN(req.body.Duration_program))
@@ -291,7 +312,8 @@ if(isNaN(req.body.Duration_program))
     title: 'Add...', 
     css: 'add_any',
     message: "Duration must be a numeric value!",
-        instructors:instructors}
+        instructors:instructors,
+        coupons_list:coupons_list}
 )
 ;}
 if(!req.body.Level)
@@ -299,7 +321,8 @@ if(!req.body.Level)
     title: 'Add...', 
     css: 'add_any',
     message: "Enter Program Level!",
-        instructors:instructors}
+        instructors:instructors,
+        coupons_list:coupons_list}
 )
 ;}
 var sql_query= "INSERT INTO Programs (PName,IT_Username, Cost, Level, Duration,Program_image,Program_info) VALUES ('" +req.body.Program_Name+"','"+req.body.IT_username_prog+"','"+req.body.Cost_prog+"','"+req.body.Level+"','"+req.body.Duration_program+"','"+req.body.Program_img+"','"+req.body.program_info+"')";
@@ -310,7 +333,8 @@ try
         title: 'Add...', 
         css: 'add_any',
         message: "Program added successfully !",
-            instructors:instructors}
+            instructors:instructors,
+            coupons_list:coupons_list}
     );
 }
 catch(e)
@@ -320,20 +344,22 @@ catch(e)
         title: 'Add...', 
         css: 'add_any',
         message: "Faild to add this Program!, Program Name may be taken or Username is incorrect!",
-                instructors:instructors
+                instructors:instructors,
+                coupons_list:coupons_list
     });
 }
 }
 // -------------------------------------------------------------- Add IT Administrator --------------------------------------------------------------------------
 
- if(!req.body.IT_FName=="" || !req.body.IT_LName=="" || !req.body.IT_username=="" || !req.body.Owner_username=="")
+if(!req.body.IT_FName=="" || !req.body.IT_LName=="" || !req.body.IT_username=="" || !req.body.Owner_username=="")
 {
     if (!req.body.IT_FName) {
         return res.render('add_any', {
             title: 'Add...',
             css: 'add_any',
             message:  "You must enter IT First Name ",
-                    instructors:instructors
+                    instructors:instructors,
+                    coupons_list:coupons_list
         })
     }
     if (!req.body.IT_LName) {
@@ -341,7 +367,8 @@ catch(e)
             title: 'Add...',
             css: 'add_any',
             message:  "You must enter IT Last Name ",
-                    instructors:instructors
+                    instructors:instructors,
+                    coupons_list:coupons_list
         })
     }
     var RandomUsername= Math.floor((Math.random() * 1000000) + 1);
@@ -365,7 +392,8 @@ catch(e)
             title: 'Add...',
             css: 'add_any',
             message:  "You must enter your username in Owner username",
-            instructors:instructors
+            instructors:instructors,
+            coupons_list:coupons_list
         })
     }
 
@@ -377,83 +405,13 @@ catch(e)
         title: 'Add...', 
         css: 'add_any',
         message: "IT Administrator is added successfully !",
-        instructors:instructors}
+        instructors:instructors,
+        coupons_list:coupons_list}
     );
 }
-// -------------------------------------------------------------- Review Instructors --------------------------------------------------------------------------
-var sql_query="SELECT Username from instructors where statuss= 1";
-var instructors;
-   try {
-      instructors=await ApplyQuery(sql_query);
-       console.log(instructors);
-    }
-    catch(e)
-    {
-        console.error(e);
-    }
-if(instructors.length!=0)
-{    
-    for(var i=0 ; i< instructors.length ; i++)
-    {   
-        if(req.body[i]!="Select")
-        {  
-            if(req.body[i]=="Rejected")
-            {          
-                var sql_query="DELETE from instructors where Username='"+ instructors[i].Username+"'";
-                    try{
-                    var executed= await ApplyQuery(sql_query);
-                    }
-                    catch(e)
-                    {
-                        console.error(e);
-                        return res.render('add_any', {
-                            title: 'Add...', 
-                            css: 'add_any',
-                            message: "FAILD!",
-                            instructors:instructors
-                        });
-                    }
-                   
-                    
-            }
-           else if(req.body[i]=="Accepted")
-           {     
-               var sql_query="Update instructors set Statuss='"+ 0+"' where Username='"+instructors[i].Username+"'";
-                try{
-                    var executed= await ApplyQuery(sql_query);
-                    }
-                catch(e)
-                {
-                    console.error(e);
-                    return res.render('add_any', {
-                        title: 'Add...', 
-                        css: 'add_any',
-                        message: "FAILD!",
-                        instructors:instructors
-                    });
-                }
 
-            }
-        }
-
-    }
-    return res.render('add_any', {
-        title: 'Add...', 
-        css: 'add_any',
-        message: "Successfully!",
-        instructors:instructors
-    });
-}
-else 
-{    
-    return res.render('add_any', {
-    title: 'Add...', 
-    css: 'add_any',
-    message: "",
-    instructors:instructors});
-}
 // ------------------------------------------------ ADD Coupons ----------------------------------------------------
- if(!req.body.Owner_username2=="" || !req.body.percentage=="" || !req.body.start=="" || !req.body.end=="" ||!req.body.Category2=="" )
+if(!req.body.Owner_username2=="" || !req.body.percentage=="" || !req.body.start=="" || !req.body.end=="" ||!req.body.Category2=="" )
 {
     //create random coupon id
     var RandomCoupon_ID= Math.floor((Math.random() * 1000000) + 1);
@@ -477,7 +435,8 @@ else
                 title: 'Add...',
                 css: 'add_any',
                 message:  "You must enter your username in Owner username",
-                        instructors:instructors
+                        instructors:instructors,
+                        coupons_list:coupons_list
             })
         }
     //percentage between 0-100
@@ -486,7 +445,8 @@ else
             title: 'Add...',
             css: 'add_any',
             message:  "You must enter coupon discount percentage ",
-                    instructors:instructors
+                    instructors:instructors,
+                    coupons_list:coupons_list
         })
     }
     if(req.body.percentage < 0  || req.body.percentage > 100)
@@ -495,7 +455,8 @@ else
             title: 'Add...',
             css: 'add_any',
             message:  "Coupon discount percentage must be between 0-100",
-                    instructors:instructors
+                    instructors:instructors,
+                    coupons_list:coupons_list
         })
     }
 
@@ -504,7 +465,8 @@ else
             title: 'Add...',
             css: 'add_any',
             message:  "You must enter coupon discount start date",
-                    instructors:instructors
+                    instructors:instructors,
+                    coupons_list:coupons_list
         })
     }
     if (!req.body.end) {
@@ -512,7 +474,8 @@ else
             title: 'Add...',
             css: 'add_any',
             message:  "You must enter coupon discount end date",
-                    instructors:instructors
+                    instructors:instructors,
+                    coupons_list:coupons_list
         })
     }
     //end date must be greater than start date
@@ -522,20 +485,21 @@ else
             title: 'Add...',
             css: 'add_any',
             message:  "end date must be greater than start date",
-                    instructors:instructors
+                    instructors:instructors,
+                    coupons_list:coupons_list
         })
     }
     var validCategoryQuery="select * from categories where CName='"+req.body.Category2+"'";
     sql_validInstructorQuery=await ApplyQuery(validCategoryQuery);
 
-    if (req.body.Category2 && sql_validInstructorQuery != 0) {
-    }
+    if (req.body.Category2 && sql_validInstructorQuery != 0) {}
     else{
         return res.render('add_any', {
             title: 'Add...', 
             css: 'add_any',
             message:  "Enter existing category name",
-                    instructors:instructors
+                    instructors:instructors,
+                    coupons_list:coupons_list
         })
     }
     
@@ -547,17 +511,233 @@ else
             title: 'Add...', 
             css: 'add_any',
             message: "Coupon is added successfully !",
-                instructors:instructors}
+                instructors:instructors,
+                coupons_list:coupons_list}
         );
 }
+//------------------------------------------------------- Update Coupon -----------------------------------------------------------------------
+if(!req.body.Coupon_id_update==""||!req.body.Owner_username_couponU=="" || !req.body.percentage_U=="" || !req.body.start_U=="" || !req.body.end_U=="" ||!req.body.Category_U=="" )
+{
+    coupons_list=await ApplyQuery('SELECT Coupon_ID from Coupons ');
+    //loop over coupons to detect if coupoun duration ended or not so can take any action(upadte or delete)
+    var coupons = await ApplyQuery("SELECT * FROM Coupons where Coupon_ID='"+req.body.Coupon_id_update+"'");
+    let currDate = new Date();
+    console.log(req.body);
+    if(!(coupons.EDate>currDate))
+    {
+        //owner username
+        var checkOwnerExists ="select * from owners where Username='"+req.body.Owner_username_couponU+"'";
+        var sqlcheckOwnerExists=await ApplyQuery(checkOwnerExists);
 
+        if (req.body.Owner_username_couponU && sqlcheckOwnerExists!= 0){}
+            else {
+                return res.render('add_any', {
+                    title: 'Add...',
+                    css: 'add_any',
+                    message:  "You must enter your username in Owner username",
+                            instructors:instructors,
+                            coupons_list:coupons_list
+                })
+            }
+        //percentage between 0-100
+        if (!req.body.percentage_U) {
+            return res.render('add_any', {
+                title: 'Add...',
+                css: 'add_any',
+                message:  "You must enter coupon discount percentage ",
+                        instructors:instructors,
+                        coupons_list:coupons_list
+            })
+        }
+        if(req.body.percentage_U < 0  || req.body.percentage_U > 100)
+        {
+            return res.render('add_any', {
+                title: 'Add...',
+                css: 'add_any',
+                message:  "Coupon discount percentage must be between 0-100",
+                        instructors:instructors,
+                        coupons_list:coupons_list
+            })
+        }
+        //end date must be greater than start date
+        if(req.body.start_U >= req.body.end_U)
+        {
+            return res.render('add_any', {
+                title: 'Add...',
+                css: 'add_any',
+                message:  "end date must be greater than start date",
+                        instructors:instructors,
+                        coupons_list:coupons_list
+            })
+        }
+        var validCategoryQuery="select * from categories where CName='"+req.body.Category_U+"'";
+        sql_validInstructorQuery=await ApplyQuery(validCategoryQuery);
 
-    return res.render('Account_Settings', {
-        title: 'Account_Settings',
-        css: 'Account_Settings',
-        message: "Nothing is added",
-                instructors:instructors
-    })
+        if (req.body.Category_U && sql_validInstructorQuery != 0) {}
+        else{
+            return res.render('add_any', {
+                title: 'Add...', 
+                css: 'add_any',
+                message:  "Enter existing category name",
+                        instructors:instructors,
+                        coupons_list:coupons_list
+            })
+        }
+        
+            var addCoupon="update coupons set  Owner_Username= '"+req.body.Owner_username_couponU  +"',SDate= '"+req.body.start_U  +"',EDate= '"+ req.body.end_U+"',discount_percentage = '"+ req.body.percentage_U +"',Category_Name = '"+ req.body.Category_U +"' where Coupon_ID='"+req.body.Coupon_id_update+"';"; 
+            
+            try{await ApplyQuery(addCoupon);
+                return res.render('Account', {
+                    title: 'Add...', 
+                    css: 'add_any',
+                    message: "Coupon is updated successfully !",
+                        instructors:instructors,
+                        coupons_list:coupons_list}
+                );}
+            catch(e){
+                console.error(e);
+                return res.render('add_any', {
+                    title: 'Add...', 
+                    css: 'add_any',
+                    message: "Faild to update coupon!",
+                        instructors:instructors,
+                        coupons_list:coupons_list}
+                );
+            }
+            
+    }
+}
+//--------------------------------------------------------------Delete Coupon--------------------------------------------------------------------------------------------
+if(req.body.Coupon_id_delete !="")
+{
+    coupons_list=await ApplyQuery('SELECT Coupon_ID from Coupons ');
+    //loop over coupons to detect if coupoun duration ended or not so can take any action(upadte or delete)
+    var coupons;
+    var deleteCoupon="SELECT * FROM Coupons where Coupon_ID="+req.body.Coupon_id_delete+";";
+    try{coupons = await ApplyQuery(deleteCoupon);}
+    catch(e){
+        console.error(e);
+        return res.render('Account_Settings', {
+            title: 'Account_Settings', 
+            css: 'Account_Settings',
+            message: "Cannot find such a coupon!",
+        }
+        );
+    }
+
+    let currDate = new Date();
+    if(coupons[0].EDate<currDate)
+    {
+
+        var addCoupon="Delete from coupons where Coupon_ID='"+req.body.Coupon_id_delete+"';"; 
+            
+        try{await ApplyQuery(addCoupon);
+            return res.render('Account_Settings', {
+                title: 'Account_Settings', 
+                css: 'Account_Settings',
+                message: "Coupon is deleted successfully !",
+            }
+            );}
+        catch(e){
+            console.error(e);
+            return res.render('Account_Settings', {
+                title: 'Account_Settings', 
+                css: 'Account_Settings',
+                message: "Faild to delete coupon!",
+            }
+            );
+        }
+        
+    }
+    else{
+        return res.render('Account_Settings', {
+            title: 'Account_Settings', 
+            css: 'Account_Settings',
+            message: "Cannot delete this coupon because it is currently in use!",
+}
+        );
+    }
+}
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+// -------------------------------------------------------------- Review Instructors --------------------------------------------------------------------------
+var sql_query="SELECT Username from instructors where statuss= 1";
+var instructors;
+try {
+    instructors=await ApplyQuery(sql_query);
+    console.log(instructors);
+    }
+    catch(e)
+    {
+        console.error(e);
+    }
+if(instructors.length!=0)
+{    
+    for(var i=0 ; i< instructors.length ; i++)
+    {   
+        if(req.body[i]!="Select")
+        {  
+            if(req.body[i]=="Rejected")
+            {          
+                var sql_query="DELETE from instructors where Username='"+ instructors[i].Username+"'";
+                    try{
+                    var executed= await ApplyQuery(sql_query);
+                    return res.render('add_any', {
+                        title: 'Add...', 
+                        css: 'add_any',
+                        message: "Instructor is added Successfully!",
+                        instructors:instructors,
+                        coupons_list:coupons_list
+                    });
+                    }
+                    catch(e)
+                    {
+                        console.error(e);
+                        return res.render('add_any', {
+                            title: 'Add...', 
+                            css: 'add_any',
+                            message: "FAILD with Schema error !",
+                            instructors:instructors,
+                            coupons_list:coupons_list
+                        });
+                    }
+                
+                    
+            }
+            else if(req.body[i]=="Accepted")
+            {     
+                var sql_query="Update instructors set Statuss='"+ 0+"' where Username='"+instructors[i].Username+"'";
+                    try{
+                        var executed= await ApplyQuery(sql_query);
+                        }
+                    catch(e)
+                    {
+                        console.error(e);
+                        return res.render('add_any', {
+                            title: 'Add...', 
+                            css: 'add_any',
+                            message: "FAILD to add the instructor!",
+                            instructors:instructors,
+                            coupons_list:coupons_list
+                        });
+                    }
+
+                }
+            
+        }
+
+    }
+    
+}
+//-------------------------------------------------------------------------------------------------------------
+
+return res.render('Account_Settings', {
+    title: 'Account_Settings',
+    css: 'Account_Settings',
+    message: "Nothing is added",
+            instructors:instructors,
+            coupons_list:coupons_list
+})
 });
 
   
