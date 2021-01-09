@@ -34,5 +34,15 @@
     cursorcolor:"aquamarine",
     cursorwidth:"16px"
 });</script>
+
+<script type="text/javascript">
+    $(function(){
+        $('a').click(function(){
+            var link = $(this).attr("x");
+            $("iframe").attr("src", link);
+        });
+    });
+</script>
+
 </body>
 </html>

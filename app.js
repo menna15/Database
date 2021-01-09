@@ -75,6 +75,8 @@ app.use('/Account_Settings', require('./routes/Account_Settings'));
 app.use('/Achievements', require('./routes/Achievements'));
 app.use('/add_any', require('./routes/add_any')); 
 app.use('/Donate', require('./routes/Donate'));
+app.use('/Course_Content', require('./routes/Course_Content'));
+
 app.listen(port,(error)=>{ 
     if(error) return console.log(error);
 console.log(`server started listening at ${port}`);
