@@ -14,21 +14,97 @@
                 <div class="choices">
                     <a href="/Account_Settings">Profile</a>
                     <hr style="border-top: 1px solid #bbb;">
+
+
+
+
+                    <% if (   typeof Type !== 'undefined')   {  %>
+                        <%  if (Type == "instructor" || Type == "student" )  {  %>
+
+                    
                     <a href="/Achievements">Achievements</a>
                     <hr style="border-top: 1px solid #bbb;">
+
+                    <%  } %>                        
+                    <% } %>
+
+                        <% if (   typeof Type !== 'undefined')   {  %>
+                        <%  if (Type == "instructor" )  {  %>
+                              
                     <a href="/add_any">Add Course</a>
                     <hr style="border-top: 1px solid #bbb;">
+                        
+                        <%  } %>                        
+                        <% } %>
+
+                        <% if (   typeof Type !== 'undefined')   {  %>
+                            <%  if ( Type == "it_adminstrator"  )  {  %>
+
                     <a href="/">Add Instructors</a>
                     <hr style="border-top: 1px solid #bbb;">
+
+                     
+                    <%  } %>                        
+                    <% } %>
+
+                    <% if (   typeof Type !== 'undefined')   {  %>
+                        <%  if (Type == "owner" )  {  %>
+
                     <a href="/">Add IT Adminstrators</a>
                     <hr style="border-top: 1px solid #bbb;">
+    
+                    <%  } %>                        
+                    <% } %>
+
+                    <% if (   typeof Type !== 'undefined')   {  %>
+                        <%  if (Type == "it_adminstrator" )  {  %>
+
+
                     <a href="/">Add Program</a>
                     <hr style="border-top: 1px solid #bbb;">
+                    <%  } %>                        
+                    <% } %>
+
+                    <% if (   typeof Type !== 'undefined')   {  %>
+                        <%  if (Type == "it_adminstrator" )  {  %>
+
                     <a href="/">Add Category</a>
                     <hr style="border-top: 1px solid #bbb;">
+
+                    <%  } %>                        
+                    <% } %>
+
+                    <% if (   typeof Type !== 'undefined')   {  %>
+                        <%  if (Type == "it_adminstrator" )  {  %>
+
+
                     <a href="/">Add Coupon</a>
                     <hr style="border-top: 1px solid #bbb;">
+
+                    <%  } %>                        
+                    <% } %>
+
+                    <% if (   typeof Type !== 'undefined')   {  %>
+                        <%  if (Type == "it_adminstrator" )  {  %>
+
+
+                    <a href="/add_any">Update Coupon</a>
+                    <hr style="border-top: 1px solid #bbb;">
+
+                    <%  } %>                        
+                    <% } %>
+
+                    <% if (   typeof Type !== 'undefined')   {  %>
+                        <%  if (Type == "it_adminstrator" )  {  %>
+
+
+                    <a href="/add_any">Delete Coupon</a>
+                    <hr style="border-top: 1px solid #bbb;">
+                    <%  } %>                        
+                    <% } %>            
+                    <% if (   typeof Type !== 'undefined')   {  %>
                     <a href="#">Log Out</a>
+                    <% } %>     
                 </div>
             </div>
 

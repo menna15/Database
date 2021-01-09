@@ -64,7 +64,7 @@ Password varchar(50),
 Email varchar(50),
 Total_Income float,
 Gender varchar(6),
-CV_Link varchar(500),
+CV_Link varchar(500) not null,
 Statuss int ,  
 primary key (Username),
 
@@ -87,7 +87,7 @@ Course_small_info TINYTEXT,
 Primary key (Course_ID),
 foreign key (Category_Name) references Categories(CName),
 foreign key (Programe_Name) references Programs(PName),
-foreign key (Instructors_Username) references Instructors (UserName)
+foreign key (Instructors_Username) references Instructors (UserName) on update cascade on delete cascade
 );
 
 -- --
@@ -97,7 +97,7 @@ Instructor_Username varchar(50),
 Course_ID int,
 primary key (Instructor_Username,Course_ID),
 rate float,
-foreign key (Instructor_Username) references Instructors(Username),
+foreign key (Instructor_Username) references Instructors(Username) on update cascade on delete cascade,
 foreign key (Course_ID) references Courses(Course_ID)
 );
 -- --
@@ -132,8 +132,8 @@ Quiz_ID   int,
 Student_Username varchar(50),
 Grade float,
 primary key (Quiz_ID,Course_ID,Student_Username),
-foreign key (Course_ID) references Courses(Course_ID),
-foreign key (Quiz_ID  ) references Quizzes (Quiz_ID),
+foreign key (Course_ID) references Courses(Course_ID) ,
+foreign key (Quiz_ID  ) references Quizzes (Quiz_ID) ,
 foreign key (Student_Username) references Students (Username)
 );
 
@@ -150,9 +150,9 @@ CREATE TABLE IF NOT EXISTS Watch_Videos(
 Video_number INT,
 Course_ID INT, 
 Student_Username varchar(50),
-FOREIGN KEY (Course_ID) REFERENCES Courses (Course_ID),
-FOREIGN KEY (Video_number) REFERENCES Videos (Video_number),
-FOREIGN KEY (Student_Username) REFERENCES Students (Username)
+FOREIGN KEY (Course_ID) REFERENCES Courses (Course_ID) ,
+FOREIGN KEY (Video_number) REFERENCES Videos (Video_number) ,
+FOREIGN KEY (Student_Username) REFERENCES Students (Username) 
 );
 
 create table if not exists Coupons
@@ -164,8 +164,8 @@ EDate date,
 discount_percentage int,
 Category_Name varchar(100),
 primary key (Coupon_ID),
-foreign key (Owner_Username) references Owners(Username),
-foreign key (Category_Name) references Categories(CName)
+foreign key (Owner_Username) references Owners(Username) on update cascade on delete cascade,
+foreign key (Category_Name) references Categories(CName) on update cascade on delete cascade
 );
 -- --
 create table if not exists Income_Analysis
@@ -176,7 +176,7 @@ Total_income float,
 Net_profit float,
 Instructors_fees float,
 primary key (Course_ID),
-foreign key (Course_ID) references Courses(Course_ID)
+foreign key (Course_ID) references Courses(Course_ID) 
 
 );
 --
@@ -186,8 +186,10 @@ Course_ID int,
 Student_Username varchar(50),
 Date date,
 primary key (Course_ID,Student_Username),
-foreign key (Course_ID) references Courses(Course_ID),
-foreign key (Student_Username) references Students(Username)
+foreign key (Course_ID) references Courses(Course_ID) ,
+
+foreign key (Student_Username) references Students(Username) 
+
 
 );
 --
