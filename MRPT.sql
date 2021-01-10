@@ -185,6 +185,7 @@ create table if not exists Enroll_into_course
 Course_ID int,
 Student_Username varchar(50),
 Date date,
+Finished int , 
 primary key (Course_ID,Student_Username),
 foreign key (Course_ID) references Courses(Course_ID) ,
 
