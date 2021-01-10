@@ -1,67 +1,65 @@
 const router = require('express').Router();
 var db = require('../db');
 
-router.get('/:type/:username', async(req, res) => {
 
-    var myType=req.params.type;
-    var myUsername= req.params.username
-    var sql="";
-    if(myType == 'instructor')
-    {
-        const query= "SELECT * FROM instructors where Username ='"+myUsername+"'";
-        sql =await getfromDB(query);
-    }
-    if(myType == 'it_administrator')
-    {
-        const query= "SELECT * FROM it_administrator where Username ='"+myUsername+"'";
-        sql =await getfromDB(query);
-    }
-    if(myType == 'owner')
-    {
-        const query= "SELECT * FROM owners where Username ='"+myUsername+"'";
-        sql =await getfromDB(query);
-    }
-    if(myType == 'student')
-    {
-        const query= "SELECT * FROM students where Username ='"+myUsername+"'";
-        sql =await getfromDB(query);
-    } 
+router.get('/', async(req, res) => {
+
+        var sql="";
+        if(global_type == 'instructor')
+        {
+            const query= "SELECT * FROM instructors where Username ='"+global_username+"'";
+            sql =await getfromDB(query);
+        }
+        if(global_type == 'it_adminstrator')
+        {
+            const query= "SELECT * FROM it_adminstrators where Username ='"+global_username+"'";
+            sql =await getfromDB(query);
+        }
+        if(global_type == 'owner')
+        {
+            const query= "SELECT * FROM owners where Username ='"+global_username+"'";
+            sql =await getfromDB(query);
+        } 
+        if(global_type == 'student')
+        {
+            const query= "SELECT * FROM students where Username ='"+global_username+"'";
+            sql =await getfromDB(query);
+        } 
+
+    
     return res.render('Account_Settings', { 
-        title: 'Profile/' + req.params.username, 
+        title: 'Profile/' + global_username, 
         css: 'Account_Settings',
-        Type: req.params.type, 
-        Username: req.params.username,
-        SQL: sql,
+        Type: global_type, 
+        Username: global_username,
+        SQL: sql, 
         message: req.flash('message')
-    })
-}); 
+    }) 
+});  
 
-router.post('/:type/:username', async(req, res) => {
+router.post('/', async(req, res) => { 
 
     var sql="";
 
-    if(req.params.type === ' instructor')
+    if(global_type === 'instructor')
     {
-        const query= "SELECT * FROM instructors where Username ='"+req.params.username+"'";
+        const query= "SELECT * FROM instructors where Username ='"+global_username+"'";
         sql =await getfromDB(query);
     }
-    if(req.params.type === ' it_administrator')
+    if(global_type === 'it_adminstrator')
     {
-        const query= "SELECT * FROM it_administrator where Username ='"+req.params.username+"'";
+        const query= "SELECT * FROM it_adminstrators where Username ='"+global_username+"'";
         sql =await getfromDB(query);
     }
-    if(req.params.type === ' owner')
+    if(global_type === 'owner')
     {
-        const query= "SELECT * FROM owners where Username ='"+req.params.username+"'";
+        const query= "SELECT * FROM owners where Username ='"+global_username+"'";
         sql =await getfromDB(query);
     }
-    console.log(req.params.type);
-    if(req.params.type === ' student')
+    if(global_type === 'student')
     {
-        const query= "SELECT * FROM students where Username ='"+req.params.username+"'";
+        const query= "SELECT * FROM students where Username ='"+global_username+"'";
         sql =await getfromDB(query);
-        console.log("first created");
-        console.log(sql);
 
     } 
     var firstname= "" ;
@@ -78,71 +76,107 @@ router.post('/:type/:username', async(req, res) => {
     pass=req.body.Password;
     confPass=req.body.ConfPassword;
 
-    console.log("second created");
-    console.log(sql);
-
- 
     if(firstname == "") 
         firstname= sql[0].Fname;
-        console.log("third created");
-        console.log(sql);
-
-
     if(lastname == "")
         lastname= sql[0].Lname;
-        console.log("fourth created");
-        console.log(sql);
-
-    console.log(lastname);
-
     if(username == "") 
-        username= sql[0].myUsername; 
-        console.log("fifth created");
-        console.log(sql);
-
+        username= global_username; 
 
     if(email == "")
-        email= sql[0].email;
+        email= sql[0].Email;
+
     if(pass == "")
         pass= sql[0].Password;
     else{
         if(confPass  == "")
             return res.render('Account_Settings', { 
-                title: 'Profile/' + req.params.username, 
+                title: 'Profile/' + global_username, 
                 css: 'Account_Settings',
-                Type: req.params.type, 
-                Username: req.params.username,
+                Type: global_type, 
+                Username: global_username,
+                SQL:sql,
                 message: "You must confirm Password"
             })
-        
+        else if(pass != confPass)
+            return res.render('Account_Settings', { 
+                title: 'Profile/' + global_username, 
+                css: 'Account_Settings',
+                Type: global_type, 
+                Username: global_username,
+                SQL:sql,
+                message: "Enter similar Password and confirm Password "
+            })
     }
-    var allsql="";
-    if(req.params.type == 'instructor')
+    
+
+    // var allsql="";
+    if(global_type == 'instructor')
     {
-        const query= "INSERT INTO instructors (Fname,Lname,Username,Password,Email) ('"+ firstname +"','" + lastname+"','" +username +"','" + pass +"','" + email +"')";
-        allsql =await getfromDB(query);
+        var query= "UPDATE instructors set Fname ='" + firstname +"' where Username ='"+global_username+"'";
+        await getfromDB(query);
+        query= "UPDATE instructors set Lname ='" + lastname +"' where Username ='"+global_username+"'";
+        await getfromDB(query);
+        query= "UPDATE instructors set Username ='" + username +"' where Username ='"+global_username+"'";
+        await getfromDB(query);
+        query= "UPDATE instructors set Email ='" + email +"' where Username ='"+global_username+"'";
+        await getfromDB(query);
+        query= "UPDATE instructors set Password ='" + pass +"' where Username ='"+global_username+"'";
+        await getfromDB(query);
+        query= "SELECT * FROM instructors where Username ='"+global_username+"'";
+        sql =await getfromDB(query);
     }
-    if(req.params.type == 'it_administrator')
+    if(global_type == 'it_adminstrator')
     {
-        const query= "INSERT INTO it_administrator (Fname,Lname,Username,Password,Email) ('"+ firstname +"','" + lastname+"','" +username +"','" + pass +"','" + email +"')";
-        allsql =await getfromDB(query);
+        var query= "UPDATE it_adminstrators set Fname ='" + firstname +"' where Username ='"+global_username+"'";
+        await getfromDB(query);
+        query= "UPDATE it_adminstrators set Lname ='" + lastname +"' where Username ='"+global_username+"'";
+        await getfromDB(query);
+        query= "UPDATE it_adminstrators set Username ='" + username +"' where Username ='"+global_username+"'";
+        await getfromDB(query);
+        query= "UPDATE it_adminstrators set Email ='" + email +"' where Username ='"+global_username+"'";
+        await getfromDB(query);
+        query= "UPDATE it_adminstrators set Password ='" + pass +"' where Username ='"+global_username+"'";
+        await getfromDB(query);
+        query= "SELECT * FROM it_adminstrators where Username ='"+global_username+"'";
+        sql =await getfromDB(query);
     }
-    if(req.params.type == 'owner')
+    if(global_type == 'owner')
     {
-        const query= "INSERT INTO owners (Fname,Lname,Username,Password,Email) ('"+ firstname +"','" + lastname+"','" +username +"','" + pass +"','" + email +"')";
-        allsql =await getfromDB(query);
+        var query= "UPDATE owners set Fname ='" + firstname +"' where Username ='"+global_username+"'";
+        await getfromDB(query);
+        query= "UPDATE owners set Lname ='" + lastname +"' where Username ='"+global_username+"'";
+        await getfromDB(query);
+        query= "UPDATE owners set Username ='" + username +"' where Username ='"+global_username+"'";
+        await getfromDB(query);
+        query= "UPDATE owners set Email ='" + email +"' where Username ='"+global_username+"'";
+        await getfromDB(query);
+        query= "UPDATE owners set Password ='" + pass +"' where Username ='"+global_username+"'";
+        await getfromDB(query);
+        query= "SELECT * FROM owners where Username ='"+global_username+"'";
+            sql =await getfromDB(query);
     }
-    if(req.params.type == 'student')
+    if(global_type == 'student')
     {
-        const query= "INSERT INTO students (Fname,Lname,Username,Password,Email) ('"+ firstname +"','" + lastname+"','" +username +"','" + pass +"','" + email +"')";
-        allsql =await getfromDB(query);
+        var query= "UPDATE students set Fname ='" + firstname +"' where Username ='"+global_username+"'";
+        await getfromDB(query);
+        query= "UPDATE students set Lname ='" + lastname +"' where Username ='"+global_username+"'";
+        await getfromDB(query);
+        query= "UPDATE students set Username ='" + username +"' where Username ='"+global_username+"'";
+        await getfromDB(query);
+        query= "UPDATE students set Email ='" + email +"' where Username ='"+global_username+"'";
+        await getfromDB(query);
+        query= "UPDATE students set Password ='" + pass +"' where Username ='"+global_username+"'";
+        await getfromDB(query);
+        query= "SELECT * FROM students where Username ='"+global_username+"'";
+        sql =await getfromDB(query);
     }
     // console.log(allsql);
     return res.render('Account_Settings', { 
-        title: 'Profile/' + req.params.username, 
+        title: 'Profile/' + global_username,  
         css: 'Account_Settings',
-        Type: req.params.type, 
-        Username: req.params.username,
+        Type: global_type, 
+        Username: global_username,
         SQL: sql,
         message: "Changes are applied successfully"
     });

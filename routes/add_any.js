@@ -198,7 +198,7 @@ if(!req.body.Category_Name==""||!req.body.IT_username==""){
     var img_name="";
     if(req.body.cat_image)
     {
-        var file=req.body.cat_image;
+        var file=req.files.cat_image;
         img_name="/images/"+file.name;
         if(file.mimetype == "image/jpeg" ||file.mimetype == "image/png"||file.mimetype == "image/gif" ){
                                     
@@ -312,7 +312,7 @@ if(!req.body.Category_NameD ==""){
 var img_name="";
 if(req.body.Program_img)
 {
-    var file=req.body.Program_img;
+    var file=req.files.Program_img;
     img_name="/images/"+file.name;
     if(file.mimetype == "image/jpeg" ||file.mimetype == "image/png"||file.mimetype == "image/gif" ){
                                 
@@ -344,8 +344,8 @@ if(!isNaN(req.body.Program_Name))
     title: 'Add...', 
     css: 'add_any',
     message: "Invalid Program name!",
-        instructors:instructors,
-        coupons_list:coupons_list}
+    instructors:instructors,
+    coupons_list:coupons_list}
 )
 ;}
 if(isNaN(req.body.Cost_prog))
@@ -405,10 +405,10 @@ if(!req.body.Program_NameU==""||!req.body.Cost_progU==""||!req.body.Duration_pro
     var img_name="";
     try
         {var executed=await ApplyQuery("select distinct Pname from enroll_into_program where Pname='"+req.body.Program_NameU+"';");
-         var executed2=await ApplyQuery("select PName from programs where PName='"+req.body.Program_NameU+"';");
-         console.log(executed2);
-        if(!executed)
-        {
+         
+         console.log(executed.length);
+        if(!executed.length)
+        {    var executed2=await ApplyQuery("select PName from programs where PName='"+req.body.Program_NameU+"';");
             if(!isNaN(req.body.Program_NameU)||!executed2.length)
             {   return res.render('add_any', {
                     title: 'Add...', 
@@ -419,9 +419,10 @@ if(!req.body.Program_NameU==""||!req.body.Cost_progU==""||!req.body.Duration_pro
                 )
             ;}
             else{
+                console.log(req.body.Program_imgU);
                 if(req.body.Program_imgU)
                 {
-                    var file=req.body.Program_imgU;
+                    var file=req.files.Program_imgU;
                     img_name="/images/"+file.name;
                     if(file.mimetype == "image/jpeg" ||file.mimetype == "image/png"||file.mimetype == "image/gif" ){
                                                 
@@ -434,7 +435,7 @@ if(!req.body.Program_NameU==""||!req.body.Cost_progU==""||!req.body.Duration_pro
                             else
                             {
                                 try{
-                                    await ApplyQuery("Update programs set Program_Image='"+req.body.Program_imgU+"' where PName='"+req.body.Program_NameU+"'");
+                                    await ApplyQuery("Update programs set Program_Image='"+img_name+"' where PName='"+req.body.Program_NameU+"'");
                                     console.log("image updated");
                                 }
                                 catch(e)
@@ -578,12 +579,13 @@ if(!req.body.Program_NameU==""||!req.body.Cost_progU==""||!req.body.Duration_pro
 //----------------------------------------------------------Delete Program--------------------------------------------------------------------
 if(!req.body.Program_NameD=="")
 {
-        var executed=await QUERY_LENGHT("select Pname from enroll_into_program where Pname='"+req.body.Program_NameD+"';");
-        var executed2=await ApplyQuery("select PName from programs where PName='"+req.body.Program_NameD+"';");
-         console.log(JSON.parse(JSON.stringify(executed)));
-        if(!executed)
+        var query="select distinct Pname from enroll_into_program where Pname='"+req.body.Program_NameD+"'";
+        var executed=await ApplyQuery(query);
+        console.log(executed);
+
+        if(!executed.length)
         {
-            if(!isNaN(req.body.Program_NameD)||!executed2.length)
+            if(!isNaN(req.body.Program_NameD))
             {   return res.render('add_any', {
                     title: 'Add...', 
                     css: 'add_any',
@@ -1043,7 +1045,7 @@ const QUERY_LENGHT = (query) => {
                 db.query(query,(error, rows) => {
                     if(!error) 
                         {
-                        resolve(rows.length);                                           
+                        resolve(rows.PName);                                           
                         }
                     else
                         {reject(new Error(error));}

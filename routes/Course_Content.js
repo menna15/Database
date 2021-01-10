@@ -5,7 +5,7 @@ const router = require("express").Router();
 router.get('/:course_ID', async(req, res) => {
         
     let courseVideos = [];
-   
+    
     let sqlquery = "SELECT V.*, C.Course_Name FROM Courses as C JOIN Videos as V ON V.Course_ID = C.Course_ID WHERE V.Course_ID = "+req.params.course_ID;
     courseVideos = await GetfromDB(sqlquery);
     for(let i =0; i< courseVideos.length; i++){
