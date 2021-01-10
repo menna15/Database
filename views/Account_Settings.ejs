@@ -9,7 +9,14 @@
                         <button class="btnupload">Upload</button>
                     </div>
                 </div>
+                <% if (   typeof fname == 'undefined')   {  %>
                 <h2 class="Name">UNKOWN</h2>
+                <% } %>
+                <% if (   typeof fname !== 'undefined')   {  %>
+                    <h2 class="Name">
+                        <%= fname +" " + lname ; %>  
+                    </h2>
+                <% } %>
 
                 <div class="choices">
                     <a href="/Account_Settings">Profile</a>
