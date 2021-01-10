@@ -20,7 +20,6 @@ router.get('/', async (req, res) => {
         cCoupons = cCoupons.filter(function(item){
             return ((item.EDate > currDate && item.SDate <= currDate));
         });
-        console.log(cCoupons);
         var category_courses = [];
         for(let i =0; i<categories.length; i++){
             var sqlquery = "SELECT * FROM Courses WHERE Category_Name = '" + categories[i].CName + "';";
