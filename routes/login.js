@@ -34,7 +34,7 @@ router.post('/',async (req, res) => {
 
             return res.render('Account_Settings', {
                 Type : "student" ,
-                Title: 'Profile/' + sign_in_Username,
+                title: 'Profile/' + sign_in_Username,
                 css: 'Account_Settings',
                 message: req.flash('message')
             });

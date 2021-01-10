@@ -40,7 +40,7 @@
                         <% if (   typeof Type !== 'undefined')   {  %>
                             <%  if ( Type == "it_adminstrator"  )  {  %>
 
-                    <a href="/">Add Instructors</a>
+                    <a href="/add_any">Add Instructors</a>
                     <hr style="border-top: 1px solid #bbb;">
 
                      
@@ -50,7 +50,7 @@
                     <% if (   typeof Type !== 'undefined')   {  %>
                         <%  if (Type == "owner" )  {  %>
 
-                    <a href="/">Add IT Adminstrators</a>
+                    <a href="/add_any">Add IT Adminstrators</a>
                     <hr style="border-top: 1px solid #bbb;">
     
                     <%  } %>                        
@@ -60,7 +60,13 @@
                         <%  if (Type == "it_adminstrator" )  {  %>
 
 
-                    <a href="/">Add Program</a>
+                    <a href="/add_any">Add Program</a>
+                    <hr style="border-top: 1px solid #bbb;">
+                    
+                    <a href="/add_any">Update Program</a>
+                    <hr style="border-top: 1px solid #bbb;">
+                    
+                    <a href="/add_any">Delete Program</a>
                     <hr style="border-top: 1px solid #bbb;">
                     <%  } %>                        
                     <% } %>
@@ -68,7 +74,11 @@
                     <% if (   typeof Type !== 'undefined')   {  %>
                         <%  if (Type == "it_adminstrator" )  {  %>
 
-                    <a href="/">Add Category</a>
+                    <a href="/add_any">Add Category</a>
+                    <hr style="border-top: 1px solid #bbb;">
+                    <a href="/add_any">Update Category</a>
+                    <hr style="border-top: 1px solid #bbb;">
+                    <a href="/add_any">Delete Category</a>
                     <hr style="border-top: 1px solid #bbb;">
 
                     <%  } %>                        
@@ -78,7 +88,7 @@
                         <%  if (Type == "it_adminstrator" )  {  %>
 
 
-                    <a href="/">Add Coupon</a>
+                    <a href="/add_any">Add Coupon</a>
                     <hr style="border-top: 1px solid #bbb;">
 
                     <%  } %>                        
