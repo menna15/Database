@@ -9,33 +9,32 @@
                         <button class="btnupload">Upload</button>
                     </div>
                 </div>
-                <% if (   typeof fname == 'undefined')   {  %>
-                <h2 class="Name">UNKOWN</h2>
-                <% } %>
-                <% if (   typeof fname !== 'undefined')   {  %>
+                <% if ( Username == 'undefined')   {  %>
+                <h2 class="Name">UNKNOWN</h2>
+                <% } else {%>
                     <h2 class="Name">
-                        <%= fname +" " + lname ; %>  
+                        <%=Username %>
                     </h2>
                 <% } %>
 
                 <div class="choices">
-                    <a href="/Account_Settings">Profile</a>
+                    <a href="/Account_Settings/ <%= Type %>/<%=Username %>">Profile</a>
                     <hr style="border-top: 1px solid #bbb;">
 
 
 
 
-                    <% if (   typeof Type !== 'undefined')   {  %>
-                        <%  if (Type == "instructor" || Type == "student" )  {  %>
+                    <% if ( Type != 'undefined')   {  %>
+                        <%  if (Type == 'instructor' || Type == 'student' )  {  %>
 
                     
-                    <a href="/Achievements">Achievements</a>
+                    <a href="/Achievements/<%=Username %>">Achievements</a>
                     <hr style="border-top: 1px solid #bbb;">
 
                     <%  } %>                        
                     <% } %>
 
-                        <% if (   typeof Type !== 'undefined')   {  %>
+                        <% if ( Type !== 'undefined')   {  %>
                         <%  if (Type == "instructor" )  {  %>
                               
                     <a href="/add_any">Add Course</a>
@@ -44,7 +43,7 @@
                         <%  } %>                        
                         <% } %>
 
-                        <% if (   typeof Type !== 'undefined')   {  %>
+                        <% if ( Type !== 'undefined')   {  %>
                             <%  if ( Type == "it_adminstrator"  )  {  %>
 
                     <a href="/add_any">Add Instructors</a>
@@ -54,7 +53,7 @@
                     <%  } %>                        
                     <% } %>
 
-                    <% if (   typeof Type !== 'undefined')   {  %>
+                    <% if ( Type !== 'undefined')   {  %>
                         <%  if (Type == "owner" )  {  %>
 
                     <a href="/add_any">Add IT Adminstrators</a>
@@ -63,7 +62,7 @@
                     <%  } %>                        
                     <% } %>
 
-                    <% if (   typeof Type !== 'undefined')   {  %>
+                    <% if ( Type !== 'undefined')   {  %>
                         <%  if (Type == "it_adminstrator" )  {  %>
 
 
@@ -78,7 +77,7 @@
                     <%  } %>                        
                     <% } %>
 
-                    <% if (   typeof Type !== 'undefined')   {  %>
+                    <% if ( Type !== 'undefined')   {  %>
                         <%  if (Type == "it_adminstrator" )  {  %>
 
                     <a href="/add_any">Add Category</a>
@@ -89,7 +88,7 @@
                     <%  } %>                        
                     <% } %>
 
-                    <% if (   typeof Type !== 'undefined')   {  %>
+                    <% if ( Type !== 'undefined')   {  %>
                         <%  if (Type == "owner" )  {  %>
 
 
@@ -99,7 +98,7 @@
                     <%  } %>                        
                     <% } %>
 
-                    <% if (   typeof Type !== 'undefined')   {  %>
+                    <% if ( Type !== 'undefined')   {  %>
                         <%  if (Type == "owner" )  {  %>
 
 
@@ -109,7 +108,7 @@
                     <%  } %>                        
                     <% } %>
 
-                    <% if (   typeof Type !== 'undefined')   {  %>
+                    <% if ( Type !== 'undefined')   {  %>
                         <%  if (Type == "owner" )  {  %>
 
 
@@ -117,7 +116,7 @@
                     <hr style="border-top: 1px solid #bbb;">
                     <%  } %>                        
                     <% } %>            
-                    <% if (   typeof Type !== 'undefined')   {  %>
+                    <% if ( Type !== 'undefined')   {  %>
                     <a href="#">Log Out</a>
                     <% } %>     
                 </div>

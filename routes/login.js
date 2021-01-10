@@ -32,55 +32,21 @@ router.post('/',async (req, res) => {
         if (executed1.length == 1 && executed1[0].Password == sign_in_Password )
         {
 
-            return res.render('Account_Settings', {
-                Type : "student" ,
-                title: 'Profile/' + sign_in_Username,
-                css: 'Account_Settings',
-                username:sign_in_Username,
-                fname: executed1[0].Fname,
-                lname: executed1[0].Lname, 
-                message: req.flash('message')
-            }); 
-        } 
+            return res.redirect('Account_Settings/'+'student'+'/'+sign_in_Username); 
+        }  
         else if(executed2.length == 1 && executed2[0].Password == sign_in_Password )
         {
         
-
-            return res.render('Account_Settings', {
-                Type : "it_adminstrator" ,
-                title: 'Profile/' + sign_in_Username,
-                css: 'Account_Settings',
-                fname: executed2[0].Fname,
-                lname: executed2[0].Lname,
-                username:sign_in_Username,
-                message: req.flash('message')
-            }); 
+            return res.redirect('Account_Settings/'+'it_adminstrator'+'/'+sign_in_Username); 
         }
         else if(executed3.length == 1 && executed3[0].Password == sign_in_Password )
         {
+            return res.redirect('Account_Settings/'+'owner'+'/'+sign_in_Username); 
 
-            return res.render('Account_Settings', { 
-                Type : "owner" ,
-                title: 'Profile/' + sign_in_Username,
-                css: 'Account_Settings',
-                username:sign_in_Username,
-                fname: executed3[0].Fname,
-                lname: executed3[0].Lname,
-                message: req.flash('message')
-            });
         }
         else if(executed4.length == 1 && executed4[0].Password == sign_in_Password )
         {
- 
-            return res.render('Account_Settings', {
-                Type:"instructor" ,
-                title: 'Profile/' + sign_in_Username,
-                css: 'Account_Settings',
-                username:sign_in_Username,
-                fname: executed4[0].Fname,
-                lname: executed4[0].Lname,
-                message: req.flash('message')
-            }); 
+            return res.redirect('Account_Settings/'+'instructor'+'/'+sign_in_Username); 
         }
         else{
 

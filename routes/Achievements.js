@@ -1,11 +1,12 @@
 const router = require('express').Router();
 
 
-router.get('/', (req, res) => {
+router.get('/:username', (req, res) => {
 
     return res.render('Achievements', {
         title: 'Achievements',
-        css: 'Achievements'
+        css: 'Achievements',
+        Username: req.params.username
     })
 });
 

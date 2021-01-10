@@ -14,7 +14,7 @@ router.get('/:course_ID', async(req, res) => {
             tmp= tmp.replace(/\&.*/, "");
             tmp= tmp.replace("https://www.youtube.com/", "");
             courseVideos[i].Video_Link = tmp;
-    }
+    } 
 
     let course_title = [];
     if(courseVideos!=[]){

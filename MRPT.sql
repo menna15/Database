@@ -185,6 +185,7 @@ create table if not exists Enroll_into_course
 Course_ID int,
 Student_Username varchar(50),
 Date date,
+Finished int , 
 primary key (Course_ID,Student_Username),
 foreign key (Course_ID) references Courses(Course_ID) ,
 
@@ -292,4 +293,7 @@ INSERT INTO Videos VALUES (3, 2, "https://www.youtube.com/watch?v=6JFzI1DDyyk&li
 INSERT INTO Videos VALUES (4, 2, "https://www.youtube.com/watch?v=Qf3RMGXR-h8&list=PL1328115D3D8A2566&index=4", "intro");
 INSERT INTO Videos VALUES (5, 2, "https://www.youtube.com/watch?v=HvDqbzu0i0E&list=PL1328115D3D8A2566&index=5", "intro");
 INSERT INTO Videos VALUES (6, 2, "https://www.youtube.com/watch?v=sRVGcYGjUk8&list=PL1328115D3D8A2566&index=6", "intro");
+
+
+select * from students;
 
