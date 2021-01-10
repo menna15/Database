@@ -25,7 +25,7 @@ const fileUpload = require('express-fileupload');
 //   });
 // });
 //
- 
+
 
 const session = require('express-session');
 const flush = require('connect-flash');
@@ -37,7 +37,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static(path.join(__dirname, 'public')));
-
 
 
 app.use(session({
@@ -52,7 +51,7 @@ app.set('view engine', 'ejs');
 app.use(fileUpload());
 
 app.get('/', (req, res) => {
-
+    
     return res.redirect('home');
 });
 
@@ -76,9 +75,29 @@ app.use('/Achievements', require('./routes/Achievements'));
 app.use('/add_any', require('./routes/add_any')); 
 app.use('/Donate', require('./routes/Donate'));
 app.use('/Course_Content', require('./routes/Course_Content'));
+app.use('/logout', require('./routes/logout'));
+
+
+var global_username = "";
+
+app.use((req, res, next)=>{
+
+    res.locals.global_username = req.global_username;
+    next();
+})
+
+
+var global_type = "";
+
+app.use((req, res, next)=>{
+
+    res.locals.global_type = req.global_type;
+    next();
+})
+
 
 app.listen(port,(error)=>{ 
     if(error) return console.log(error);
-console.log(`server started listening at ${port}`);
- 
+    console.log(`server started listening at ${port}`);
+    
 });

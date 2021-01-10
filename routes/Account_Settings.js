@@ -1,7 +1,7 @@
 const router = require('express').Router();
 
 
-router.get('/:type/:username', (req, res) => {
+router.get('/', (req, res) => {
  
     return res.render('Account_Settings', { 
         title: 'Profile/' + req.params.username, 

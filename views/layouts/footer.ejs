@@ -58,7 +58,8 @@
 
     // when video ends
             function onPlayerStateChange(event) {        
-                if(event.data === 0) {            
+                if(event.data === 0) { 
+                    console.log("second");             
                     alert('done');
                 }
             }
@@ -92,7 +93,8 @@
 
     // when video ends
     function onPlayerStateChange(event) {        
-        if(event.data === 0) {            
+        if(event.data === 0) {
+            console.log("first");  
             alert('done');
         }
     } 
