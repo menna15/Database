@@ -43,9 +43,9 @@
             <div class = "Program-div">
                 <div class = "program-title">
                     <div class = "program-describ">
-                        <h1> <%= programs[i].PName %></h1>
+                        <h1> <%= programs[i].PName %> </h1>
                         <br>
-                        <p style="font-size: 17px;"><%= programs[i].Program_info %></p>
+                        <p style="font-size: 17px;"> <%= programs[i].Program_info %> </p>
                     </div>
                     <div style="width: 20%;">    
                     </div>
@@ -55,10 +55,10 @@
 
                 <div class="program float_l">
                     <% for(let ii = 0; ii < ProgramCourses[i].length; ii++){ %>
-                        <% let hasCoupoon = 0 %>
+                        <% let hasCoupoon = 0; var perc = 100; %>
                         <% for(let iii = 0; iii < pcCoupons.length; iii++){ %>
                             <% if(pcCoupons[iii].Course_ID == ProgramCourses[i][ii].Course_ID) {%>
-                                <% hasCoupoon = 1 }%>
+                                <% hasCoupoon = 1; perc = pcCoupons[iii].discount_percentage;}%>
                         <%}%>
                         <div class="course float_l">
                             <a href = "/singleCourse/<%=ProgramCourses[i][ii].Course_ID%>" class = "go-to-course-page"><div class="image-card" ><img src="<%=ProgramCourses[i][ii].Course_image%>" width="100%" height="95%" style ="border-radius: 20px;"/></div></a>
@@ -69,15 +69,16 @@
 
                                     <div class="instructorNmae">
                                         <img src="<%= ProgramCourses[i][ii].Profile_Pic%>" class="user-img" alt="?" >
-                                        <label style="letter-spacing: 1.2px;"><%= ProgramCourses[i][ii].Fname %>  <%= ProgramCourses[i][ii].Lname %><br></label>
+                                        <label style="letter-spacing: 1.2px;"><%= ProgramCourses[i][ii].Fname %>  <%= ProgramCourses[i][ii].Lname %></label>
+                                        <br>
                                     </div>
                                     <div class="Price">
                                         <br>
                                         <% if (hasCoupoon==0){ %>
-                                        <label style="font-size: 20px; letter-spacing: 1.2px;">Price : $ <%= ProgramCourses[i][ii].Cost %></label>
+                                        <label style="font-size: 23px; letter-spacing: 1.2px; color:#017a9b">Price : $ <%= ProgramCourses[i][ii].Cost %></label>
                                         <% } else { %>
-                                        <del style="font-size: 20px; letter-spacing: 1.2px;">Price : $ <%= ProgramCourses[i][ii].Cost %></del>
-                                        <label style="font-size: 20px; letter-spacing: 1.2px;">Price : $ <%= ProgramCourses[i][ii].Cost * <%= perc[ProgramCourses[i][ii].Course_ID]%> /100 %></label>
+                                        <del style="font-size: 18px; letter-spacing: 1.2px;">Price : $ <%= ProgramCourses[i][ii].Cost %></del>
+                                        <label style="font-size: 23px; letter-spacing: 1.2px; color:#017a9b">Price : $ <%= ProgramCourses[i][ii].Cost  * (perc/100)%></label>
                                         <% } %>
                                     </div>
                                 </div>
