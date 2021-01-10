@@ -53,13 +53,20 @@
                     <input class="search" type="text" onkeyup="myFunction()" placeholder="Search.." title="Type in a category">
                 </li>
 
+                <% if (   typeof Type == 'undefined')   {  %>
+
                 <li class="nav-item <% if (title === 'joinOurStaff') { %>active<% } %>">
                     <a class="nav-link" href="/joinOurStaff" style="color:rgb(228, 222, 222);font-size: 1.1rem">Join Our Staff</a>
                 </li>
+                <% } %>
+
+                <% if (   typeof Type == 'undefined')   {  %>
 
                 <li class="nav-item <% if (title === 'login') { %>active<% } %>">
-                    <a class="nav-link" href="/login" style="color: rgb(228, 222, 222);font-size: 1.1rem">Sign In or Sign Up</a>
+                    <a class="nav-link" href="/login" style="color: rgb(228, 222, 222);font-size: 1.1rem">Sign In </a>
                 </li>
+                <% } %>
+
 
                 <li class="nav-item">
                     <a class="nav-link" href="/Donate" style="color: rgb(228, 222, 222);font-size: 1.1rem">Donate</a>

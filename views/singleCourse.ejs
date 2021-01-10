@@ -50,23 +50,44 @@
                             </div>
                             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
                                 <div class="card-body">
-                                    <a href="<%= course[0].Course_content %>"><%= course[0].Course_content %></a>
+                                    <% for( let i = 0; i< videos.length; i++){ %>
+                                    <label><%= i+1 %> - <%= videos[i].Video_Name %></label>
+                                    <br>
+                                    <% } %>
                                 </div>
                             </div>
                         </div>
                         <br>
                         <p>
-                            <a href="#" class="btn btn-primary rounded-0 btn-lg px-5" style="background-color: #4688e4;">Enroll</a>
+                            <a  class="btn btn-primary rounded-0 btn-lg px-5" id = "enr" style="background-color: #4688e4; color:white">Enroll</a>
                         </p>
 
                         <p>
                             <a href="/Course_Content/<%= course[0].Course_ID %>" class="btn btn-primary rounded-0 btn-lg px-5" style="background-color: #4688e4;">Go To Course</a>
                         </p>
-                    </div>
+                </div>
             </div>
         </div>
     </div>
 
+    <div class="loginPopup">
+        <div class="formPopup" id="popupForm">
+          <form class="formContainer" action = "" method="POST" action="/singleCourse" >
+            <h2>Enroll</h2>
+
+            <label for="code">
+              <strong>Coupon Code</strong>
+            </label>
+
+            <input type="text" id="code" placeholder="" name="code">
+
+            <button class="btn" onclick = "buycourse()">Get</button>
+            <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+          </form>
+        </div>
+    </div>
+
+   
     <script src="/js/jquery-1.12.4.min.js"></script>
     <script src="/js/popper.min.js"></script>
      <script src="/js/bootstrap.min.js"></script>

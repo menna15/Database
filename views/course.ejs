@@ -35,7 +35,19 @@
                         </div>
 
                         <div class="course_author_name"><%= courses[i].Fname +" "+ courses[i].Lname+"   " %><span>  Author</span></div>
-                        <div class="course_price d-flex flex-column align-items-center justify-content-center"><span>$ <%= courses[i].Cost%></span></div>
+                        <div class="course_price d-flex flex-column align-items-center justify-content-center">
+                            <% {let found = 0; %>
+                            <% for(let ii = 0; ii < cCouponsID.length; ii++){ %>
+                                <% if(cCouponsID[ii].Course_ID == courses[i].Course_ID){ %>
+                                    <% found = 1; %>
+                                    <del>$ <%= courses[i].Cost %></del>
+                                    <span>$ <%= courses[i].Cost * (cCouponsID[ii].discount_percentage)/100 %></span>
+                                <% } %>
+                            <% } %>
+                                <% if(found == 0){ %>
+                                <span>$ <%= courses[i].Cost %></span>
+                                <%} }%>
+                        </div>
 
                     </div>
                 </div>

@@ -56,9 +56,9 @@
   </div>
 </section>
 
-
 <div class="site-section">
- 
+  <div style="margin: auto; width: 30%; display:flex; align-items: center;"><button class="btn-courses" style="margin: auto;"><a href="/course" >Show All Courses</a></button></div>
+  <br><br>
   <div class="main-container"> 
       <% for(let i = 0; i < categories.length; i++){  %>
         <% if(categories_courses[i].length!=0) { %>
@@ -79,12 +79,25 @@
             <div class="row">
               <div class="col-12">
                   <div class="owl-slide-3 owl-carousel">
-                    <% for(let j = 0; j < categories_courses[i].length; j++){ %>
+                    <%{ var hasCoupoon = 0; var percen = 100; %>
+                    <% for(let ii = 0; ii < courseCoupons.length; ii++){ %>
+                      <% if(courseCoupons[ii].cat == categories[i].CName){ %>
+                        <% hasCoupoon = 1; percen = courseCoupons[ii].discount_percentage; }%>
+                    <% } %>
+
+                      <% for(let j = 0; j < categories_courses[i].length; j++){ %>
                       <div class="course-1-item">
                         
                         <figure class="thumnail">
                           <a href="/singleCourse/<%=categories_courses[i][j].Course_ID%>"><img src="<%= categories_courses[i][j].Course_image %>" alt="Image" class="img-fluid"></a>
+                          <% if(hasCoupoon == 1) {%>
+                              <del style="font-size: 30px; color:#017a9b;">EGP <%=categories_courses[i][j].Cost %></del>
+                              <div class="price"><label style="font-size: 30px; color:#017a9b;">EGP <%= categories_courses[i][j].Cost * (percen/100) %></label></div>
+                          <% } else{ %>
+                                                  
                           <div class="price"><label style="font-size: 30px; color:#017a9b;">EGP <%= categories_courses[i][j].Cost %></label></div>
+                          <%}%>
+                    
                           <a  style="text-decoration:none;" href="/singleCourse/<%=categories_courses[i][j].Course_ID%>"><div class="category"><h3 style="text-transform: uppercase; font-size: 25px;"><%= categories_courses[i][j].Course_Name %></h3></div>  </a>
                         </figure>
                         <div class="course-1-content pb-4">
@@ -100,6 +113,7 @@
                           <p><a href="/singleCourse/<%=categories_courses[i][j].Course_ID%>" class="btn btn-primary rounded-0 px-4">Discover The Course Now!</a></p>
                         </div>
                       </div>
+                      <%} %>
                     <% } %>
                  </div>
               </div>
@@ -113,7 +127,6 @@
  
       <% } %>
       <br><br>
-      <div style="margin: auto; width: 30%; display:flex; align-items: center;"><button class="btn-courses" style="margin: auto;"><a href="/course" >Show All Courses</a></button></div>
 
   </div>
 </div>

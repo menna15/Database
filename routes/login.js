@@ -16,12 +16,12 @@ router.post('/',async (req, res) => {
     const sign_in_Username = req.body.sign_in_Username;
     const sign_in_Password = req.body.sign_in_Password;
 
-    var sql_query1 = `SELECT Password from students         where Username = "${sign_in_Username}";`
-    var sql_query2 = `SELECT Password from it_adminstrators where Username = "${sign_in_Username}";`
-    var sql_query3 = `SELECT Password from owners           where Username = "${sign_in_Username}";`
-    var sql_query4 = `SELECT Password from instructors      where Username = "${sign_in_Username}";`
+    var sql_query1 = `SELECT Password , Fname , Lname from students         where Username = "${sign_in_Username}";`
+    var sql_query2 = `SELECT Password , Fname , Lname from it_adminstrators where Username = "${sign_in_Username}";`
+    var sql_query3 = `SELECT Password , Fname , Lname from owners           where Username = "${sign_in_Username}";`
+    var sql_query4 = `SELECT Password , Fname , Lname from instructors      where Username = "${sign_in_Username}";`
     
-    try{
+    try{ 
 
         var executed1 = await signin(sql_query1);
         var executed2 = await signin(sql_query2);
@@ -36,26 +36,36 @@ router.post('/',async (req, res) => {
                 Type : "student" ,
                 title: 'Profile/' + sign_in_Username,
                 css: 'Account_Settings',
+                username:sign_in_Username,
+                fname: executed1[0].Fname,
+                lname: executed1[0].Lname, 
                 message: req.flash('message')
-            });
+            }); 
         } 
         else if(executed2.length == 1 && executed2[0].Password == sign_in_Password )
         {
+        
 
             return res.render('Account_Settings', {
                 Type : "it_adminstrator" ,
                 title: 'Profile/' + sign_in_Username,
                 css: 'Account_Settings',
+                fname: executed2[0].Fname,
+                lname: executed2[0].Lname,
+                username:sign_in_Username,
                 message: req.flash('message')
-            });
+            }); 
         }
         else if(executed3.length == 1 && executed3[0].Password == sign_in_Password )
         {
 
-            return res.render('Account_Settings', {
+            return res.render('Account_Settings', { 
                 Type : "owner" ,
                 title: 'Profile/' + sign_in_Username,
                 css: 'Account_Settings',
+                username:sign_in_Username,
+                fname: executed3[0].Fname,
+                lname: executed3[0].Lname,
                 message: req.flash('message')
             });
         }
@@ -66,8 +76,11 @@ router.post('/',async (req, res) => {
                 Type:"instructor" ,
                 title: 'Profile/' + sign_in_Username,
                 css: 'Account_Settings',
+                username:sign_in_Username,
+                fname: executed4[0].Fname,
+                lname: executed4[0].Lname,
                 message: req.flash('message')
-            });
+            }); 
         }
         else{
 
