@@ -215,7 +215,7 @@
     }
 
     .save-btn {
-        margin-top: 150px;
+        /* margin-top: 150px; */
         height: 3rem;
         padding: 0 2rem;
         border: transparent;
@@ -232,7 +232,7 @@
         color: white;
         font-size: 20px;
         letter-spacing: 1.5px;
-        float: right;
+        /* float: right; */
         box-shadow: 0 0 8px 0 rgba(17, 22, 26, .16), 0 4px 8px 0 rgba(17, 22, 26, .08), 0 8px 16px 0 rgba(17, 22, 26, .08);
     }
     

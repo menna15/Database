@@ -36,7 +36,7 @@ router.post('/',async (req, res) => {
             return res.redirect('/Account_Settings'); 
         }  
         else if(executed2.length == 1 && executed2[0].Password == sign_in_Password )
-        {
+        { 
             global_username = sign_in_Username;
             global_type = "it_adminstrator";
             return res.redirect('/Account_Settings'); 
@@ -55,7 +55,7 @@ router.post('/',async (req, res) => {
             return res.redirect('/Account_Settings'); 
         }
         else{
-
+ 
             return res.render('login', {
                 title: 'login',
                 css:'login', 

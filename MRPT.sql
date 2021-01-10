@@ -232,23 +232,23 @@ INSERT INTO IT_Adminstrators  VALUES ("Medhat","kamal","Mkamal" ,"Kamal.jpg","wi
 
 
 -- Categories -- 
-INSERT INTO Categories (CName, IT_Username, Category_image) VALUES ("Data Science", "Mkamal","images/dataScience.png");
-INSERT INTO Categories (CName, IT_Username, Category_image) VALUES ("IOT", "Mkamal","images/IOT.jpeg");
-INSERT INTO Categories (CName, IT_Username, Category_image) VALUES ("Quantum", "Mkamal","images/quantum.jpg");
-INSERT INTO Categories (CName, IT_Username, Category_image) VALUES ("Web Development", "Mkamal","images/Web_Dev.png");
+INSERT INTO Categories (CName, IT_Username, Category_image) VALUES ("Data Science", "Mkamal","/images/dataScience.png");
+INSERT INTO Categories (CName, IT_Username, Category_image) VALUES ("IOT", "Mkamal","/images/IOT.jpeg");
+INSERT INTO Categories (CName, IT_Username, Category_image) VALUES ("Quantum", "Mkamal","/images/quantum.jpg");
+INSERT INTO Categories (CName, IT_Username, Category_image) VALUES ("Web Development", "Mkamal","/images/Web_Dev.png");
 
 -- Programs --
 INSERT INTO Programs (PName,IT_Username,Cost, Level, Duration, Program_info, Program_image) VALUES ("AI", "Mkamal", 15000, "Beginner", 3, "Our set he for firmament morning sixth subdue darkness creeping gathered divide our
-                                    let god moving. Moving in fourth air night bring upon", "images/ML.jpeg");
+                                    let god moving. Moving in fourth air night bring upon", "/images/ML.jpeg");
 INSERT INTO Programs (PName,IT_Username, Cost, Level, Duration, Program_info, Program_image) VALUES ("Web Development", "Mkamal", 15000, "Beginner", 3, "Our set he for firmament morning sixth subdue darkness creeping gathered divide our
-                                    let god moving. Moving in fourth air night bring upon", "images/Web_Dev.png");
+                                    let god moving. Moving in fourth air night bring upon", "/images/Web_Dev.png");
                                     
 
 -- instructors --
-insert  into Instructors values ('Omar','Kamal','OmarA',"Mkamal","images/author.jpg",'123456',null,900, "Male" , "", 1);
-insert  into Instructors values ('Emad','Atalah','EmadA',"Mkamal","images/author.jpg",null,null,1000, "Male", "", 1);
-INSERT INTO Instructors VALUES ("Menna", "Ahmed", "mennaahmed","Mkamal", "images/author.jpg", null, null,null, "Female", "", 1);
-INSERT INTO Instructors VALUES ("Reem", "Attalah", "reemattalah", "Mkamal", "images/author.jpg", null, null, null,"Female", "", 1);
+insert  into Instructors values ('Omar','Kamal','OmarA',"Mkamal","/images/author.jpg",'123456',null,900, "Male" , "", 1);
+insert  into Instructors values ('Emad','Atalah','EmadA',"Mkamal","/images/author.jpg",null,null,1000, "Male", "", 1);
+INSERT INTO Instructors VALUES ("Menna", "Ahmed", "mennaahmed","Mkamal", "/images/author.jpg", null, null,null, "Female", "", 1);
+INSERT INTO Instructors VALUES ("Reem", "Attalah", "reemattalah", "Mkamal", "/images/author.jpg", null, null, null,"Female", "", 1);
 
 
 -- Courses -- 
@@ -295,4 +295,7 @@ INSERT INTO Videos VALUES (5, 2, "https://www.youtube.com/watch?v=HvDqbzu0i0E&li
 INSERT INTO Videos VALUES (6, 2, "https://www.youtube.com/watch?v=sRVGcYGjUk8&list=PL1328115D3D8A2566&index=6", "intro");
 
 
+<<<<<<< HEAD
 select * from students;
+=======
+>>>>>>> 28792fa91c389ce92aba6f58e99af574585d62f5

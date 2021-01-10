@@ -47,6 +47,12 @@ app.use((req, res, next) => {
     next();
 });
 
+// app.use((req, res, next) => {
+//     res.locals.isAuthenticatedd = req.isAuthenticated();
+//     next();
+// })
+
+
 app.use('/home', require('./routes/home'));
 app.use('/login', require('./routes/login'));
 app.use('/signup', require('./routes/signup'));
@@ -63,22 +69,22 @@ app.use('/Course_Content', require('./routes/Course_Content'));
 app.use('/logout', require('./routes/logout'));
 
 
-var global_username = "";
+global.global_username = "";
 
-app.use((req, res, next)=>{
+// app.use((req, res, next)=>{
 
-    res.locals.global_username = req.global_username;
-    next();
-})
+//     res.locals.global_username = "";
+//     next();
+// })
 
 
-var global_type = "";
+global.global_type = "";
 
-app.use((req, res, next)=>{
+// app.use((req, res, next)=>{
 
-    res.locals.global_type = req.global_type;
-    next();
-})
+//     res.locals.global_type = "";
+//     next();
+// })
 
 
 app.listen(port,(error)=>{ 
