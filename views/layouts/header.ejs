@@ -8,7 +8,7 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
-
+    
     <link rel="stylesheet" href="/css/<%= css %>.css">
     <link rel="stylesheet" href="/css/animate.css">
 
@@ -30,23 +30,23 @@
                     <div class="dropdown show" style="padding-left:0px;">
                         <a id="bttn" class="btn btn-secondary dropdown-toggle" style="cursor: pointer;
          color: rgb(228, 222, 222);
-         font-size: 1.3rem;background-color:hsl(39, 77%, 83%,0); border:none; outline:none;" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <a href="/categories" style=" text-decoration:none; color:rgb(228, 222, 222);font-size: 1.1rem">Categories</a>
+         font-size: 1.5rem;background-color:hsl(39, 77%, 83%,0); border:none; outline:none;" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a href="/categories" style=" text-decoration:none; color:rgb(228, 222, 222);font-size: 1.2rem">Categories</a>
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <!-- <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                             <ul><a href="/" style="color:rgb(228, 222, 222);font-size: 1rem">Cat1</a> </ul>
                             <ul><a href="/" style="color:rgb(228, 222, 222);font-size: 1rem">Cat2</a> </ul>
                             <ul><a href="/" style="color:rgb(228, 222, 222);font-size: 1rem">Cat3</a> </ul>
 
-                        </div>
+                        </div> -->
 
                     </div>
                 </li>
                 <li class="nav-item <% if (title === 'Programs') { %>active<% } %>">
-                    <a class="nav-link" href="/programs" style="color:rgb(228, 222, 222);font-size: 1.1rem">Programs</a>
+                    <a class="nav-link" href="/programs" style="color:rgb(228, 222, 222);font-size: 1.25rem">Programs</a>
                 </li>
                 <li class="nav-item <% if (title === 'Courses') { %>active<% } %>">
-                    <a class="nav-link" href="/course" style="color:rgb(228, 222, 222);font-size: 1.1rem">Courses</a>
+                    <a class="nav-link" href="/course" style="color:rgb(228, 222, 222);font-size: 1.25rem">Courses</a>
                 </li>
 
                 <li class="nav-item">
@@ -56,16 +56,16 @@
                 <% if (  global_type == "" )   {  %>
                     
                 <li class="nav-item <% if (title === 'joinOurStaff') { %>active<% } %>">
-                    <a class="nav-link" href="/joinOurStaff" style="color:rgb(228, 222, 222);font-size: 1.1rem">Join Our Staff</a>
+                    <a class="nav-link" href="/joinOurStaff" style="color:rgb(228, 222, 222);font-size: 1.25rem">Join Our Staff</a>
                 </li>
                 
                 <li class="nav-item <% if (title === 'login') { %>active<% } %>">
-                    <a class="nav-link" href="/login" style="color: rgb(228, 222, 222);font-size: 1.1rem">Sign In </a>
+                    <a class="nav-link" href="/login" style="color: rgb(228, 222, 222);font-size: 1.25rem">Sign In </a>
                 </li>
                 <% } %>
                
                 <li class="nav-item">
-                    <a class="nav-link" href="/Donate" style="color: rgb(228, 222, 222);font-size: 1.1rem">Donate</a>
+                    <a class="nav-link" href="/Donate" style="color: rgb(228, 222, 222);font-size: 1.25rem">Donate</a>
                 </li>
 
                 <% if (  global_type !== "" )   {  %>
@@ -74,12 +74,12 @@
                     <div class="dropdown show" style="padding-left:0px;">
                         <a id="bttn" class="btn btn-secondary dropdown-toggle" style="cursor: pointer;
              color: rgb(228, 222, 222);
-             font-size: 1.3rem;background-color:hsl(39, 77%, 83%,0); border:none; outline:none;" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <a href="/Account_Settings" style=" text-decoration:none; color:rgb(228, 222, 222);font-size: 1.1rem">Account</a>
+             font-size: 1.2rem;background-color:hsl(39, 77%, 83%,0); border:none; outline:none;" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a href="/Account_Settings" style=" text-decoration:none; color:rgb(228, 222, 222);font-size: 1.2rem">Account</a>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <ul><a href="/Account_Settings" style="color:rgb(228, 222, 222);font-size: 1.1rem">Profile</a> </ul>
-                            <ul><a href="/logout" style="color:rgb(228, 222, 222);font-size: 1.1rem">Log Out</a> </ul>
+                            <ul><a href="/Account_Settings" style="color:rgb(21, 73, 116);  text-decoration:none; font-size: 1.2rem">Profile</a> </ul>
+                            <ul><a href="/logout" style="color:rgb(21, 76, 121);font-size: 1.2rem; text-decoration:none;">Log Out</a> </ul>
 
                         </div>
 

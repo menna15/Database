@@ -23,6 +23,21 @@
     margin-left: 10px;
 }
 
+.navbar-nav li a
+{
+   
+    font-size: 2rem !important; 
+
+}
+.navbar-nav li
+{
+    margin: 0 15px 0 15px;
+}
+.navbar-nav div
+{
+    margin: 0 27px 0 27px;
+
+}
 .search {
     min-width: 30vw;
     min-height: 40px;

@@ -13,7 +13,15 @@
     z-index: 1;
     height: 16vh;
 }
+.navbar-nav li
+{
+    margin: 0 15px 0 15px;
+}
+.navbar-nav div
+{
+    margin: 0 27px 0 27px;
 
+}
 .navbar img {
     height: 120px;
     width: 120px;

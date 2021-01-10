@@ -24,7 +24,7 @@
 
 
 
-                        <%  if (global_type == 'instructor' || global_type == 'student' )  {  %>
+                    <%  if (global_type == 'instructor' || global_type == 'student' )  {  %>
 
                     
                     <a href="/Achievements">Achievements</a>
@@ -32,12 +32,12 @@
 
                     <%  } %>                        
 
-                        <%  if (global_type == "instructor" )  {  %>
+                    <%  if (global_type !== "student" )  {  %>
                               
-                    <a href="/add_any">Add Course</a>
+                    <a href="/add_any">Avaliable actions</a>
                     <hr style="border-top: 1px solid #bbb;">
-                        
-                        <%  } %>                        
+                    <%  } %>
+                        <!--                         
 
                             <%  if ( global_type == "it_adminstrator"  )  {  %>
 
@@ -101,7 +101,7 @@
 
                     <a href="/add_any">Delete Coupon</a>
                     <hr style="border-top: 1px solid #bbb;">
-                    <%  } %>                        
+                    <%  } %>                         -->
                                
                     <% if ( global_type !== "")   {  %>
                     <a href="/logout">Log Out</a>

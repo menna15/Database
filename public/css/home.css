@@ -22,7 +22,6 @@
     .navbar li {
         margin-left: 10px;
     }
-    
     .search {
         min-width: 30vw;
         min-height: 40px;
@@ -32,7 +31,23 @@
         border: none;
         outline: none;
     }
-    
+    .navbar-nav
+    {
+        width: fit-content;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        
+    }
+    .navbar-nav li
+    {
+        margin: 0 15px 0 15px;
+    }
+    .navbar-nav div
+    {
+        margin: 0 27px 0 27px;
+
+    }
     .search:hover {
         min-width: 30vw;
         min-height: 40px;

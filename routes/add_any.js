@@ -1,4 +1,6 @@
 const router = require('express').Router();
+const { clearCache } = require('ejs');
+const e = require('express');
 var db = require('../db');
 var instructors;
 var coupons_list;
@@ -17,7 +19,7 @@ router.get('/', async(req, res) => {
         console.error(e);
         message="Failed to retrieve all instructors";
         return res.render('add_any', {
-            title: 'Add ...',
+            title: 'Execute action.',
             css: 'add_any',
             message:  req.flash('message'),
             instructors:instructors,
@@ -28,7 +30,7 @@ router.get('/', async(req, res) => {
 
 
      return res.render('add_any', {
-        title: 'Add...',
+        title: 'Execute action',
         css: 'add_any',
         message:  req.flash('message'),
         instructors:instructors,
@@ -54,7 +56,7 @@ if(!courseName==""|| !Instructor_username=="" || !Cost=="" ||  !Duration=="" || 
     
 if (!courseName) {
     return res.render('add_any', {
-        title: 'Add...',
+        title: 'Execute action',
         css: 'add_any',
         message:  "Course must have a name",
         instructors:instructors,
@@ -68,7 +70,7 @@ if (Instructor_username && sql_validInstructorQuery != 0) {
 }
 else{
     return res.render('add_any', {
-        title: 'Add...', 
+        title: 'Execute action', 
         css: 'add_any',
         message:  "Enter valid instructor name",
         instructors:instructors,
@@ -78,7 +80,7 @@ else{
 
 if (!Cost) {
     return res.render('add_any', {
-        title: 'Add...',
+        title: 'Execute action',
         css: 'add_any',
         message:  "Course must have a price",
         instructors:instructors,
@@ -87,7 +89,7 @@ if (!Cost) {
 }
 if (!Duration) {
     return res.render('add_any', {
-        title: 'Add...',
+        title: 'Execute action',
         css: 'add_any',
         message:  "Course must have a duration time",
         instructors:instructors,
@@ -102,7 +104,7 @@ if (Category && sql_validInstructorQuery != 0) {
 }
 else{
     return res.render('add_any', {
-        title: 'Add...', 
+        title: 'Execute action', 
         css: 'add_any',
         message:  "Enter existing category name",
         instructors:instructors,
@@ -112,7 +114,7 @@ else{
 
 if (!Course_link) {
     return res.render('add_any', {
-        title: 'Add...',
+        title: 'Execute action',
         css: 'add_any',
         message:  "Course content must have a link",
         instructors:instructors,
@@ -122,7 +124,7 @@ if (!Course_link) {
 
 if (!Course_small_info) {
     return res.render('add_any', {
-        title: 'Add...',
+        title: 'Execute action',
         css: 'add_any',
         message:  "Course must have a small attractive information",
         instructors:instructors,
@@ -131,7 +133,7 @@ if (!Course_small_info) {
 }
 if (!courseInformation) {
     return res.render('add_any', {
-        title: 'Add...',
+        title: 'Execute action',
         css: 'add_any',
         message:  "Course must have a brief information about course details",
         instructors:instructors,
@@ -167,7 +169,7 @@ if(uploaded_image)
         });
     } else {
         return res.render('add_any', {
-            title: 'Add...',
+            title: 'Execute action',
             css: 'add_any',
             message:  "This format is not allowed , please upload file with '.png','.gif','.jpg'"
         })
@@ -184,13 +186,58 @@ var sql = "INSERT INTO `courses`(`Course_ID`,`Instructors_Username`,`Category_Na
 
 await ApplyQuery(sql);
 
-return res.render('Account_Settings', {
-    title: 'Account_Settings',
-    css: 'Account_Settings',
+return res.render('add_any', {
+    title: 'Execute action',
+    css: 'add_any',
     message: "Course is added",
     instructors:instructors,
     coupons_list:coupons_list
 })
+}
+//-----------------------------------------------------Delete Course-------------------------------------------------------------------------
+if(!req.body.Instructor_username_courseD ==""&&!req.body.courseD=="")
+{
+    try
+    {
+        var executed=await ApplyQuery("select Course_ID from enroll_into_course where Course_ID ='"+req.body.courseD +"'");
+        console.log(executed.length);
+        if(!executed.length)
+        {
+          try
+            {
+               await ApplyQuery("Delete from courses where Course_ID='"+req.body.courseD+"'and Instructors_Username='"+req.body.Instructor_username_courseD+"'");
+              return res.render('add_any', {
+                title: 'Execute action', 
+                css: 'add_any',
+                message: "Course deleted succssefully!!",
+                instructors:instructors,
+                coupons_list:coupons_list
+              })
+            }
+          catch(e)
+            {
+              console.error(e);
+              return res.render('add_any', {
+                title: 'Execute action', 
+                css: 'add_any',
+                message: "Error happened while executing delete query!",
+                instructors:instructors,
+                coupons_list:coupons_list
+            })
+            }
+        }
+    }
+    catch(e)
+    {
+        console.error(e);
+        return res.render('add_any', {
+            title: 'Execute action', 
+            css: 'add_any',
+            message: "Error happened while getting the course id from instructor username",
+            instructors:instructors,
+            coupons_list:coupons_list
+        })
+    }
 }
 //----------------------------------------------Add category ----------------------------------------------------------------------------
 
@@ -212,7 +259,7 @@ if(!req.body.Category_Name==""||!req.body.IT_username==""){
             });
         } else {
             return res.render('add_any', {
-                title: 'Add...',
+                title: 'Execute action',
                 css: 'add_any',
                 message:  "This format is not allowed , please upload file with '.png','.gif','.jpg'",
                 instructors:instructors,
@@ -227,7 +274,7 @@ if(!req.body.Category_Name==""||!req.body.IT_username==""){
     var sql_query= "INSERT INTO Categories (CName, IT_Username ,Category_image) VALUES  ('" + req.body.Category_Name + "','" + req.body.IT_username +"','"+img_name+ "')";
     if(!isNaN(req.body.Category_Name))
     {return res.render('add_any', {
-        title: 'Add...', 
+        title: 'Execute action', 
         css: 'add_any',
         message: "Invalid Category name!",
         instructors:instructors,
@@ -237,7 +284,7 @@ if(!req.body.Category_Name==""||!req.body.IT_username==""){
     {
         await ApplyQuery(sql_query);
         return res.render('add_any', {
-            title: 'Add...', 
+            title: 'Execute action', 
             css: 'add_any',
             message: "Category added successfully !",
                 instructors:instructors,
@@ -248,7 +295,7 @@ if(!req.body.Category_Name==""||!req.body.IT_username==""){
     {
         console.error(e);
         return res.render('add_any', {
-            title: 'Add...', 
+            title: 'Execute action', 
             css: 'add_any',
             message: "Faild to add this category!, Category Name may be taken or Username is incorrect!",
                     instructors:instructors,
@@ -326,7 +373,7 @@ if(req.files.Program_img)
         });
     } else {
         return res.render('add_any', {
-            title: 'Add...',
+            title: 'Execute action',
             css: 'add_any',
             message:  "This format is not allowed , please upload file with '.png','.gif','.jpg'",
                     instructors:instructors,
@@ -341,7 +388,7 @@ else
 
 if(!isNaN(req.body.Program_Name))
 {return res.render('add_any', {
-    title: 'Add...', 
+    title: 'Execute action', 
     css: 'add_any',
     message: "Invalid Program name!",
     instructors:instructors,
@@ -350,7 +397,7 @@ if(!isNaN(req.body.Program_Name))
 ;}
 if(isNaN(req.body.Cost_prog))
 {return res.render('add_any', {
-    title: 'Add...', 
+    title: 'Execute action', 
     css: 'add_any',
     message: "Cost must be a numeric value!",
         instructors:instructors,
@@ -359,7 +406,7 @@ if(isNaN(req.body.Cost_prog))
 ;}
 if(isNaN(req.body.Duration_program))
 {return res.render('add_any', {
-    title: 'Add...', 
+    title: 'Execute action', 
     css: 'add_any',
     message: "Duration must be a numeric value!",
         instructors:instructors,
@@ -368,7 +415,7 @@ if(isNaN(req.body.Duration_program))
 ;}
 if(!req.body.Level)
 {return res.render('add_any', {
-    title: 'Add...', 
+    title: 'Execute action', 
     css: 'add_any',
     message: "Enter Program Level!",
         instructors:instructors,
@@ -380,7 +427,7 @@ try
 {
     await ApplyQuery(sql_query);
     return res.render('add_any', {
-        title: 'Add...', 
+        title: 'Execute action', 
         css: 'add_any',
         message: "Program added successfully !",
             instructors:instructors,
@@ -391,7 +438,7 @@ catch(e)
 {
     console.error(e);
     return res.render('add_any', {
-        title: 'Add...', 
+        title: 'Execute action', 
         css: 'add_any',
         message: "Faild to add this Program!, Program Name may be taken or Username is incorrect!",
                 instructors:instructors,
@@ -411,7 +458,7 @@ if(!req.body.Program_NameU==""||!req.body.Cost_progU==""||!req.body.Duration_pro
         {    var executed2=await ApplyQuery("select PName from programs where PName='"+req.body.Program_NameU+"';");
             if(!isNaN(req.body.Program_NameU)||!executed2.length)
             {   return res.render('add_any', {
-                    title: 'Add...', 
+                    title: 'Execute action', 
                     css: 'add_any',
                     message: "Invalid Program name!",
                         instructors:instructors,
@@ -442,7 +489,7 @@ if(!req.body.Program_NameU==""||!req.body.Cost_progU==""||!req.body.Duration_pro
                                 {
                                     console.error(e);
                                     return res.render('add_any', {
-                                        title: 'Add...',
+                                        title: 'Execute action',
                                         css: 'add_any',
                                         message:  "Failed to update the program image",
                                         instructors:instructors,
@@ -456,7 +503,7 @@ if(!req.body.Program_NameU==""||!req.body.Cost_progU==""||!req.body.Duration_pro
                     } 
                     else {
                         return res.render('add_any', {
-                            title: 'Add...',
+                            title: 'Execute action',
                             css: 'add_any',
                             message:  "This format is not allowed , please upload file with '.png','.gif','.jpg'",
                                     instructors:instructors,
@@ -479,7 +526,7 @@ if(!req.body.Program_NameU==""||!req.body.Cost_progU==""||!req.body.Duration_pro
                         {
                             console.error(e);
                             return res.render('add_any', {
-                                title: 'Add...',
+                                title: 'Execute action',
                                 css: 'add_any',
                                 message:  "Failed to update the program cost",
                                 instructors:instructors,
@@ -499,7 +546,7 @@ if(!req.body.Program_NameU==""||!req.body.Cost_progU==""||!req.body.Duration_pro
                         {
                             console.error(e);
                             return res.render('add_any', {
-                                title: 'Add...',
+                                title: 'Execute action',
                                 css: 'add_any',
                                 message:  "Failed to update the program duration",
                                 instructors:instructors,
@@ -516,7 +563,7 @@ if(!req.body.Program_NameU==""||!req.body.Cost_progU==""||!req.body.Duration_pro
                     {
                         console.error(e);
                         return res.render('add_any', {
-                            title: 'Add...',
+                            title: 'Execute action',
                             css: 'add_any',
                             message:  "Failed to update the program level",
                             instructors:instructors,
@@ -533,7 +580,7 @@ if(!req.body.Program_NameU==""||!req.body.Cost_progU==""||!req.body.Duration_pro
                     {
                         console.error(e);
                         return res.render('add_any', {
-                            title: 'Add...',
+                            title: 'Execute action',
                             css: 'add_any',
                             message:  "Failed to update the program info",
                             instructors:instructors,
@@ -542,7 +589,7 @@ if(!req.body.Program_NameU==""||!req.body.Cost_progU==""||!req.body.Duration_pro
                     }  
                 }
                 return res.render('add_any', {
-                    title: 'Add...',
+                    title: 'Execute action',
                     css: 'add_any',
                     message:  "Program updated successfully",
                     instructors:instructors,
@@ -554,7 +601,7 @@ if(!req.body.Program_NameU==""||!req.body.Cost_progU==""||!req.body.Duration_pro
         else
         {
             return res.render('add_any', {
-                title: 'Add...',
+                title: 'Execute action',
                 css: 'add_any',
                 message:  "We cannot update this program because it is currently in use",
                 instructors:instructors,
@@ -566,7 +613,7 @@ if(!req.body.Program_NameU==""||!req.body.Cost_progU==""||!req.body.Duration_pro
     {
         console.error(e);
         return res.render('add_any', {
-            title: 'Add...',
+            title: 'Execute action',
             css: 'add_any',
             message:  "Error while Executing the query",
             instructors:instructors,
@@ -587,7 +634,7 @@ if(!req.body.Program_NameD=="")
         {
             if(!isNaN(req.body.Program_NameD))
             {   return res.render('add_any', {
-                    title: 'Add...', 
+                    title: 'Execute action', 
                     css: 'add_any',
                     message: "Invalid Program name!",
                         instructors:instructors,
@@ -600,7 +647,7 @@ if(!req.body.Program_NameD=="")
                 {
                     await ApplyQuery("Delete from programs where PName='"+req.body.Program_NameD+"';");
                     return res.render('add_any', {
-                        title: 'Add...', 
+                        title: 'Execute action', 
                         css: 'add_any',
                         message: "Program deleted!",
                             instructors:instructors,
@@ -611,7 +658,7 @@ if(!req.body.Program_NameD=="")
                 {
                     console.log(e);
                     return res.render('add_any', {
-                        title: 'Add...', 
+                        title: 'Execute action', 
                         css: 'add_any',
                         message: "Failed to delete .. Error while executing the query!",
                             instructors:instructors,
@@ -624,7 +671,7 @@ if(!req.body.Program_NameD=="")
         else
         {
              return res.render('add_any', {
-                title: 'Add...', 
+                title: 'Execute action', 
                 css: 'add_any',
                 message: "Cannot delete the program because it is currently in use (some students are enrolled in )!",
                     instructors:instructors,
@@ -637,7 +684,7 @@ if(!req.body.IT_FName=="" || !req.body.IT_LName=="" || !req.body.IT_username==""
 {
     if (!req.body.IT_FName) {
         return res.render('add_any', {
-            title: 'Add...',
+            title: 'Execute action',
             css: 'add_any',
             message:  "You must enter IT First Name ",
                     instructors:instructors,
@@ -646,7 +693,7 @@ if(!req.body.IT_FName=="" || !req.body.IT_LName=="" || !req.body.IT_username==""
     }
     if (!req.body.IT_LName) {
         return res.render('add_any', {
-            title: 'Add...',
+            title: 'Execute action',
             css: 'add_any',
             message:  "You must enter IT Last Name ",
                     instructors:instructors,
@@ -671,7 +718,7 @@ if(!req.body.IT_FName=="" || !req.body.IT_LName=="" || !req.body.IT_username==""
     if (req.body.Owner_username && sqlcheckOwnerExists!= 0){}
     else {
         return res.render('add_any', {
-            title: 'Add...',
+            title: 'Execute action',
             css: 'add_any',
             message:  "You must enter your username in Owner username",
             instructors:instructors,
@@ -684,12 +731,81 @@ if(!req.body.IT_FName=="" || !req.body.IT_LName=="" || !req.body.IT_username==""
     await ApplyQuery(addIT);
 
     return res.render('add_any', {
-        title: 'Add...', 
+        title: 'Execute action', 
         css: 'add_any',
         message: "IT Administrator is added successfully !",
         instructors:instructors,
         coupons_list:coupons_list}
     );
+}
+//-----------------------------------------------------------Delete IT --------------------------------------------------
+if(!req.body.IT_Delete=="" )
+{   if(isNaN(req.body.IT_Delete))
+    {
+        try
+        {
+            var executed=await ApplyQuery("Select Username from it_adminstrators where Username='"+req.body.IT_Delete+"';")
+            console.log(executed.length);
+            if(executed.length)
+            {
+                try
+                {
+                    var executed=await ApplyQuery("Delete from it_adminstrators where Username='"+req.body.IT_Delete+"';")
+                    return res.render('add_any', {
+                        title: 'Execute action',
+                        css: 'add_any',
+                        message: "IT is deleted successfully!",
+                        instructors:instructors,
+                        coupons_list:coupons_list
+                    })
+
+                }
+                catch(e)
+                {
+                    console.error(e);
+                    return res.render('add_any', {
+                        title: 'Execute action',
+                        css: 'add_any',
+                        message: "Error while executing the query",
+                        instructors:instructors,
+                        coupons_list:coupons_list
+                    })
+                }
+            }
+            else
+            {
+                return res.render('add_any', {
+                title: 'Execute action',
+                css: 'add_any',
+                message: "IT username isn't existed",
+                instructors:instructors,
+                coupons_list:coupons_list
+            })
+            
+            }
+        }
+        catch(e)
+        {
+            console.error(e); 
+            return res.render('add_any', {
+                title: 'Execute action',
+                css: 'add_any',
+                message: "Error while executing the query",
+                instructors:instructors,
+                coupons_list:coupons_list
+            })
+        }
+    }
+    else
+    {
+        return res.render('add_any', {
+            title: 'Execute action',
+            css: 'add_any',
+            message: "invalid fotmat for IT username",
+            instructors:instructors,
+            coupons_list:coupons_list
+        })
+    }
 }
 // ------------------------------------------------ ADD Coupons ----------------------------------------------------
 if(!req.body.Owner_username2=="" || !req.body.percentage=="" || !req.body.start=="" || !req.body.end=="" ||!req.body.Category2=="" )
@@ -713,7 +829,7 @@ if(!req.body.Owner_username2=="" || !req.body.percentage=="" || !req.body.start=
     if (req.body.Owner_username2 && sqlcheckOwnerExists!= 0){}
         else {
             return res.render('add_any', {
-                title: 'Add...',
+                title: 'Execute action',
                 css: 'add_any',
                 message:  "You must enter your username in Owner username",
                         instructors:instructors,
@@ -723,7 +839,7 @@ if(!req.body.Owner_username2=="" || !req.body.percentage=="" || !req.body.start=
     //percentage between 0-100
     if (!req.body.percentage) {
         return res.render('add_any', {
-            title: 'Add...',
+            title: 'Execute action',
             css: 'add_any',
             message:  "You must enter coupon discount percentage ",
                     instructors:instructors,
@@ -733,7 +849,7 @@ if(!req.body.Owner_username2=="" || !req.body.percentage=="" || !req.body.start=
     if(req.body.percentage < 0  || req.body.percentage > 100)
     {
         return res.render('add_any', {
-            title: 'Add...',
+            title: 'Execute action',
             css: 'add_any',
             message:  "Coupon discount percentage must be between 0-100",
                     instructors:instructors,
@@ -743,7 +859,7 @@ if(!req.body.Owner_username2=="" || !req.body.percentage=="" || !req.body.start=
 
     if (!req.body.start) {
         return res.render('add_any', {
-            title: 'Add...',
+            title: 'Execute action',
             css: 'add_any',
             message:  "You must enter coupon discount start date",
                     instructors:instructors,
@@ -752,7 +868,7 @@ if(!req.body.Owner_username2=="" || !req.body.percentage=="" || !req.body.start=
     }
     if (!req.body.end) {
         return res.render('add_any', {
-            title: 'Add...',
+            title: 'Execute action',
             css: 'add_any',
             message:  "You must enter coupon discount end date",
                     instructors:instructors,
@@ -763,7 +879,7 @@ if(!req.body.Owner_username2=="" || !req.body.percentage=="" || !req.body.start=
     if(req.body.start >= req.body.end)
     {
         return res.render('add_any', {
-            title: 'Add...',
+            title: 'Execute action',
             css: 'add_any',
             message:  "end date must be greater than start date",
                     instructors:instructors,
@@ -776,7 +892,7 @@ if(!req.body.Owner_username2=="" || !req.body.percentage=="" || !req.body.start=
     if (req.body.Category2 && sql_validInstructorQuery != 0) {}
     else{
         return res.render('add_any', {
-            title: 'Add...', 
+            title: 'Execute action', 
             css: 'add_any',
             message:  "Enter existing category name",
                     instructors:instructors,
@@ -789,7 +905,7 @@ if(!req.body.Owner_username2=="" || !req.body.percentage=="" || !req.body.start=
         await ApplyQuery(addCoupon);
 
         return res.render('add_any', {
-            title: 'Add...', 
+            title: 'Execute action', 
             css: 'add_any',
             message: "Coupon is added successfully !",
                 instructors:instructors,
@@ -813,7 +929,7 @@ if(!req.body.Coupon_id_update==""||!req.body.Owner_username_couponU=="" || !req.
         if (req.body.Owner_username_couponU && sqlcheckOwnerExists!= 0){}
             else {
                 return res.render('add_any', {
-                    title: 'Add...',
+                    title: 'Execute action',
                     css: 'add_any',
                     message:  "You must enter your username in Owner username",
                             instructors:instructors,
@@ -823,7 +939,7 @@ if(!req.body.Coupon_id_update==""||!req.body.Owner_username_couponU=="" || !req.
         //percentage between 0-100
         if (!req.body.percentage_U) {
             return res.render('add_any', {
-                title: 'Add...',
+                title: 'Execute action',
                 css: 'add_any',
                 message:  "You must enter coupon discount percentage ",
                         instructors:instructors,
@@ -833,7 +949,7 @@ if(!req.body.Coupon_id_update==""||!req.body.Owner_username_couponU=="" || !req.
         if(req.body.percentage_U < 0  || req.body.percentage_U > 100)
         {
             return res.render('add_any', {
-                title: 'Add...',
+                title: 'Execute action',
                 css: 'add_any',
                 message:  "Coupon discount percentage must be between 0-100",
                         instructors:instructors,
@@ -844,7 +960,7 @@ if(!req.body.Coupon_id_update==""||!req.body.Owner_username_couponU=="" || !req.
         if(req.body.start_U >= req.body.end_U)
         {
             return res.render('add_any', {
-                title: 'Add...',
+                title: 'Execute action',
                 css: 'add_any',
                 message:  "end date must be greater than start date",
                         instructors:instructors,
@@ -857,7 +973,7 @@ if(!req.body.Coupon_id_update==""||!req.body.Owner_username_couponU=="" || !req.
         if (req.body.Category_U && sql_validInstructorQuery != 0) {}
         else{
             return res.render('add_any', {
-                title: 'Add...', 
+                title: 'Execute action', 
                 css: 'add_any',
                 message:  "Enter existing category name",
                         instructors:instructors,
@@ -868,8 +984,8 @@ if(!req.body.Coupon_id_update==""||!req.body.Owner_username_couponU=="" || !req.
             var addCoupon="update coupons set  Owner_Username= '"+req.body.Owner_username_couponU  +"',SDate= '"+req.body.start_U  +"',EDate= '"+ req.body.end_U+"',discount_percentage = '"+ req.body.percentage_U +"',Category_Name = '"+ req.body.Category_U +"' where Coupon_ID='"+req.body.Coupon_id_update+"';"; 
             
             try{await ApplyQuery(addCoupon);
-                return res.render('Account', {
-                    title: 'Add...', 
+                return res.render('add_any', {
+                    title: 'Execute action', 
                     css: 'add_any',
                     message: "Coupon is updated successfully !",
                         instructors:instructors,
@@ -878,7 +994,7 @@ if(!req.body.Coupon_id_update==""||!req.body.Owner_username_couponU=="" || !req.
             catch(e){
                 console.error(e);
                 return res.render('add_any', {
-                    title: 'Add...', 
+                    title: 'Execute action', 
                     css: 'add_any',
                     message: "Faild to update coupon!",
                         instructors:instructors,
@@ -889,7 +1005,7 @@ if(!req.body.Coupon_id_update==""||!req.body.Owner_username_couponU=="" || !req.
     }
 }
 //--------------------------------------------------------------Delete Coupon--------------------------------------------------------------------------------------------
-if(req.body.Coupon_id_delete !="")
+if(!req.body.Coupon_id_delete =="")
 {
     coupons_list=await ApplyQuery('SELECT Coupon_ID from Coupons ');
     //loop over coupons to detect if coupoun duration ended or not so can take any action(upadte or delete)
@@ -898,10 +1014,12 @@ if(req.body.Coupon_id_delete !="")
     try{coupons = await ApplyQuery(deleteCoupon);}
     catch(e){
         console.error(e);
-        return res.render('Account_Settings', {
-            title: 'Account_Settings', 
-            css: 'Account_Settings',
+        return res.render('add_any', {
+            title: 'Execute action', 
+            css: 'add_any',
             message: "Cannot find such a coupon!",
+            instructors:instructors,
+            coupons_list:coupons_list
         }
         );
     }
@@ -913,30 +1031,35 @@ if(req.body.Coupon_id_delete !="")
         var addCoupon="Delete from coupons where Coupon_ID='"+req.body.Coupon_id_delete+"';"; 
             
         try{await ApplyQuery(addCoupon);
-            return res.render('Account_Settings', {
-                title: 'Account_Settings', 
-                css: 'Account_Settings',
+            return res.render('add_any', {
+                title: 'Execute action.', 
+                css: 'add_any',
                 message: "Coupon is deleted successfully !",
+                instructors:instructors,
+                coupons_list:coupons_list
             }
             );}
         catch(e){
             console.error(e);
-            return res.render('Account_Settings', {
-                title: 'Account_Settings', 
-                css: 'Account_Settings',
+            return res.render('add_any', {
+                title: 'Execute action', 
+                css: 'add_any',
                 message: "Faild to delete coupon!",
+                instructors:instructors,
+                coupons_list:coupons_list
             }
             );
         }
         
     }
     else{
-        return res.render('Account_Settings', {
-            title: 'Account_Settings', 
-            css: 'Account_Settings',
+        return res.render('add_any', {
+            title: 'Execute action', 
+            css: 'add_any',
             message: "Cannot delete this coupon because it is currently in use!",
-}
-        );
+            instructors:instructors,
+            coupons_list:coupons_list
+        });
     }
 }
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -946,7 +1069,7 @@ var sql_query="SELECT Username from instructors where statuss= 1";
 var instructors;
 try {
     instructors=await ApplyQuery(sql_query);
-    console.log(instructors);
+    console.log(instructors.length);
     }
     catch(e)
     {
@@ -957,25 +1080,18 @@ if(instructors.length!=0)
     for(var i=0 ; i< instructors.length ; i++)
     {   
         if(req.body[i]!="Select")
-        {  
+        {   
             if(req.body[i]=="Rejected")
             {          
                 var sql_query="DELETE from instructors where Username='"+ instructors[i].Username+"'";
                     try{
                     var executed= await ApplyQuery(sql_query);
-                    return res.render('add_any', {
-                        title: 'Add...', 
-                        css: 'add_any',
-                        message: "Instructor is added Successfully!",
-                        instructors:instructors,
-                        coupons_list:coupons_list
-                    });
                     }
                     catch(e)
                     {
                         console.error(e);
                         return res.render('add_any', {
-                            title: 'Add...', 
+                            title: 'Execute action', 
                             css: 'add_any',
                             message: "FAILD with Schema error !",
                             instructors:instructors,
@@ -995,7 +1111,7 @@ if(instructors.length!=0)
                     {
                         console.error(e);
                         return res.render('add_any', {
-                            title: 'Add...', 
+                            title: 'Execute action', 
                             css: 'add_any',
                             message: "FAILD to add the instructor!",
                             instructors:instructors,
@@ -1008,22 +1124,27 @@ if(instructors.length!=0)
         }
 
     }
+    return res.render('add_any', {
+        title: 'Execute action', 
+        css: 'add_any',
+        message: "Done .. instructors waiting list is empty now",
+        instructors:instructors,
+        coupons_list:coupons_list
+    });
     
 }
 //------------------------------------------------------------------------------------------------------------------------------------------
 //------------------------------------------------ Delete Instructor ----------------------------------------------------------------
-console.log(req.body.Delet_instructor);
 if(req.body.Delet_instructor !="Select")
-{  console.log(req.body.Delet_instructor);
-   var sql_query="Select from teaches Instructor_Username where Instructor_Username='"+req.body.Delet_instructor+"'";
+{  
    try{
-       var executed=await ApplyQuery(sql_query);
-       if(executed.length !=0)
+       var executed=await ApplyQuery("Select Instructor_Username from teaches  where Instructor_Username='" +req.body.Delet_instructor+"';");
+       if(!executed.length)
        {
            try{
-               await ApplyQuery("Delete from Instructors where Username='"+req.body.Delet_instructor  +"'");
+               await ApplyQuery("Delete from Instructors where Username='"+req.body.Delet_instructor  +"';");
                return res.render('add_any', {
-                title: 'Add...', 
+                title: 'Execute action', 
                 css: 'add_any',
                 message: "Instructor is deleted Successfully!",
                 instructors:instructors,
@@ -1033,7 +1154,7 @@ if(req.body.Delet_instructor !="Select")
            catch(e)
            {console.error(e);
             return res.render('add_any', {
-                title: 'Add...', 
+                title: 'Execute action', 
                 css: 'add_any',
                 message: "Failed to delete this instructor!",
                 instructors:instructors,
@@ -1041,26 +1162,37 @@ if(req.body.Delet_instructor !="Select")
             });
            }
        }
+       else
+       {
+        return res.render('add_any', {
+            title: 'Execute action', 
+            css: 'add_any',
+            message: "Can not delete this instructor because he serve a course right now!",
+            instructors:instructors,
+            coupons_list:coupons_list
+        })
+       }
    }
    catch(e)
    {
        console.error(e);
        return res.render('add_any', {
-        title: 'Add...', 
+        title: 'Execute action', 
         css: 'add_any',
-        message: "Can not delete this instructor because he serve a course right now!",
+        message: "Error while executing the query of deleting the instructor",
         instructors:instructors,
         coupons_list:coupons_list
     });
    }
+
 }
 //-----------------------------------------------------------------------------------------------------------------------------------
-return res.render('Account_Settings', {
-    title: 'Account_Settings',
-    css: 'Account_Settings',
-    message: "No Action is done",
-            instructors:instructors,
-            coupons_list:coupons_list
+return res.render('add_any', {
+    title: 'Execute action', 
+    css: 'add_any',
+    message: "No action selected!",
+    instructors:instructors,
+    coupons_list:coupons_list
 })
 });
 
