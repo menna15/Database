@@ -15,7 +15,7 @@ router.get('/', async(req, res) => {
     catch(e)
     {
         console.error(e);
-        message="Failed to retriev all instructors";
+        message="Failed to retrieve all instructors";
         return res.render('add_any', {
             title: 'Add ...',
             css: 'add_any',
@@ -194,68 +194,118 @@ return res.render('Account_Settings', {
 }
 //----------------------------------------------Add category ----------------------------------------------------------------------------
 
- if(!req.body.Category_Name==""||!req.body.IT_username==""){
-var img_name="";
-if(req.body.cat_image)
-{
-    var file=req.body.cat_image;
-    img_name="/images/"+file.name;
-    if(file.mimetype == "image/jpeg" ||file.mimetype == "image/png"||file.mimetype == "image/gif" ){
-                                
-        file.mv('./public/images/'+file.name, function(err) {
-            if (err)
-            { 
-                console.log("can't upload picture");
-                return res.status(500).send(err);
-            }
-            
-        });
-    } else {
-        return res.render('add_any', {
-            title: 'Add...',
-            css: 'add_any',
-            message:  "This format is not allowed , please upload file with '.png','.gif','.jpg'",
-            instructors:instructors,
-            coupons_list:coupons_list
-        })
-    }
-}
-else
-{
-    img_name="/images/course_5.jpg";
-}
-var sql_query= "INSERT INTO Categories (CName, IT_Username ,Category_image) VALUES  ('" + req.body.Category_Name + "','" + req.body.IT_username +"','"+img_name+ "')";
-if(!isNaN(req.body.Category_Name))
-{return res.render('add_any', {
-    title: 'Add...', 
-    css: 'add_any',
-    message: "Invalid Category name!",
-    instructors:instructors,
-    coupons_list:coupons_list}
-)
-;}
-try
-{
-    await ApplyQuery(sql_query);
-    return res.render('add_any', {
-        title: 'Add...', 
-        css: 'add_any',
-        message: "Category added successfully !",
-            instructors:instructors,
-            coupons_list:coupons_list}
-    );
-}
-catch(e)
-{
-    console.error(e);
-    return res.render('add_any', {
-        title: 'Add...', 
-        css: 'add_any',
-        message: "Faild to add this category!, Category Name may be taken or Username is incorrect!",
+if(!req.body.Category_Name==""||!req.body.IT_username==""){
+    var img_name="";
+    if(req.body.cat_image)
+    {
+        var file=req.body.cat_image;
+        img_name="/images/"+file.name;
+        if(file.mimetype == "image/jpeg" ||file.mimetype == "image/png"||file.mimetype == "image/gif" ){
+                                    
+            file.mv('./public/images/'+file.name, function(err) {
+                if (err)
+                { 
+                    console.log("can't upload picture");
+                    return res.status(500).send(err);
+                }
+                
+            });
+        } else {
+            return res.render('add_any', {
+                title: 'Add...',
+                css: 'add_any',
+                message:  "This format is not allowed , please upload file with '.png','.gif','.jpg'",
                 instructors:instructors,
                 coupons_list:coupons_list
-    });
+            })
+        }
+    }
+    else
+    {
+        img_name="/images/course_5.jpg";
+    }
+    var sql_query= "INSERT INTO Categories (CName, IT_Username ,Category_image) VALUES  ('" + req.body.Category_Name + "','" + req.body.IT_username +"','"+img_name+ "')";
+    if(!isNaN(req.body.Category_Name))
+    {return res.render('add_any', {
+        title: 'Add...', 
+        css: 'add_any',
+        message: "Invalid Category name!",
+        instructors:instructors,
+        coupons_list:coupons_list});
+    }
+    try
+    {
+        await ApplyQuery(sql_query);
+        return res.render('add_any', {
+            title: 'Add...', 
+            css: 'add_any',
+            message: "Category added successfully !",
+                instructors:instructors,
+                coupons_list:coupons_list}
+        );
+    }
+    catch(e)
+    {
+        console.error(e);
+        return res.render('add_any', {
+            title: 'Add...', 
+            css: 'add_any',
+            message: "Faild to add this category!, Category Name may be taken or Username is incorrect!",
+                    instructors:instructors,
+                    coupons_list:coupons_list
+        });
+    }
 }
+//--------------------------------------------------------Delete Category ------------------------------------------------------------
+if(!req.body.Category_NameD ==""){
+    if(isNaN(req.body.Category_NameD))
+        {var executed=await ApplyQuery("select CName from categories where CName='"+req.body.Category_NameD+"';");
+        if(executed[0])
+        { try
+            {
+                console.log(await ApplyQuery("Delete from categories where CName='"+req.body.Category_NameD+"';"));
+                return res.render('add_any', {
+                    title: 'Execute Action', 
+                    css: 'add_any',
+                    message: "Category deleted successfully!",
+                    instructors:instructors,
+                    coupons_list:coupons_list
+                });
+            }
+            catch(e)
+            {
+                console.error(e);
+                return res.render('add_any', {
+                    title: 'Execute Action ', 
+                    css: 'add_any',
+                    message: "Faild to delete this category!",
+                    instructors:instructors,
+                    coupons_list:coupons_list
+                });
+
+            }
+        }
+        else
+        {
+            return res.render('add_any', {
+                title: 'Add ', 
+                css: 'add_any',
+                message: "Inncorrect Category name!",
+                instructors:instructors,
+                coupons_list:coupons_list
+            }); 
+        }
+    }
+    else
+    {
+        return res.render('add_any', {
+            title: 'Add ', 
+            css: 'add_any',
+            message: "Enter Valid Format for Category name!",
+            instructors:instructors,
+            coupons_list:coupons_list
+        });  
+    }
 }
 // ----------------------------------------------------------Add Program---------------------------------------------------------------
  if(!req.body.Program_Name==""||!req.body.IT_username_prog==""||!req.body.Cost_prog==""||!req.body.Duration_program==""|| !req.body.Level==""){
@@ -349,6 +399,237 @@ catch(e)
     });
 }
 }
+//---------------------------------------------------------- Update Program -------------------------------------------------------------
+if(!req.body.Program_NameU==""||!req.body.Cost_progU==""||!req.body.Duration_programU==""|| !req.body.LevelU==""||!req.body.program_infoU=="")
+{
+    var img_name="";
+    try
+        {var executed=await ApplyQuery("select distinct Pname from enroll_into_program where Pname='"+req.body.Program_NameU+"';");
+         var executed2=await ApplyQuery("select PName from programs where PName='"+req.body.Program_NameU+"';");
+         console.log(executed2);
+        if(!executed)
+        {
+            if(!isNaN(req.body.Program_NameU)||!executed2.length)
+            {   return res.render('add_any', {
+                    title: 'Add...', 
+                    css: 'add_any',
+                    message: "Invalid Program name!",
+                        instructors:instructors,
+                        coupons_list:coupons_list}
+                )
+            ;}
+            else{
+                if(req.body.Program_imgU)
+                {
+                    var file=req.body.Program_imgU;
+                    img_name="/images/"+file.name;
+                    if(file.mimetype == "image/jpeg" ||file.mimetype == "image/png"||file.mimetype == "image/gif" ){
+                                                
+                        file.mv('./public/images/'+file.name, async function(err) {
+                            if (err)
+                            { 
+                                console.log("can't upload picture");
+                                return res.status(500).send(err);
+                            }
+                            else
+                            {
+                                try{
+                                    await ApplyQuery("Update programs set Program_Image='"+req.body.Program_imgU+"' where PName='"+req.body.Program_NameU+"'");
+                                    console.log("image updated");
+                                }
+                                catch(e)
+                                {
+                                    console.error(e);
+                                    return res.render('add_any', {
+                                        title: 'Add...',
+                                        css: 'add_any',
+                                        message:  "Failed to update the program image",
+                                        instructors:instructors,
+                                        coupons_list:coupons_list
+                                    })
+                                }
+                            }
+                            
+                        });
+        
+                    } 
+                    else {
+                        return res.render('add_any', {
+                            title: 'Add...',
+                            css: 'add_any',
+                            message:  "This format is not allowed , please upload file with '.png','.gif','.jpg'",
+                                    instructors:instructors,
+                                    coupons_list:coupons_list
+                        })
+                    }
+                }
+                else
+                {
+                    img_name="/images/course_5.jpg";
+                }
+                //cost
+                if(req.body.Cost_progU!="")
+                { 
+                        try{
+                            await ApplyQuery("Update programs set Cost='"+req.body.Cost_progU+"' where PName='"+req.body.Program_NameU+"'");
+                            console.log("cost updated");
+                        }
+                        catch(e)
+                        {
+                            console.error(e);
+                            return res.render('add_any', {
+                                title: 'Add...',
+                                css: 'add_any',
+                                message:  "Failed to update the program cost",
+                                instructors:instructors,
+                                coupons_list:coupons_list
+                            })
+                        }
+                }
+                //duration
+                if(req.body.Duration_programU!="")
+                {
+
+                        try{
+                            await ApplyQuery("Update programs set Duration='"+req.body.Duration_programU+"' where PName='"+req.body.Program_NameU+"'");
+                            console.log("duration updated");
+                        }
+                        catch(e)
+                        {
+                            console.error(e);
+                            return res.render('add_any', {
+                                title: 'Add...',
+                                css: 'add_any',
+                                message:  "Failed to update the program duration",
+                                instructors:instructors,
+                                coupons_list:coupons_list
+                            })
+                        }  
+                }
+                if(req.body.LevelU)
+                {   try{
+                        await ApplyQuery("Update programs set Level='"+req.body.LevelU+"' where PName='"+req.body.Program_NameU+"'");
+                        console.log("level updated");
+                    }
+                    catch(e)
+                    {
+                        console.error(e);
+                        return res.render('add_any', {
+                            title: 'Add...',
+                            css: 'add_any',
+                            message:  "Failed to update the program level",
+                            instructors:instructors,
+                            coupons_list:coupons_list
+                        })
+                    }  
+                }
+                if(req.body.program_infoU)
+                {   try{
+                        await ApplyQuery("Update programs set Program_Info='"+req.body.program_infoU+"' where PName='"+req.body.Program_NameU+"'");
+                        console.log("info updated");
+                    }
+                    catch(e)
+                    {
+                        console.error(e);
+                        return res.render('add_any', {
+                            title: 'Add...',
+                            css: 'add_any',
+                            message:  "Failed to update the program info",
+                            instructors:instructors,
+                            coupons_list:coupons_list
+                        })
+                    }  
+                }
+                return res.render('add_any', {
+                    title: 'Add...',
+                    css: 'add_any',
+                    message:  "Program updated successfully",
+                    instructors:instructors,
+                    coupons_list:coupons_list
+                })
+        
+            }
+        }
+        else
+        {
+            return res.render('add_any', {
+                title: 'Add...',
+                css: 'add_any',
+                message:  "We cannot update this program because it is currently in use",
+                instructors:instructors,
+                coupons_list:coupons_list
+            })
+        }
+    }
+    catch(e)
+    {
+        console.error(e);
+        return res.render('add_any', {
+            title: 'Add...',
+            css: 'add_any',
+            message:  "Error while Executing the query",
+            instructors:instructors,
+            coupons_list:coupons_list
+        })
+
+    }
+
+}
+//----------------------------------------------------------Delete Program--------------------------------------------------------------------
+if(!req.body.Program_NameD=="")
+{
+        var executed=await QUERY_LENGHT("select Pname from enroll_into_program where Pname='"+req.body.Program_NameD+"';");
+        var executed2=await ApplyQuery("select PName from programs where PName='"+req.body.Program_NameD+"';");
+         console.log(JSON.parse(JSON.stringify(executed)));
+        if(!executed)
+        {
+            if(!isNaN(req.body.Program_NameD)||!executed2.length)
+            {   return res.render('add_any', {
+                    title: 'Add...', 
+                    css: 'add_any',
+                    message: "Invalid Program name!",
+                        instructors:instructors,
+                        coupons_list:coupons_list}
+                )
+            ;}
+            else
+            {
+                try
+                {
+                    await ApplyQuery("Delete from programs where PName='"+req.body.Program_NameD+"';");
+                    return res.render('add_any', {
+                        title: 'Add...', 
+                        css: 'add_any',
+                        message: "Program deleted!",
+                            instructors:instructors,
+                            coupons_list:coupons_list}
+                    )
+                }
+                catch(e)
+                {
+                    console.log(e);
+                    return res.render('add_any', {
+                        title: 'Add...', 
+                        css: 'add_any',
+                        message: "Failed to delete .. Error while executing the query!",
+                            instructors:instructors,
+                            coupons_list:coupons_list}
+                    )
+
+                }
+            }
+        }
+        else
+        {
+             return res.render('add_any', {
+                title: 'Add...', 
+                css: 'add_any',
+                message: "Cannot delete the program because it is currently in use (some students are enrolled in )!",
+                    instructors:instructors,
+                    coupons_list:coupons_list}
+            )
+        }
+};
 // -------------------------------------------------------------- Add IT Administrator --------------------------------------------------------------------------
 
 if(!req.body.IT_FName=="" || !req.body.IT_LName=="" || !req.body.IT_username=="" || !req.body.Owner_username=="")
@@ -729,7 +1010,7 @@ if(instructors.length!=0)
     }
     
 }
-//-------------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------------------------------------------------
 
 return res.render('Account_Settings', {
     title: 'Account_Settings',
@@ -748,6 +1029,21 @@ const ApplyQuery = (query) => {
                     if(!error) 
                         {
                         resolve(rows);                                           
+                        }
+                    else
+                        {reject(new Error(error));}
+                })
+
+        }, 1000);
+    });
+};
+const QUERY_LENGHT = (query) => {
+    return new Promise ((resolve, reject) => {
+        setTimeout(() => {
+                db.query(query,(error, rows) => {
+                    if(!error) 
+                        {
+                        resolve(rows.length);                                           
                         }
                     else
                         {reject(new Error(error));}
