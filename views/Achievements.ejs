@@ -20,65 +20,25 @@
 
             <div class="ach-container">
                 <h2 class="achievements-title">Achievements</h2>
-
+                <% for (var i=0; i < courses.length; i++) {%>
                 <div class="cards">
                     <div class="card-cont">
                         <a href="#" class="card-link">
                             <div class="course-card">
                                 <img src="/images/dataScience.png" alt="course">
                                 <div class="course-cont">
-                                    <h4><b>Course One</b></h4>
-                                    <p>Discribtion</p>
+                                    <h4><b> <%= courses[i].Course_Name %> </b></h4>
+                                    <p><%= courses[i].Course_info %></p>
                                 </div>
                             </div>
                         </a>
                     </div>
-                    <div class=" card-cont ">
-                        <a href="#" class="card-link">
-                            <div class="course-card ">
-                                <img src="/images/dataScience.png " alt="course ">
-                                <div class="course-cont ">
-                                    <h4><b>Course Two</b></h4>
-                                    <p>Discribtion</p>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="card-cont ">
-                        <a href="#" class="card-link">
-                            <div class="course-card ">
-                                <img src="/images/dataScience.png " alt="course ">
-                                <div class="course-cont ">
-                                    <h4><b>Course Three</b></h4>
-                                    <p>Discribtion</p>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
+                    <% } %>
+              
 
-                    <div class="card-cont ">
-                        <a href="#" class="card-link">
-                            <div class="course-card ">
-                                <img src="/images/dataScience.png " alt="course ">
-                                <div class="course-cont ">
-                                    <h4><b>Course Four</b></h4>
-                                    <p>Discribtion</p>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
+                    
 
-                    <div class="card-cont ">
-                        <a href="#" class="card-link">
-                            <div class="course-card ">
-                                <img src="/images/dataScience.png " alt="course ">
-                                <div class="course-cont ">
-                                    <h4><b>Course Five</b></h4>
-                                    <p>Discribtion</p>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
+                   
 
                 </div>
             </div>
