@@ -9,9 +9,8 @@ profile_Pic varchar(1024),
 Password varchar(50),
 Email varchar(50),
 Username varchar(50) not null,
-Head_username varchar(50) ,
-Gender varchar(6),
-FOREIGN KEY (Head_username) REFERENCES Owners(Username)
+Gender varchar(6)
+-- only one owner ---
 );
 
 --  --
@@ -26,7 +25,7 @@ Password varchar(50) default 12345,
 Email varchar(50),
 Gender varchar(6),
 primary key (Username),
-Foreign key (Owner_Username) references Owners (Username)
+Foreign key (Owner_Username) references Owners (Username) on update cascade
 );
 
 -- --
@@ -38,18 +37,18 @@ Level varchar(50),
 Duration int,
 Program_info TEXT,
 Program_image varchar(1024),
-IT_Username varchar(50) NOT NULL,
+IT_Username varchar(50) ,
 primary key (PName),
-foreign key (IT_Username) references IT_Adminstrators(Username)
+foreign key (IT_Username) references IT_Adminstrators(Username) on update cascade on delete set null
 );
 -- --
 create table IF NOT exists Categories
 (
 CName varchar(100) not null,
-IT_Username varchar(50) not null,
+IT_Username varchar(50) ,
 Category_image varchar(1024),
 primary key (CName),
-foreign key (IT_Username) references IT_Adminstrators(Username)
+foreign key (IT_Username) references IT_Adminstrators(Username) on update cascade on delete set null
 );
 
 
@@ -68,7 +67,7 @@ CV_Link varchar(500) not null,
 Statuss int ,  
 primary key (Username),
 
-Foreign key (IT_Username) references IT_Adminstrators(Username)
+Foreign key (IT_Username) references IT_Adminstrators(Username) on update cascade on delete set null
 );
 -- -- 
 -- --
@@ -86,7 +85,7 @@ Course_info MEDIUMTEXT,
 Course_small_info TINYTEXT,
 Primary key (Course_ID),
 foreign key (Category_Name) references Categories(CName) on update cascade on delete set null,
-foreign key (Programe_Name) references Programs(PName),
+foreign key (Programe_Name) references Programs(PName)  on update cascade on delete set null,
 foreign key (Instructors_Username) references Instructors (UserName) on update cascade on delete cascade
 );
 
@@ -98,7 +97,7 @@ Course_ID int,
 primary key (Instructor_Username,Course_ID),
 rate float,
 foreign key (Instructor_Username) references Instructors(Username) on update cascade on delete cascade,
-foreign key (Course_ID) references Courses(Course_ID)
+foreign key (Course_ID) references Courses(Course_ID) on update cascade on delete cascade
 );
 -- --
 create table if not exists Students
@@ -121,7 +120,7 @@ Quiz_ID   int,
 Date date,
 Max_Grade int,
 primary key (Quiz_ID),
-foreign key (Course_ID) references Courses(Course_ID)
+foreign key (Course_ID) references Courses(Course_ID) on update cascade on delete cascade
 
 );
 
@@ -132,9 +131,9 @@ Quiz_ID   int,
 Student_Username varchar(50),
 Grade float,
 primary key (Quiz_ID,Course_ID,Student_Username),
-foreign key (Course_ID) references Courses(Course_ID) ,
-foreign key (Quiz_ID  ) references Quizzes (Quiz_ID) ,
-foreign key (Student_Username) references Students (Username)
+foreign key (Course_ID) references Courses(Course_ID) on update cascade on delete set null, 
+foreign key (Quiz_ID  ) references Quizzes (Quiz_ID)  on update cascade on delete set null,
+foreign key (Student_Username) references Students (Username) on update cascade on delete set null
 );
 
 CREATE TABLE IF NOT EXISTS Videos(
@@ -276,7 +275,7 @@ INSERT INTO Coupons (Coupon_ID, SDate, EDate, discount_percentage, Category_Name
 
 
 -- Teaches --
-insert into Teaches values("OmarA",3,"5");
+insert into Teaches values("reemattalah",3,"5");
 
 
 -- videos --
