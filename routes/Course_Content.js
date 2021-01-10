@@ -10,9 +10,9 @@ router.get('/:course_ID', async(req, res) => {
     courseVideos = await GetfromDB(sqlquery);
     for(let i =0; i< courseVideos.length; i++){
             let tmp = courseVideos[i].Video_Link;
-            tmp = tmp.replace(/watch\?v=/, "embed/");
+            tmp = tmp.replace(/watch\?v=/, "");
             tmp= tmp.replace(/\&.*/, "");
-            tmp= tmp.replace("https:", "");
+            tmp= tmp.replace("https://www.youtube.com/", "");
             courseVideos[i].Video_Link = tmp;
     }
 

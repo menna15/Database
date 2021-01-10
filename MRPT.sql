@@ -85,7 +85,7 @@ Course_image varchar(1024),
 Course_info MEDIUMTEXT,
 Course_small_info TINYTEXT,
 Primary key (Course_ID),
-foreign key (Category_Name) references Categories(CName),
+foreign key (Category_Name) references Categories(CName) on update cascade on delete set null,
 foreign key (Programe_Name) references Programs(PName),
 foreign key (Instructors_Username) references Instructors (UserName) on update cascade on delete cascade
 );
@@ -245,7 +245,7 @@ INSERT INTO Programs (PName,IT_Username, Cost, Level, Duration, Program_info, Pr
                                     
 
 -- instructors --
-insert  into Instructors values ('Omar','Kamal','OmarA',"Mkamal","images/author.jpg",null,null,900, "Male" , "", 1);
+insert  into Instructors values ('Omar','Kamal','OmarA',"Mkamal","images/author.jpg",'123456',null,900, "Male" , "", 1);
 insert  into Instructors values ('Emad','Atalah','EmadA',"Mkamal","images/author.jpg",null,null,1000, "Male", "", 1);
 INSERT INTO Instructors VALUES ("Menna", "Ahmed", "mennaahmed","Mkamal", "images/author.jpg", null, null,null, "Female", "", 1);
 INSERT INTO Instructors VALUES ("Reem", "Attalah", "reemattalah", "Mkamal", "images/author.jpg", null, null, null,"Female", "", 1);

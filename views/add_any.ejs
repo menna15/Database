@@ -9,6 +9,7 @@
 <section  id="particles-js"></section>
 
 <div class="main-cont">
+<!--ADD Course-->
     <div class="course">
         <h3>Add New Course</h3>
         <form class="infoForm" id="infoForm" method="post" action="/add_any" enctype="multipart/form-data">
@@ -47,8 +48,7 @@
             <button type="submit" class="save-btn">ADD</button>
         </form>
     </div>
-
-
+<!--Add Category-->
         <div class="course">
             <h3>Add New Category</h3>
             <form class="infoForm" id="infoForm" method="post" action="/add_any"enctype="multipart/form-data">
@@ -75,7 +75,30 @@
                 <button class="save-btn" type="submit">ADD</button>
             </form>
         </div>
-
+<!--Delete Category -->
+    <div class="course">
+        <h3>Delete Category</h3>
+        <form class="infoForm" id="infoForm" method="post" action="/add_any"enctype="multipart/form-data">
+            <% if(message.length >0){ %>
+                <div id="alerty" class="alert alert-warning" role="alert">
+                <div id="msg"><%= message%> </div>
+                <button style="width: 30px; background-color: burlywood; " id='close' onclick=' this.parentNode.parentNode.removeChild(this.parentNode); return false;'><strong> X</strong></button>
+            
+            </div><br>
+            <% } %>
+            <div class="Course-info">
+                <div class="labels">
+                    <label for="Category_NameD">Category Name</label>
+                </div>
+                <div class="corr_inputs">
+                    <input id="Category_NameD" type="text" name="Category_NameD" size="40" required="">
+                </div>
+                
+            </div>
+            <button class="save-btn" type="submit">Delete Category</button>
+        </form>
+    </div>
+<!-- Add program-->
         <div class="course">
             <h3>Add New Program</h3>
             <form class="infoForm" id="infoForm"method="post" action="/add_any" enctype="multipart/form-data">
@@ -93,7 +116,7 @@
                         <label for="Cost">Cost</label>
                         <label for="Duration_program"> Duration</label>
                         <label for="Level">Program Level</label>
-                        <label for="Category_image">Category Image</label>
+                        <label for="Category_image">Program Image</label>
                         <label for="program_info">Program Info</label>
                     </div>
                     <div class="corr_inputs">
@@ -115,7 +138,70 @@
                 <button class="save-btn" type="submit">ADD</button>
             </form>
         </div>
-
+<!--Delete Program-->
+<div class="course">
+    <h3>Update Program</h3>
+    <form class="infoForm" id="infoForm"method="post" action="/add_any" enctype="multipart/form-data">
+        <% if(message.length >0){ %>
+            <div id="alerty" class="alert alert-warning" role="alert">
+            <div id="msg"><%= message%> </div>
+            <button style="width: 30px; background-color: burlywood; " id='close' onclick=' this.parentNode.parentNode.removeChild(this.parentNode); return false;'><strong> X</strong></button>
+        
+        </div><br>
+        <% } %>
+        <div class="Course-info">
+            <div class="labels">
+                <label for="Program_NameU">Program Name</label>
+                <label for="Cost">Cost</label>
+                <label for="Duration_program"> Duration</label>
+                <label for="Level">Program Level</label>
+                <label for="Category_image">Program Image</label>
+                <label for="program_info">Program Info</label>
+            </div>
+            <div class="corr_inputs">
+                <input id="Program_NameU" type="text" name="Program_NameU" size="40" required="">
+                <input id="Cost_progU" type="number" name="Cost_progU" size="40" >
+                <input id="Duration_programU" type="number" name="Duration_programU" >
+                <select name="LevelU" id="LevelU">
+                    <option value=""></option>
+                    <option value="Beginner">Beginner</option>
+                    <option value="Nano degree">Nano degree</option>
+                    <option value="Master degree">Master degree</option>
+                </select>
+                <input class="form-control" type="file" name="Program_imgU" accept="prog imageU"/>
+                <textarea name="program_infoU" id="" cols="10" rows="5"></textarea>
+                
+            </div>
+            
+        </div>
+        <button class="save-btn" type="submit">Update Program</button>
+    </form>
+</div>
+<!--Delete program-->
+<div class="course">
+    <h3>Delete Program</h3>
+    <form class="infoForm" id="infoForm"method="post" action="/add_any" enctype="multipart/form-data">
+        <% if(message.length >0){ %>
+            <div id="alerty" class="alert alert-warning" role="alert">
+            <div id="msg"><%= message%> </div>
+            <button style="width: 30px; background-color: burlywood; " id='close' onclick=' this.parentNode.parentNode.removeChild(this.parentNode); return false;'><strong> X</strong></button>
+        
+        </div><br>
+        <% } %>
+        <div class="Course-info">
+            <div class="labels">
+                <label for="Program_NameU">Program Name</label>
+            </div>
+            <div class="corr_inputs">
+                <input id="Program_NameD" type="text" name="Program_NameU" size="40" required="">
+                
+            </div>
+            
+        </div>
+        <button class="save-btn" type="submit">Delete Program</button>
+    </form>
+</div>
+ <!-- Review ALL instructors-->
         <div class="course">
             <h3>Review Instructors</h3>
             <br>
@@ -153,7 +239,7 @@
                     <h3>No instructors in the waiting list to review</h3>
                 <% } %>
         </div>
-
+ <!-- ADD IT Adminstrators-->
         <div class="course">
             <h3>Add IT Adminstrator</h3>
             <form class="infoForm" id="infoForm"method="post" action="/add_any" enctype="multipart/form-data">
@@ -214,7 +300,7 @@
          <!--Update COUPON-->
         <div class="course">
          <h3>Update Coupon</h3>
-           <% if(coupons_list.length >0){ %>
+           <% if( coupons_list.length >0){ %>
                 <form class="infoForm" id="infoForm"method="post" action="/add_any" enctype="multipart/form-data">
                     <% if(message.length >0){ %>
                         <div id="alerty" class="alert alert-warning" role="alert">
