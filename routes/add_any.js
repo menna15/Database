@@ -203,7 +203,7 @@ return res.render('add_any', {
 
 if(!req.body.Category_Name==""||!req.body.IT_username==""){
     var img_name="";
-    if(req.body.cat_image)
+    if(req.files.cat_image)
     {
         var file=req.files.cat_image;
         img_name="/images/"+file.name;
@@ -317,7 +317,7 @@ if(!req.body.Category_NameD ==""){
 // ----------------------------------------------------------Add Program---------------------------------------------------------------
  if(!req.body.Program_Name==""||!req.body.IT_username_prog==""||!req.body.Cost_prog==""||!req.body.Duration_program==""|| !req.body.Level==""){
 var img_name="";
-if(req.body.Program_img)
+if(req.files.Program_img)
 {
     var file=req.files.Program_img;
     img_name="/images/"+file.name;
@@ -426,8 +426,8 @@ if(!req.body.Program_NameU==""||!req.body.Cost_progU==""||!req.body.Duration_pro
                 )
             ;}
             else{
-                console.log(req.body.Program_imgU);
-                if(req.body.Program_imgU)
+                console.log(req.files.Program_imgU);
+                if(req.files.Program_imgU)
                 {
                     var file=req.files.Program_imgU;
                     img_name="/images/"+file.name;
@@ -640,7 +640,6 @@ if(!req.body.Program_NameD=="")
         }
 };
 // -------------------------------------------------------------- Add IT Administrator --------------------------------------------------------------------------
-
 if(!req.body.IT_FName=="" || !req.body.IT_LName=="" || !req.body.IT_username=="" || !req.body.Owner_username=="")
 {
     if (!req.body.IT_FName) {
@@ -699,7 +698,6 @@ if(!req.body.IT_FName=="" || !req.body.IT_LName=="" || !req.body.IT_username==""
         coupons_list:coupons_list}
     );
 }
-
 // ------------------------------------------------ ADD Coupons ----------------------------------------------------
 if(!req.body.Owner_username2=="" || !req.body.percentage=="" || !req.body.start=="" || !req.body.end=="" ||!req.body.Category2=="" )
 {
@@ -1020,11 +1018,54 @@ if(instructors.length!=0)
     
 }
 //------------------------------------------------------------------------------------------------------------------------------------------
-
+//------------------------------------------------ Delete Instructor ----------------------------------------------------------------
+console.log(req.body.Delet_instructor);
+if(req.body.Delet_instructor !="Select")
+{  console.log(req.body.Delet_instructor);
+   var sql_query="Select from teaches Instructor_Username where Instructor_Username='"+req.body.Delet_instructor+"'";
+   try{
+       var executed=await ApplyQuery(sql_query);
+       if(executed.length !=0)
+       {
+           try{
+               await ApplyQuery("Delete from Instructors where Username='"+req.body.Delet_instructor  +"'");
+               return res.render('add_any', {
+                title: 'Add...', 
+                css: 'add_any',
+                message: "Instructor is deleted Successfully!",
+                instructors:instructors,
+                coupons_list:coupons_list
+            });
+           }
+           catch(e)
+           {console.error(e);
+            return res.render('add_any', {
+                title: 'Add...', 
+                css: 'add_any',
+                message: "Failed to delete this instructor!",
+                instructors:instructors,
+                coupons_list:coupons_list
+            });
+           }
+       }
+   }
+   catch(e)
+   {
+       console.error(e);
+       return res.render('add_any', {
+        title: 'Add...', 
+        css: 'add_any',
+        message: "Can not delete this instructor because he serve a course right now!",
+        instructors:instructors,
+        coupons_list:coupons_list
+    });
+   }
+}
+//-----------------------------------------------------------------------------------------------------------------------------------
 return res.render('Account_Settings', {
     title: 'Account_Settings',
     css: 'Account_Settings',
-    message: "Nothing is added",
+    message: "No Action is done",
             instructors:instructors,
             coupons_list:coupons_list
 })
