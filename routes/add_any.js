@@ -184,13 +184,20 @@ var sql = "INSERT INTO `courses`(`Course_ID`,`Instructors_Username`,`Category_Na
 
 await ApplyQuery(sql);
 
-return res.render('Account_Settings', {
-    title: 'Account_Settings',
-    css: 'Account_Settings',
-    message: "Course is added",
+return res.render('add_any', {
+    title: 'Add...',
+    css: 'add_any',
     instructors:instructors,
-    coupons_list:coupons_list
+    coupons_list:coupons_list,
+    message:  "Course is added"
 })
+// return res.render('Account_Settings', { 
+//     title: 'Account_Settings',
+//     css: 'Account_Settings',
+//     message: "Course is added",
+//     instructors:instructors,
+//     coupons_list:coupons_list
+// })
 }
 //----------------------------------------------Add category ----------------------------------------------------------------------------
 
