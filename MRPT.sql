@@ -22,7 +22,7 @@ Lname varchar(50) not null,
 Username varchar(50) not null,
 Profile_Pic varchar(1024),
 Owner_Username varchar(50),
-Password varchar(50),
+Password varchar(50) default 12345,
 Email varchar(50),
 Gender varchar(6),
 primary key (Username),
@@ -60,7 +60,7 @@ Lname varchar(50) not null,
 Username varchar(50) not null,
 IT_Username varchar(50) ,
 Profile_Pic varchar(1024),
-Password varchar(50),
+Password varchar(50) default 12345,
 Email varchar(50),
 Total_Income float,
 Gender varchar(6),
@@ -296,4 +296,3 @@ INSERT INTO Videos VALUES (6, 2, "https://www.youtube.com/watch?v=sRVGcYGjUk8&li
 
 
 select * from students;
-

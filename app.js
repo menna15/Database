@@ -5,26 +5,11 @@ const bodyParser = require('body-parser');
  
 const fileUpload = require('express-fileupload');
 
-// SQL
-// var mysql = require('mysql');
 
-// var con = mysql.createConnection({
-//     host: '127.0.0.1',
-//     port: '3306',
-//     user: 'root',
-//     password:"1234"
+global.global_username = "";
 
-// });
 
-// con.connect(function(err) {
-//   if (err) throw err;
-//   console.log("Connected!");
-//   con.query("CREATE DATABASE MRPT", function (err, result) {
-//     if (err) throw err;
-//     console.log("Database created");
-//   });
-// });
-//
+global.global_type = "";
 
 
 const session = require('express-session');

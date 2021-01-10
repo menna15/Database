@@ -239,6 +239,41 @@
                     <h3>No instructors in the waiting list to review</h3>
                 <% } %>
         </div>
+<!--Delete Instructor-->
+<div class="course">
+    <h3>Delete Instructors</h3>
+    <br>
+        <% if( instructors && instructors.length>0) { %>
+            <form class="infoForm" id="infoForm"method="post" action="/add_any" enctype="multipart/form-data">
+                <% if(message.length >0){ %>
+                    <div id="alerty" class="alert alert-warning" role="alert">
+                    <div id="msg"><%= message%> </div>
+                    <button style="width: 30px; background-color: burlywood; " id='close' onclick=' this.parentNode.parentNode.removeChild(this.parentNode); return false;'><strong> X</strong></button>
+                
+                </div><br>
+                <% } %>
+                    <div class="Review">
+                        <div class="review_labels">
+                            <label for="INSTRUCT_USER"><h6>Choose Instructor Username</h6></label>
+                        </div>
+                        <div class="corr_inputs_review">
+                            <select class="Delet_instructor" name="Delet_instructor>" id="Delet_instructor" >
+                                <option value=""></option>
+                                <% for(var i = 0; i < instructors.length; i++) { %>
+                                
+                                <option value="<%=instructors[i].Username%>"><%=instructors[i].Username%></option>
+                                <% } %>
+                            </select>
+                        </div>
+                        
+                    </div>
+                <button class="save-btn" type="submit">Delete</button>
+                
+            </form>      
+        <% }else{ %>
+            <h3>No instructors to review</h3>
+        <% } %>
+</div>
  <!-- ADD IT Adminstrators-->
         <div class="course">
             <h3>Add IT Adminstrator</h3>
@@ -266,6 +301,31 @@
                 <button class="save-btn"type="submit">ADD</button>
             </form>
         </div>
+<!--Delete IT-->
+<div class="course">
+    <h3>Delete IT Adminstrator</h3>
+    <form class="infoForm" id="infoForm"method="post" action="/add_any" enctype="multipart/form-data">
+        <% if(message.length >0){ %>
+            <div id="alerty" class="alert alert-warning" role="alert">
+            <div id="msg"><%= message%> </div>
+            <button style="width: 30px; background-color: burlywood; " id='close' onclick=' this.parentNode.parentNode.removeChild(this.parentNode); return false;'><strong> X</strong></button>
+        
+        </div><br>
+        <% } %>
+        <div class="Course-info">
+            <div class="labels">
+                <label for="IT_Delete">IT Username</label>
+            </div>
+            <div class="corr_inputs">
+                <input id="IT_FName" type="text" name="IT_FName" size="40">
+                <input id="IT_LName" type="text" name="IT_LName" size="40">
+                <input id="Owner_username" type="text" name="Owner_username" size="40">
+            </div>
+            
+        </div>
+        <button class="save-btn"type="submit">Delete</button>
+    </form>
+</div>
        <!--ADD NEW COUPON-->
         <div class="course">
             <h3>Add New Coupon</h3>
