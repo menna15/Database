@@ -1,7 +1,7 @@
 const router = require('express').Router();
 var db = require('../db');
 
-router.get('/', async(req, res) => {
+router.get('/:username', async(req, res) => {
 
 
    // Courses_query="SELECT C.* FROM Courses as c , Enroll_into_course as e , Students as s where e.finished = 1 and c.Course_ID = e.Course_ID and s.Username = '"+ req.params.username + "';";
@@ -9,14 +9,12 @@ router.get('/', async(req, res) => {
 
     const GetCoursess=await getfromDB(Courses_query);
 
-router.get('/:username', (req, res) => {
-
-    return res.render('Achievements', {
-        title: 'Achievements',
-        css: 'Achievements',
-        Username: req.params.username,
-        courses: GetCoursess,
-    })
+        return res.render('Achievements', {
+            title: 'Achievements', 
+            css: 'Achievements',
+            Username: req.params.username,
+            courses: GetCoursess,
+        })
 });
 
 
