@@ -11,7 +11,16 @@ router.get('/', async (req, res) => {
         coupons = coupons.filter(function(item){
             return (item.SDate < currDate || (item.EDate > currDate && item.SDate < currDate));
         });
+        
+        let coupons_query = "SELECT co.Coupon_ID,co.SDate, co.EDate,co.discount_percentage, ca.CName cat FROM Coupons as co JOIN Categories as ca ON co.Category_Name = ca.CName;";
+    
+        let cCoupons = await GetfromDB(coupons_query);
+    
 
+        cCoupons = cCoupons.filter(function(item){
+            return ((item.EDate > currDate && item.SDate <= currDate));
+        });
+        console.log(cCoupons);
         var category_courses = [];
         for(let i =0; i<categories.length; i++){
             var sqlquery = "SELECT * FROM Courses WHERE Category_Name = '" + categories[i].CName + "';";
@@ -30,7 +39,8 @@ router.get('/', async (req, res) => {
             css: 'categories',
             categories:categories,
             categories_courses:category_courses,
-            coupons:coupons
+            coupons:coupons,
+            courseCoupons:cCoupons
         })
 
 });

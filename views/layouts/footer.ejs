@@ -39,10 +39,84 @@
     $(function(){
         $('a').click(function(){
             var link = $(this).attr("x");
-            $("iframe").attr("src", link);
+            function onYouTubePlayerAPIReady() {
+                player = new YT.Player('player', {
+                height: '500',
+                width: '900',
+                videoId: $(".video-container").attr("videoLink"),
+                events: {
+                    'onReady': onPlayerReady,
+                    'onStateChange': onPlayerStateChange
+                }
+                });
+            }
+
+    // autoplay video
+            function onPlayerReady(event) {
+                event.target.playVideo();
+            }
+
+    // when video ends
+            function onPlayerStateChange(event) {        
+                if(event.data === 0) {            
+                    alert('done');
+                }
+            }
+            player.cueVideoById(link);
         });
     });
 </script>
 
+<script src="http://www.youtube.com/player_api"></script>
+
+<script>
+    
+    // create youtube player
+    var player;
+    function onYouTubePlayerAPIReady() {
+        player = new YT.Player('player', {
+          height: '500',
+          width: '900',
+          videoId: $(".video-container").attr("videoLink"),
+          events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
+          }
+        });
+    }
+
+    // autoplay video
+    function onPlayerReady(event) {
+        event.target.playVideo();
+    }
+
+    // when video ends
+    function onPlayerStateChange(event) {        
+        if(event.data === 0) {            
+            alert('done');
+        }
+    }
+
+</script>
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.2.min.js"></script>
+<script>
+    function openForm() {
+        document.getElementById("popupForm").style.display = "block";
+    }
+    function closeForm() {
+        document.getElementById("popupForm").style.display = "none";
+    }
+    function buycourse(){
+        
+    }
+    function enrollProgram(){
+
+    }
+    $('#enr').click(function(){
+        console.log("clicked");
+        document.getElementById("popupForm").style.display = "block";
+    });
+</script>
+<!-- https://vijayasankarn.wordpress.com/2016/12/29/using-query-string-in-script-tag-javascript/ -->
 </body>
 </html>
