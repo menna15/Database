@@ -63,6 +63,12 @@ app.use((req, res, next) => {
     next();
 });
 
+// app.use((req, res, next) => {
+//     res.locals.isAuthenticatedd = req.isAuthenticated();
+//     next();
+// })
+
+
 app.use('/home', require('./routes/home'));
 app.use('/login', require('./routes/login'));
 app.use('/signup', require('./routes/signup'));

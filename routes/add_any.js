@@ -375,7 +375,7 @@ if(!req.body.Level)
         coupons_list:coupons_list}
 )
 ;}
-var sql_query= "INSERT INTO Programs (PName,IT_Username, Cost, Level, Duration,Program_image,Program_info) VALUES ('" +req.body.Program_Name+"','"+req.body.IT_username_prog+"','"+req.body.Cost_prog+"','"+req.body.Level+"','"+req.body.Duration_program+"','"+req.body.Program_img+"','"+req.body.program_info+"')";
+var sql_query= "INSERT INTO Programs (PName,IT_Username, Cost, Level, Duration,Program_image,Program_info) VALUES ('" +req.body.Program_Name+"','"+req.body.IT_username_prog+"','"+req.body.Cost_prog+"','"+req.body.Level+"','"+req.body.Duration_program+"','"+img_name+"','"+req.body.program_info+"')";
 try
 {
     await ApplyQuery(sql_query);

@@ -1,7 +1,7 @@
 const router = require('express').Router();
 var db = require('../db');
 
-router.get('/:username', async(req, res) => {
+router.get('/:username', async(req, res) => { 
 
 
    // Courses_query="SELECT C.* FROM Courses as c , Enroll_into_course as e , Students as s where e.finished = 1 and c.Course_ID = e.Course_ID and s.Username = '"+ req.params.username + "';";
