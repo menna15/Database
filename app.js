@@ -54,6 +54,7 @@ app.use((req, res, next) => {
 
 
 app.use('/home', require('./routes/home'));
+app.use('/payment', require('./routes/payment'));
 app.use('/login', require('./routes/login'));
 app.use('/signup', require('./routes/signup'));
 app.use('/categories', require('./routes/categories'));
@@ -68,6 +69,7 @@ app.use('/Donate', require('./routes/Donate'));
 app.use('/Course_Content', require('./routes/Course_Content'));
 app.use('/logout', require('./routes/logout'));
 
+ 
 
 global.global_username = "";
 

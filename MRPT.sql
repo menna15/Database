@@ -131,9 +131,11 @@ Quiz_ID   int,
 Student_Username varchar(50),
 Grade float,
 primary key (Quiz_ID,Course_ID,Student_Username),
+
 foreign key (Course_ID) references Courses(Course_ID) on update cascade on delete cascade,
 foreign key (Quiz_ID  ) references Quizzes (Quiz_ID)  on update cascade on delete cascade,
 foreign key (Student_Username) references Students (Username) on update cascade on delete cascade
+
 );
 
 CREATE TABLE IF NOT EXISTS Videos(

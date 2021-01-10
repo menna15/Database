@@ -68,6 +68,8 @@ router.post('/', async(req, res) => {
     var email="";
     var pass="";   
     var confPass="";
+    var uploaded_image= "";
+
 
     firstname= req.body.FirstName ;
     lastname= req.body.LastName ;
@@ -75,13 +77,46 @@ router.post('/', async(req, res) => {
     email=req.body.Email;
     pass=req.body.Password;
     confPass=req.body.ConfPassword;
+    uploaded_image=req.files.uploaded_image;
+
+    console.log(uploaded_image);
+    console.log("hi");
+    var img_name="";
+    console.log(req.body);
+    console.log(req.body.uploaded_image);
+    if(uploaded_image)
+    {
+        var file=req.files.uploaded_image;
+        img_name="/images/"+file.name;
+        if(file.mimetype == "image/jpeg" ||file.mimetype == "image/png"||file.mimetype == "image/gif" ){
+                                    
+            file.mv('./public/images/'+file.name, function(err) {
+                if (err)
+                { 
+                    console.log("can't upload picture");
+                    return res.status(500).send(err);
+                }
+                
+            });
+        } else {
+            return res.render('add_any', {
+                title: 'Add...',
+                css: 'add_any',
+                message:  "This format is not allowed , please upload file with '.png','.gif','.jpg'"
+            })
+        }
+    }
+    else
+    {
+        img_name="/images/author.jpg";
+    }
 
     if(firstname == "") 
         firstname= sql[0].Fname;
     if(lastname == "")
         lastname= sql[0].Lname;
     if(username == "") 
-        username= global_username; 
+        username= global_username;         
 
     if(email == "")
         email= sql[0].Email;
@@ -108,8 +143,8 @@ router.post('/', async(req, res) => {
                 message: "Enter similar Password and confirm Password "
             })
     }
-    
 
+    
     // var allsql="";
     if(global_type == 'instructor')
     {
@@ -117,13 +152,16 @@ router.post('/', async(req, res) => {
         await getfromDB(query);
         query= "UPDATE instructors set Lname ='" + lastname +"' where Username ='"+global_username+"'";
         await getfromDB(query);
+        query= "UPDATE instructors set Profile_Pic ='" + img_name +"' where Username ='"+global_username+"'";
+        await getfromDB(query);
         query= "UPDATE instructors set Username ='" + username +"' where Username ='"+global_username+"'";
         await getfromDB(query);
-        query= "UPDATE instructors set Email ='" + email +"' where Username ='"+global_username+"'";
+        query= "UPDATE instructors set Email ='" + email +"' where Username ='"+username+"'";
         await getfromDB(query);
-        query= "UPDATE instructors set Password ='" + pass +"' where Username ='"+global_username+"'";
+        query= "UPDATE instructors set Password ='" + pass +"' where Username ='"+username+"'";
         await getfromDB(query);
-        query= "SELECT * FROM instructors where Username ='"+global_username+"'";
+        global_username=username;
+        query= "SELECT * FROM instructors where Username ='"+username+"'";
         sql =await getfromDB(query);
     }
     if(global_type == 'it_adminstrator')
@@ -132,13 +170,16 @@ router.post('/', async(req, res) => {
         await getfromDB(query);
         query= "UPDATE it_adminstrators set Lname ='" + lastname +"' where Username ='"+global_username+"'";
         await getfromDB(query);
+        query= "UPDATE it_adminstrators set Profile_Pic ='" + img_name +"' where Username ='"+global_username+"'";
+        await getfromDB(query);
         query= "UPDATE it_adminstrators set Username ='" + username +"' where Username ='"+global_username+"'";
         await getfromDB(query);
-        query= "UPDATE it_adminstrators set Email ='" + email +"' where Username ='"+global_username+"'";
+        query= "UPDATE it_adminstrators set Email ='" + email +"' where Username ='"+username+"'";
         await getfromDB(query);
-        query= "UPDATE it_adminstrators set Password ='" + pass +"' where Username ='"+global_username+"'";
+        query= "UPDATE it_adminstrators set Password ='" + pass +"' where Username ='"+username+"'";
         await getfromDB(query);
-        query= "SELECT * FROM it_adminstrators where Username ='"+global_username+"'";
+        global_username=username;
+        query= "SELECT * FROM it_adminstrators where Username ='"+username+"'";
         sql =await getfromDB(query);
     }
     if(global_type == 'owner')
@@ -149,11 +190,14 @@ router.post('/', async(req, res) => {
         await getfromDB(query);
         query= "UPDATE owners set Username ='" + username +"' where Username ='"+global_username+"'";
         await getfromDB(query);
-        query= "UPDATE owners set Email ='" + email +"' where Username ='"+global_username+"'";
+        query= "UPDATE owners set Profile_Pic ='" + img_name +"' where Username ='"+global_username+"'";
         await getfromDB(query);
-        query= "UPDATE owners set Password ='" + pass +"' where Username ='"+global_username+"'";
+        query= "UPDATE owners set Email ='" + email +"' where Username ='"+username+"'";
         await getfromDB(query);
-        query= "SELECT * FROM owners where Username ='"+global_username+"'";
+        query= "UPDATE owners set Password ='" + pass +"' where Username ='"+username+"'";
+        await getfromDB(query);
+        global_username=username;
+        query= "SELECT * FROM owners where Username ='"+username+"'";
             sql =await getfromDB(query);
     }
     if(global_type == 'student')
@@ -164,11 +208,14 @@ router.post('/', async(req, res) => {
         await getfromDB(query);
         query= "UPDATE students set Username ='" + username +"' where Username ='"+global_username+"'";
         await getfromDB(query);
-        query= "UPDATE students set Email ='" + email +"' where Username ='"+global_username+"'";
+        query= "UPDATE students set Profile_Pic ='" + img_name +"' where Username ='"+global_username+"'";
         await getfromDB(query);
-        query= "UPDATE students set Password ='" + pass +"' where Username ='"+global_username+"'";
+        query= "UPDATE students set Email ='" + email +"' where Username ='"+username+"'";
         await getfromDB(query);
-        query= "SELECT * FROM students where Username ='"+global_username+"'";
+        query= "UPDATE students set Password ='" + pass +"' where Username ='"+username+"'";
+        await getfromDB(query);
+        global_username=username;
+        query= "SELECT * FROM students where Username ='"+username+"'";
         sql =await getfromDB(query);
     }
     // console.log(allsql);
@@ -198,6 +245,6 @@ const getfromDB = (query) => {
         }, 100);
     });
 };
-
+ 
 
 module.exports = router;

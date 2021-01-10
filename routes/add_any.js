@@ -191,8 +191,16 @@ return res.render('add_any', {
     css: 'add_any',
     message: "Course is added",
     instructors:instructors,
-    coupons_list:coupons_list
+    coupons_list:coupons_list,
+    message:  "Course is added"
 })
+// return res.render('Account_Settings', { 
+//     title: 'Account_Settings',
+//     css: 'Account_Settings',
+//     message: "Course is added",
+//     instructors:instructors,
+//     coupons_list:coupons_list
+// })
 }
 //-----------------------------------------------------Delete Course-------------------------------------------------------------------------
 if(!req.body.Instructor_username_courseD ==""&&!req.body.courseD=="")

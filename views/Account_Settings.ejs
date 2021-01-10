@@ -5,10 +5,15 @@
             <div class="sidenav">
                 <div>
                     <div class="userImg">
+                        <% if ( SQL[0].Profile_Pic =='err') { %>
                         <img class="userphoto" src="/images/user.jpg" alt="Avatar" style="border-radius: 50%;">
-                        <button class="btnupload">Upload</button>
+                        <% } else { %>
+                            <img class="userphoto" src="<%= SQL[0].Profile_Pic %>" alt="Avatar" style="border-radius: 50%;">
+                        <% } %>
+                        
                     </div>
                 </div>
+                
                 <% if ( global_username == "")   {  %>
                 <h2 class="Name">UNKNOWN</h2>
                 <% } else {%>
@@ -112,6 +117,8 @@
             <div class="form-container">
 
                 <div class="grid-info-content">
+                    
+                    <form class="infoForm" id="infoForm" method="POST" action="/Account_Settings" enctype="multipart/form-data">
 
                     <% if(message.length >0){ %>
                         <div id="alerty" class="alert alert-warning" role="alert">
@@ -121,39 +128,26 @@
                     </div><br>
                     <% } %>
                     <div class="informations">
-
                         <div class="prof-info">
                             <h3>Profile</h3>
-                            <form class="infoForm" id="infoForm" method="POST" action="/Account_Settings" enctype="multipart/form-data">
-                                
-
                                 <div class="profile-info">
                                     <div class="labels">
                                         <label for="First Name">First Name</label>
                                         <label for="Last Name">Last Name</label>
-                                        <!-- <label for="Gender">Gender</label> -->
-
                                     </div>
                                     <div class="corr_inputs">
                                         <input id="First Name" type="text" name="FirstName" size="40"placeholder="<%= SQL[0].Fname %>">
                                         <input id="Last Name" type="text" name="LastName" size="40"placeholder="<%= SQL[0].Lname %>">
-                                        <!-- <select name="Gender" id="Gender">
-                                            <option value="Male">Male</option>
-                                            <option value="Female">Female</option>
-                                        </select> -->
-                                    </div>
-                                    <!-- <button class="save-btn">SAVE</button> -->
-                                    
-                               </div>
-                                   
-                            <!-- </form> -->
+                                         <!-- <button type="reset" class="btnupload" id="file">Upload</button> -->
+                                         <input id="image" type="file" name="uploaded_image" accept="Course Image"/>
+                                    </div>                                    
+                               </div>  
                         </div>
                         <br>
                         <hr style="border-top: 2px solid #bbb;">
 
                         <div class="acc-info">
                             <h3>Account Settings</h3>
-                            <!-- <form class="infoForm" id="infoForm"> -->
                             <div class="account-info">
                                 <div class="labels">
                                     <label for="Username">Username</label>
@@ -184,6 +178,30 @@
             </div>
         </div>
 </div>
+<!-- <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script type='text/javascript'>
+    $(function(){
+      // Wrap your File input in a wrapper <div>
+      var wrapper = $('<div/>').css({height:0,width:0,'overflow':'hidden'});
+      var fileInput = $(':file').wrap(wrapper);
+
+      // When your file input changes, update the text for your button
+      fileInput.change(function(){
+        $this = $(this);
+        // If the selection is empty, reset it
+        if($this.val().length == 0) {
+          $('#file').text("Your Text to Choose a File Here!");
+        }else{
+          $('#file').text($this.val());
+        }
+      })
+
+      // When your fake button is clicked, simulate a click of the file button
+      $('#file').click(function(){
+        fileInput.click();
+      }).show();
+    });
+    </script> -->
  <%- include("layouts/footer") %>
 
 
