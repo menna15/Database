@@ -9,61 +9,52 @@
                         <button class="btnupload">Upload</button>
                     </div>
                 </div>
-                <% if ( Username == 'undefined')   {  %>
+                <% if ( global_username == "")   {  %>
                 <h2 class="Name">UNKNOWN</h2>
                 <% } else {%>
                     <h2 class="Name">
-                        <%=Username %>
+                        <%= global_username %>
                     </h2>
                 <% } %>
-
+ 
                 <div class="choices">
-                    <a href="/Account_Settings/ <%= Type %>/<%=Username %>">Profile</a>
+                    <a href="/Account_Settings">Profile</a>
                     <hr style="border-top: 1px solid #bbb;">
 
 
 
 
-                    <% if ( Type != 'undefined')   {  %>
-                        <%  if (Type == 'instructor' || Type == 'student' )  {  %>
+                        <%  if (global_type == 'instructor' || global_type == 'student' )  {  %>
 
                     
-                    <a href="/Achievements/<%=Username %>">Achievements</a>
+                    <a href="/Achievements">Achievements</a>
                     <hr style="border-top: 1px solid #bbb;">
 
                     <%  } %>                        
-                    <% } %>
 
-                        <% if ( Type !== 'undefined')   {  %>
-                        <%  if (Type == "instructor" )  {  %>
+                        <%  if (global_type == "instructor" )  {  %>
                               
                     <a href="/add_any">Add Course</a>
                     <hr style="border-top: 1px solid #bbb;">
                         
                         <%  } %>                        
-                        <% } %>
 
-                        <% if ( Type !== 'undefined')   {  %>
-                            <%  if ( Type == "it_adminstrator"  )  {  %>
+                            <%  if ( global_type == "it_adminstrator"  )  {  %>
 
                     <a href="/add_any">Add Instructors</a>
                     <hr style="border-top: 1px solid #bbb;">
 
                      
                     <%  } %>                        
-                    <% } %>
 
-                    <% if ( Type !== 'undefined')   {  %>
-                        <%  if (Type == "owner" )  {  %>
+                        <%  if (global_type == "owner" )  {  %>
 
                     <a href="/add_any">Add IT Adminstrators</a>
                     <hr style="border-top: 1px solid #bbb;">
     
                     <%  } %>                        
-                    <% } %>
 
-                    <% if ( Type !== 'undefined')   {  %>
-                        <%  if (Type == "it_adminstrator" )  {  %>
+                        <%  if (global_type == "it_adminstrator" )  {  %>
 
 
                     <a href="/add_any">Add Program</a>
@@ -75,10 +66,9 @@
                     <a href="/add_any">Delete Program</a>
                     <hr style="border-top: 1px solid #bbb;">
                     <%  } %>                        
-                    <% } %>
 
-                    <% if ( Type !== 'undefined')   {  %>
-                        <%  if (Type == "it_adminstrator" )  {  %>
+                   
+                        <%  if (global_type == "it_adminstrator" )  {  %>
 
                     <a href="/add_any">Add Category</a>
                     <hr style="border-top: 1px solid #bbb;">
@@ -86,38 +76,35 @@
                     <hr style="border-top: 1px solid #bbb;">
 
                     <%  } %>                        
-                    <% } %>
+                   
 
-                    <% if ( Type !== 'undefined')   {  %>
-                        <%  if (Type == "owner" )  {  %>
+                    
+                        <%  if (global_type == "owner" )  {  %>
 
 
                     <a href="/add_any">Add Coupon</a>
                     <hr style="border-top: 1px solid #bbb;">
 
                     <%  } %>                        
-                    <% } %>
-
-                    <% if ( Type !== 'undefined')   {  %>
-                        <%  if (Type == "owner" )  {  %>
+                                       
+                        <%  if (global_type == "owner" )  {  %>
 
 
                     <a href="/add_any">Update Coupon</a>
                     <hr style="border-top: 1px solid #bbb;">
 
-                    <%  } %>                        
+                                
                     <% } %>
-
-                    <% if ( Type !== 'undefined')   {  %>
+                   
                         <%  if (Type == "owner" )  {  %>
 
 
                     <a href="/add_any">Delete Coupon</a>
                     <hr style="border-top: 1px solid #bbb;">
                     <%  } %>                        
-                    <% } %>            
-                    <% if ( Type !== 'undefined')   {  %>
-                    <a href="#">Log Out</a>
+                               
+                    <% if ( global_type !== "")   {  %>
+                    <a href="/logout">Log Out</a>
                     <% } %>     
                 </div>
             </div>

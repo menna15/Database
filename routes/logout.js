@@ -3,14 +3,16 @@ const router = require('express').Router();
 var db = require('../db');
  
 router.get('/',async (req, res) => {
- 
+    global_username = "";
+    global_type = "";        
+      
         return res.render('login', {
             title: 'login',
             css:'login'
         })
 });  
  
-
+ 
 router.post('/',async (req, res) => {
     
     const sign_in_Username = req.body.sign_in_Username;
