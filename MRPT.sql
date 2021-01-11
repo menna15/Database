@@ -224,6 +224,19 @@ foreign key (Course_ID) references Courses (Course_ID),
 foreign key (Pname  ) references Programs(PName)
 );
 
+create table if not exists Cards  
+(
+card_number BIGINT(255)	 ,  -----------  16 digit
+card_Password int ,         -----------  4 digit
+expire_date int ,           -----------  4 digits
+cvc int , 
+money int ,                    -----------  3 digits
+primary key (card_number)
+);
+
+INSERT into cards values( 1111111111111111 , 1111, 1212 , 111 , 500  );
+
+
 /*Insert Records*/
 -- Owners --
 INSERT INTO Owners (Fname, Lname, Username) VALUES ("Will", "Smith", "willsmith");
